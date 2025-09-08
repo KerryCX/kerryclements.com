@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Periodic Table</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>Periodic Table Quiz</h1>
+      <h2>Test your periodic table knowledge</h2>
+      <h3>Click on the button to get a symbol</h3>
+      <section>
+        <button id="button">Get a random element symbol</button>
+        <p id="element-symbol" class="answer-display"></p>
+        <button id="answer-button" class="reveal-button hidden">Reveal element</button>
+        <p id="answer" class="answer-display"></p>
+        <button id="reason-for-naming" class="hidden"></button>
+        <p id="symbol-origin" class="reason-display"></p>
+      </section>
+    </div>
+    <script type="module" src="./dist/index.js"></script>
+  </body>
+</html>
