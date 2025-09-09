@@ -13,11 +13,13 @@
       <h3>Click on the button to get a symbol</h3>
       <section>
         <button id="button">Get a random element symbol</button>
-        <p id="element-symbol" class="answer-display"></p>
-        <button id="answer-button" class="reveal-button hidden">Reveal element</button>
-        <p id="answer" class="answer-display"></p>
-        <button id="reason-for-naming" class="hidden"></button>
-        <p id="symbol-origin" class="reason-display"></p>
+        <p id="element-symbol" class="symbol-styling animated move-down"></p>
+        <button id="answer-button" class="animated move-up">Reveal element</button>
+        <p id="answer" class="animated move-down"></p>
+        <button id="reason-for-naming" class="animated move-up">
+          Why does it have this naming?
+        </button>
+        <p id="symbol-origin" class="display-reason"></p>
       </section>
     </div>
     <script type="module" src="./dist/index.js"></script>
