@@ -1,4 +1,5 @@
 import elements from './listOfElements.json' with { type: 'json' }
+import { getRandomElement } from './utils.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   let randomIndex: number
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   getSymbolButton.addEventListener('click', () => {
     randomIndex = Math.floor(Math.random() * elements.length)
-    const randomElement = elements[randomIndex] // Access the element using the index
+    const randomElement = getRandomElement()
     if (randomElement) {
       elementSymbol.textContent = randomElement.symbol
       elementSymbol.classList.add('visible')
