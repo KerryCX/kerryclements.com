@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return
   }
 
-  let isNameVisible = false
-
   getSymbolButton.addEventListener('click', () => {
     randomIndex = Math.floor(Math.random() * elements.length)
     const randomElement = elements[randomIndex] // Access the element using the index

@@ -8,17 +8,13 @@ button {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
 body {
   display: flex;
-  justify-content: center; /* horizontal center */
-  align-items: center; /* vertical center */
-  height: 100vh; /* full viewport height */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   width: 100vw;
-  margin: 0; /* remove default margin */
+  margin: 0;
   font-family: Arial, sans-serif;
   background-color: #cddffb;
 }
@@ -30,7 +26,6 @@ div {
 
 .main-container {
   padding: 10px 20px;
-  min-height: 450px;
   max-width: 400px;
 }
 
@@ -45,7 +40,7 @@ div {
 .animated.visible {
   opacity: 1;
   max-height: 500px;
-  margin-top: 1rem;
+  margin: 1rem 0 1rem 0;
   transform: translateY(0);
 }
 
@@ -60,43 +55,14 @@ div {
 .symbol-styling {
   font-size: 2rem;
   font-weight: bold;
+  padding: 0.5rem;
+  line-height: 1; /* removes extra bottom gap */
 }
 
-.reason-button {
-  opacity: 0;
-  transform: translateY(-30px);
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 0;
-}
-
-.reason-button.visible {
-  opacity: 1;
-  transform: translateY(0);
-  max-height: 500px;
-}
-
-.reason-display {
+.name-and-reason-styling {
   font-size: 1.5rem;
   margin-top: 0.5rem;
-  color: #444; /* softer contrast */
-}
-
-.display-reason {
-  opacity: 0;
-  transform: translateY(30px);
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 0;
-}
-
-.display-reason.visible {
-  opacity: 1;
-  transform: translateY(0);
-  max-height: 500px;
-  margin-top: 1rem;
+  color: #444;
 }
 
 @media (min-width: 640px) {
