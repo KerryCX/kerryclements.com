@@ -9,7 +9,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "es2020",
-    "types": [],
+    "types": ["jest"],
 
     // Other Outputs
     "sourceMap": true,
