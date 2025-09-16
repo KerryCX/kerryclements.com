@@ -5,7 +5,7 @@ describe('utils', () => {
   it('getRandomElement returns a random element from the elements list', () => {
     const element = getRandomElement()
     expect(element).not.toBeNull()
-    if(element){
+    if (element) {
       expect(element).toHaveProperty('symbol')
       expect(element).toHaveProperty('name')
       expect(element).toHaveProperty('number')
@@ -19,7 +19,7 @@ describe('utils', () => {
   })
   it('getRandomElement returns different elements on multiple calls', () => {
     const elements = new Set()
-    
+
     for (let i = 0; i < 20; i++) {
       const element = getRandomElement()
       if (element) {
