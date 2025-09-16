@@ -1,14 +1,13 @@
-import elements from './listOfElements.json' with { type: 'json' }
-import { getRandomElement } from './utils.js'
+import { getRandomElement, type Element } from './utils.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  let randomIndex: number
   const elementSymbol = document.getElementById('element-symbol')
   const getSymbolButton = document.getElementById('button')
   const answer = document.getElementById('answer')
   const symbolOrigin = document.getElementById('symbol-origin')
   const reasonForNaming = document.getElementById('reason-for-naming')
   const answerButton = document.getElementById('answer-button')
+  let randomElement: Element | null = null
 
   if (
     !elementSymbol ||
@@ -23,8 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   getSymbolButton.addEventListener('click', () => {
-    randomIndex = Math.floor(Math.random() * elements.length)
-    const randomElement = getRandomElement()
+    randomElement = getRandomElement()
     if (randomElement) {
       elementSymbol.textContent = randomElement.symbol
       elementSymbol.classList.add('visible')
@@ -36,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     getSymbolButton.textContent = 'Click for Next'
   })
   answerButton.addEventListener('click', () => {
-    const randomElement = elements[randomIndex]
     if (randomElement) {
       answer.textContent = randomElement?.name
       answer.classList.add('visible')
@@ -44,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     reasonForNaming.classList.add('visible')
   })
   reasonForNaming.addEventListener('click', () => {
-    const randomElement = elements[randomIndex]
     if (randomElement) {
       symbolOrigin.textContent = randomElement?.symbolOrigin
       symbolOrigin.classList.add('visible')
