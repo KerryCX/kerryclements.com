@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return
   }
 
-  getSymbolButton.addEventListener('click', () => {
-    randomElement = getRandomElement()
+  getSymbolButton.addEventListener('click', async () => {
+    randomElement = await getRandomElement()
     if (randomElement) {
       elementSymbol.textContent = randomElement.symbol
       elementSymbol.classList.add('visible')

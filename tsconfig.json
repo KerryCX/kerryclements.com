@@ -3,7 +3,7 @@
     "resolveJsonModule": true,
     // File Layout
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./public/dist",
 
     // Environment Settings
     "module": "NodeNext",
