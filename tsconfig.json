@@ -9,7 +9,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "es2020",
-    "types": ["jest"],
+    "types": ["node"],
 
     // Other Outputs
     "sourceMap": true,
@@ -36,5 +36,6 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
-  }
+  },
+  "include": ["src"]
 }
