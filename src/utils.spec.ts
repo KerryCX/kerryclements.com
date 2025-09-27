@@ -1,38 +1,46 @@
 import { describe, it, expect } from 'vitest'
-import { getRandomElement } from './utils.js'
+import { getRandomElement, type Element } from './utils.js'
+
+const mockElements: Element[] = [
+  { number: 1, symbol: 'H', name: 'Hydrogen', symbolOrigin: 'Greek' },
+  { number: 2, symbol: 'He', name: 'Helium', symbolOrigin: 'Greek' },
+  { number: 3, symbol: 'Li', name: 'Lithium', symbolOrigin: 'Latin' },
+]
 
 describe('utils', () => {
-  it('getRandomElement returns a random element from the elements list', () => {
-    const element = getRandomElement()
+  it('returns a random element', async () => {
+    const element = await getRandomElement(async () => mockElements)
     expect(element).not.toBeNull()
     if (element) {
-      expect(element).toHaveProperty('symbol')
-      expect(element).toHaveProperty('name')
-      expect(element).toHaveProperty('number')
-      expect(element).toHaveProperty('symbolOrigin')
-
-      expect(typeof element.symbol).toBe('string')
-      expect(typeof element.name).toBe('string')
-      expect(typeof element.number).toBe('number')
-      expect(typeof element.symbolOrigin).toBe('string')
+      expect(element.symbol).toBeDefined()
+      expect(element.name).toBeDefined()
+      expect(element.number).toBeDefined()
+      expect(element.symbolOrigin).toBeDefined()
     }
   })
-  it('getRandomElement returns different elements on multiple calls', () => {
-    const elements = new Set()
-
-    for (let i = 0; i < 20; i++) {
-      const element = getRandomElement()
-      if (element) {
-        elements.add(element.symbol)
-      }
-    }
-    expect(elements.size).toBeGreaterThan(1)
-  })
-  it('getRandomElement returns valid element numbers', () => {
-    const element = getRandomElement()
+  it('getRandomElement returns a random element', async () => {
+    const element = await getRandomElement(async () => mockElements)
+    expect(element).not.toBeNull()
     if (element) {
       expect(element.number).toBeGreaterThan(0)
-      expect(element.number).toBeLessThanOrEqual(118)
+      expect(element.symbol).toBeDefined()
+      expect(element.name).toBeDefined()
+      expect(element.symbolOrigin).toBeDefined()
+    }
+  })
+  it('getRandomElement returns different elements on multiple calls', async () => {
+    const symbols = new Set<string>()
+    for (let i = 0; i < 20; i++) {
+      const element = await getRandomElement(async () => mockElements)
+      if (element) symbols.add(element.symbol)
+    }
+    expect(symbols.size).toBeGreaterThan(1)
+  })
+  it('getRandomElement numbers are valid', async () => {
+    const element = await getRandomElement(async () => mockElements)
+    if (element) {
+      expect(element.number).toBeGreaterThan(0)
+      expect(element.number).toBeLessThanOrEqual(3)
     }
   })
 })

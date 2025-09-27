@@ -3,13 +3,13 @@
     "resolveJsonModule": true,
     // File Layout
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./public/dist",
 
     // Environment Settings
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "es2020",
-    "types": ["jest"],
+    "types": ["node"],
 
     // Other Outputs
     "sourceMap": true,
@@ -36,5 +36,6 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
-  }
+  },
+  "include": ["src"]
 }
