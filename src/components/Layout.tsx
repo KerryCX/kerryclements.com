@@ -6,7 +6,7 @@ export default function Layout() {
       <header>
         <h3>Kerry Clements</h3>
         <nav>
-          <Link to="/">Home</Link> |<Link to="PeriodicTableQuiz">Apps</Link> |
+          <Link to="/">Home</Link> |<Link to="/apps">Apps</Link> |
           <Link to="/articles">Articles</Link>
         </nav>
       </header>

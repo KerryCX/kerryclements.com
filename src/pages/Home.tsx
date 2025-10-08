@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Home() {
   return (
     <section>
@@ -5,7 +7,8 @@ export default function Home() {
       <p>
         Early days, under construction.
         <br />
-        Please look at the periodic table quiz in the apps section
+        Please look at the periodic table quiz in the apps section, here:{' '}
+        <Link to="/apps/PeriodicTableQuiz">Periodic Table Quiz</Link>
       </p>
     </section>
   )
