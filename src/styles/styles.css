@@ -2,8 +2,8 @@ button {
   background-color: #f8f9fb;
   border: 2px solid #312e42;
   border-radius: 5%;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 1px;
+  padding: 1px;
   font-size: 16px;
   cursor: pointer;
 }
@@ -29,39 +29,39 @@ div {
   max-width: 400px;
 }
 
-.animated {
+.fade-move-enter {
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 0;
+  transform: translateY(20px);
 }
 
-.animated.visible {
+.fade-move-enter-active {
   opacity: 1;
-  max-height: 500px;
-  margin: 1rem 0 1rem 0;
+  transform: translateY(0);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.fade-move-exit {
+  opacity: 1;
   transform: translateY(0);
 }
 
-.move-up {
-  transform: translateY(-30px);
-}
-
-.move-down {
-  transform: translateY(30px);
+.fade-move-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 
 .symbol-styling {
   font-size: 2rem;
   font-weight: bold;
-  padding: 0.5rem;
+  padding: 1px;
+  margin: 1px;
   line-height: 1; /* removes extra bottom gap */
 }
 
 .name-and-reason-styling {
   font-size: 1.5rem;
-  margin-top: 0.5rem;
+  margin: 1px;
   color: #444;
 }
 

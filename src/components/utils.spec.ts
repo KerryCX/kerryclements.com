@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getRandomElement, type Element } from './utils.js'
+import { getRandomElement, type Element } from './utils'
 
 const mockElements: Element[] = [
   { number: 1, symbol: 'H', name: 'Hydrogen', symbolOrigin: 'Greek' },
