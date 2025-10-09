@@ -1,3 +1,8 @@
+html {
+  height: 100%;
+  background-color: #cddffb;
+}
+
 button {
   background-color: #f8f9fb;
   border: 2px solid #312e42;
@@ -9,14 +14,27 @@ button {
 }
 
 body {
+  font-family: Arial, sans-serif;
+}
+
+.ptq-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+  margin: auto; /* centers horizontally & vertically if parent uses flex/grid */
+  background-color: #cddffb;
+}
+
+.main-body {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #cddffb;
 }
 
 div {
@@ -26,6 +44,7 @@ div {
 
 .main-container {
   padding: 10px 20px;
+  min-height: 400px;
   max-width: 400px;
 }
 
@@ -66,7 +85,7 @@ div {
 }
 
 @media (min-width: 640px) {
-  body {
+  .ptq-body {
     background-color: #1f75fe;
   }
   .main-container {

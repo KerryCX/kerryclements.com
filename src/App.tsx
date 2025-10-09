@@ -1,20 +1,24 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import PeriodicTableQuiz from './pages/PeriodicTableQuiz'
-import { Articles } from './pages/articles/Articles'
+import { PeriodicTableQuiz } from './pages/apps/PeriodicTableQuiz'
+import { Applications } from './pages/apps'
+import { Articles } from './pages/articles'
 import { Article1 } from './pages/articles/Article1'
+import { BodyMassIndex } from './pages/apps/BodyMassIndex'
 
-export default function App() {
+export const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
       element: <Layout />,
       children: [
-        { path: '/', element: <Home /> }, // homepage
-        { path: '/periodic-table-quiz', element: <PeriodicTableQuiz /> }, // your previous app
+        { path: '/', element: <Home /> },
+        { path: '/apps/periodicTableQuiz', element: <PeriodicTableQuiz /> },
+        { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
+        { path: '/apps', element: <Applications /> },
         { path: '/articles', element: <Articles /> },
-        { path: '/articles/article1', element: <Article1 /> },
+        { path: '/articles/Article1', element: <Article1 /> },
       ],
     },
   ])
