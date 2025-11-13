@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import { PeriodicTableQuiz } from './pages/apps/PeriodicTableQuiz'
 import { Applications } from './pages/apps'
 import { Articles } from './pages/articles'
-import { Article1 } from './pages/articles/Article1'
+import { Colours } from './pages/articles/Colours'
 import { BodyMassIndex } from './pages/apps/BodyMassIndex'
 
 export const App = () => {
@@ -18,7 +18,7 @@ export const App = () => {
         { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
         { path: '/apps', element: <Applications /> },
         { path: '/articles', element: <Articles /> },
-        { path: '/articles/Article1', element: <Article1 /> },
+        { path: '/articles/Colours', element: <Colours /> },
       ],
     },
   ])

@@ -2,7 +2,7 @@ import '../../styles/styles.css'
 
 export const BodyMassIndex = (): React.JSX.Element => {
   return (
-    <div className="ptq-body">
+    <div className="application-container">
       <div className="main-container">
         <h1>BMI Calculator</h1>
         <h2>Coming soon...</h2>
