@@ -22,7 +22,7 @@ export const PeriodicTableQuiz = () => {
   }
 
   return (
-    <div className="ptq-body">
+    <div className="application-container">
       <div className="main-container">
         <h1>Periodic Table Quiz</h1>
         <h2>Test your periodic table knowledge</h2>
