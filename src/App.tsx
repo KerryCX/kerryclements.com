@@ -6,6 +6,7 @@ import { Applications } from './pages/apps'
 import { Articles } from './pages/articles'
 import { Colours } from './pages/articles/Colours'
 import { BodyMassIndex } from './pages/apps/BodyMassIndex'
+import { February02 } from './pages/articles/February02'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -19,6 +20,7 @@ export const App = () => {
         { path: '/apps', element: <Applications /> },
         { path: '/articles', element: <Articles /> },
         { path: '/articles/Colours', element: <Colours /> },
+        { path: '/articles/February02', element: <February02 /> },
       ],
     },
   ])
