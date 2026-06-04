@@ -77,7 +77,9 @@ div {
 .fade-move-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 400ms ease, transform 400ms ease;
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
 }
 
 .fade-move-exit {
@@ -88,7 +90,9 @@ div {
 .fade-move-exit-active {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 300ms ease, transform 300ms ease;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
 }
 
 .symbol-styling {
@@ -111,4 +115,9 @@ div {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: var(--color-bg);
   }
+}
+
+article ul {
+  list-style: none;
+  padding: 0;
 }
