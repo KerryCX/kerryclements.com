@@ -6,8 +6,8 @@ export default function Layout() {
       <header>
         <h3>Kerry Clements</h3>
         <nav>
-          <Link to="/">Home</Link> |<Link to="/apps">Apps</Link> |
-          <Link to="/articles">Articles</Link>
+          <Link to="/">Home</Link> |<Link to="/portfolio">Portfolio</Link> |
+          <Link to="/apps">Apps</Link> |<Link to="/articles">Articles</Link>
         </nav>
       </header>
       <main>

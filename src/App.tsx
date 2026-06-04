@@ -6,6 +6,8 @@ import { Applications } from './pages/apps'
 import { Articles } from './pages/articles'
 import { Colours } from './pages/articles/Colours'
 import { BodyMassIndex } from './pages/apps/BodyMassIndex'
+import { Portfolio } from './pages/portfolio'
+import { PeriodicTableCaseStudy } from './pages/portfolio/PeriodicTableCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -14,6 +16,8 @@ export const App = () => {
       element: <Layout />,
       children: [
         { path: '/', element: <Home /> },
+        { path: '/portfolio', element: <Portfolio /> },
+        { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
         { path: '/apps/periodicTableQuiz', element: <PeriodicTableQuiz /> },
         { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
         { path: '/apps', element: <Applications /> },

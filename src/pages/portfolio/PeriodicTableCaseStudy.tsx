@@ -97,5 +97,3 @@ export const PeriodicTableCaseStudy = () => {
     </article>
   )
 }
-
-export default PeriodicTableCaseStudy
