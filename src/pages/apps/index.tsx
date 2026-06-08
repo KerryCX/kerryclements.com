@@ -5,7 +5,7 @@ export const Applications = () => {
     <>
       Apps listings here
       <p>
-        <Link to="/apps/periodic-table-case-study">Periodic Table App - Case Study</Link>
+        <Link to="/portfolio/periodic-table">Periodic Table App - Case Study</Link>
       </p>
       <p>
         <Link to="/apps/BodyMassIndex">BMI Calculator</Link>
