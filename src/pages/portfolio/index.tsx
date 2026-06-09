@@ -8,7 +8,6 @@ export const Portfolio = () => {
     <div className="portfolio">
       <nav className="nav">
         <div className="nav__brand">
-          {/* <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="nav__photo" /> */}
           <img
             src="/kerry-clements-2025.jpeg"
             alt="Kerry Clements"
@@ -38,7 +37,7 @@ export const Portfolio = () => {
             bring UX thinking to front end development.
           </p>
           <div className="hero__links">
-            <a href="/cv.pdf" className="hero__link">
+            <a href="/kerry-clements-cv.pdf" className="hero__link">
               Download CV
             </a>
             <a href="mailto:hello@kerryclements.com" className="hero__link">
@@ -119,7 +118,7 @@ export const Portfolio = () => {
       <footer className="footer" id="contact">
         <div className="footer__top">
           <span className="footer__name">Kerry Clements</span>
-          <a href="/cv.pdf" className="footer__link">
+          <a href="/kerry-clements-cv.pdf" className="footer__link">
             Download CV
           </a>
           <a href="mailto:hello@kerryclements.com" className="footer__link">
