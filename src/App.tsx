@@ -16,8 +16,6 @@ export const App = () => {
       element: <Layout />,
       children: [
         { path: '/', element: <Home /> },
-        // { path: '/portfolio', element: <Portfolio /> },
-        // { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
         { path: '/apps/periodicTableQuiz', element: <PeriodicTableQuiz /> },
         { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
         { path: '/apps', element: <Applications /> },
