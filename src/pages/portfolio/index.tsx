@@ -4,7 +4,10 @@ export const Portfolio = () => {
   return (
     <div className="portfolio">
       <nav className="nav">
-        <span className="nav__name">Kerry Clements</span>
+        <div className="nav__brand">
+          <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="nav__photo" />
+          <span className="nav__name">Kerry Clements</span>
+        </div>
         <ul className="nav__links">
           <li>
             <a href="#work">Work</a>
