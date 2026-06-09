@@ -289,6 +289,49 @@
   margin: 0;
 }
 
+/* Photo overlay */
+.photo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.photo-overlay__img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-overlay__container {
+  position: relative;
+}
+
+.photo-overlay__close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Case Study */
 .case-study {
   max-width: 720px;

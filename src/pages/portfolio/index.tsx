@@ -1,11 +1,20 @@
+import { useState } from 'react'
 import '../../styles/portfolio.css'
 
 export const Portfolio = () => {
+  const [photoOpen, setPhotoOpen] = useState(false)
+
   return (
     <div className="portfolio">
       <nav className="nav">
         <div className="nav__brand">
-          <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="nav__photo" />
+          {/* <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="nav__photo" /> */}
+          <img
+            src="/kerry-clements-2025.jpeg"
+            alt="Kerry Clements"
+            className="nav__photo"
+            onClick={() => setPhotoOpen(true)}
+          />
           <span className="nav__name">Kerry Clements</span>
         </div>
         <ul className="nav__links">
@@ -127,6 +136,20 @@ export const Portfolio = () => {
         </div>
         <p className="footer__copyright">© 2025 Kerry Clements</p>
       </footer>
+      {photoOpen && (
+        <div className="photo-overlay" onClick={() => setPhotoOpen(false)}>
+          <div className="photo-overlay__container" onClick={(e) => e.stopPropagation()}>
+            <button className="photo-overlay__close" onClick={() => setPhotoOpen(false)}>
+              ✕
+            </button>
+            <img
+              src="/kerry-clements-2025.jpeg"
+              alt="Kerry Clements"
+              className="photo-overlay__img"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
