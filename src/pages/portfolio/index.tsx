@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../../styles/portfolio.css'
+import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
 
 export const Portfolio = () => {
   const [photoOpen, setPhotoOpen] = useState(false)
@@ -37,18 +38,13 @@ export const Portfolio = () => {
             bring UX thinking to front end development.
           </p>
           <div className="hero__links">
-            <a href="/kerry-clements-cv.pdf" className="hero__link">
+            <a href={cvPath} className="hero__link">
               Download CV
             </a>
-            <a href="mailto:hello@kerryclements.com" className="hero__link">
-              hello@kerryclements.com
+            <a href={`mailto:${emailAddress}`} className="hero__link">
+              {emailAddress}
             </a>
-            <a
-              href="https://linkedin.com/in/kerrycx"
-              className="hero__link"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={linkedInLink} className="hero__link" target="_blank" rel="noreferrer">
               LinkedIn
             </a>
           </div>
@@ -56,80 +52,53 @@ export const Portfolio = () => {
       </section>
       <section className="work" id="work">
         <span className="section-label">Work</span>
-        <div className="work-card">
-          <div className="work-card__content">
-            <h2 className="work-card__title">Periodic Table App</h2>
-            <p className="work-card__description">
-              A learning app for chemistry students — flashcard and quiz modes, built with React and
-              TypeScript.
-            </p>
-            <div className="work-card__tags">
-              <span className="work-card__tag">React</span>
-              <span className="work-card__tag">TypeScript</span>
-              <span className="work-card__tag">Figma</span>
-              <span className="work-card__tag">WCAG 2.2 AA</span>
+        {workCards.map((card) => (
+          <div className="work-card" key={card.title}>
+            <div className="work-card__content">
+              <h2 className="work-card__title">{card.title}</h2>
+              <p className="work-card__description">{card.description}</p>
+              <div className="work-card__tags">
+                {card.tags.map((tag) => (
+                  <span key={tag} className="work-card__tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a href={card.caseStudyLink} className="work-card__link">
+                View case study →
+              </a>
             </div>
-            <a href="/portfolio/periodic-table" className="work-card__link">
-              View case study →
-            </a>
+            <div className="work-card__image">
+              <img src={card.image} alt={card.imageAlt} />
+            </div>
           </div>
-          <div className="work-card__image">
-            <img
-              src="/periodic-table-app.png"
-              alt="Screenshot of the Periodic Table app mode select screen, showing Flashcard and Quiz options"
-            />
-          </div>
-        </div>
+        ))}
       </section>
       <section className="skills" id="skills">
         <span className="section-label">Skills</span>
         <div className="skills__grid">
-          <div className="skills__column">
-            <h3 className="skills__heading">Front end</h3>
-            <ul className="skills__list">
-              <li>React</li>
-              <li>TypeScript</li>
-              <li>JavaScript</li>
-              <li>HTML · CSS</li>
-              <li>Kendo UI</li>
-              <li>REST APIs</li>
-            </ul>
-          </div>
-          <div className="skills__column">
-            <h3 className="skills__heading">Design</h3>
-            <ul className="skills__list">
-              <li>Figma</li>
-              <li>WCAG 2.2</li>
-              <li>UX thinking</li>
-            </ul>
-          </div>
-          <div className="skills__column">
-            <h3 className="skills__heading">Tools</h3>
-            <ul className="skills__list">
-              <li>Vite</li>
-              <li>Vitest</li>
-              <li>Jest</li>
-              <li>Git</li>
-              <li>Netlify</li>
-            </ul>
-          </div>
+          {skills.map((column) => (
+            <div className="skills__column" key={column.heading}>
+              <h3 className="skills__heading">{column.heading}</h3>
+              <ul className="skills__list">
+                {column.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
       <footer className="footer" id="contact">
         <div className="footer__top">
           <span className="footer__name">Kerry Clements</span>
-          <a href="/kerry-clements-cv.pdf" className="footer__link">
+          <a href={cvPath} className="footer__link">
             Download CV
           </a>
-          <a href="mailto:hello@kerryclements.com" className="footer__link">
-            hello@kerryclements.com
+          <a href={`mailto:${emailAddress}`} className="footer__link">
+            {emailAddress}
           </a>
-          <a
-            href="https://linkedin.com/in/kerrycx"
-            className="footer__link"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={linkedInLink} className="footer__link" target="_blank" rel="noreferrer">
             LinkedIn
           </a>
         </div>
