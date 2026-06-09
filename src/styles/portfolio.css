@@ -269,3 +269,59 @@
   color: var(--text-tertiary);
   margin: 0;
 }
+
+/* Case Study */
+.case-study {
+  max-width: 720px;
+  padding: 80px 120px;
+}
+
+.case-study__title {
+  font-size: var(--font-size-display);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.case-study__subtitle {
+  font-size: var(--font-size-label);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 48px;
+}
+
+.case-study h2 {
+  font-size: var(--font-size-heading);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 48px 0 16px;
+}
+
+.case-study p {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.case-study ul {
+  padding-left: 20px;
+  margin: 0 0 16px;
+}
+
+.case-study ul li {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.case-study a {
+  color: var(--accent-rose);
+  text-decoration: none;
+}
+
+.case-study a:hover {
+  text-decoration: underline;
+}
