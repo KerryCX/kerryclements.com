@@ -8,6 +8,7 @@ import { Colours } from './pages/articles/Colours'
 import { BodyMassIndex } from './pages/apps/BodyMassIndex'
 import { Portfolio } from './pages/portfolio'
 import { PeriodicTableCaseStudy } from './pages/portfolio/PeriodicTableCaseStudy'
+import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ export const App = () => {
     },
     { path: '/portfolio', element: <Portfolio /> },
     { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
+    { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
   ])
 
   return <RouterProvider router={router} />

@@ -136,8 +136,10 @@
 /* Work */
 .work {
   padding: 20px 120px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-
 .section-label {
   font-size: var(--font-size-label);
   font-weight: 500;

@@ -28,4 +28,14 @@ export const workCards = [
     imageAlt:
       'Screenshot of the Periodic Table app mode select screen, showing Flashcard and Quiz options',
   },
+  {
+    title: 'kerryclements.com',
+    description:
+      'Personal portfolio site — designed in Figma with a token-based design system, built in React and TypeScript.',
+    tags: ['React', 'TypeScript', 'Figma', 'WCAG 2.2 AA'],
+    caseStudyLink: '/portfolio/kerryclements-com',
+    image: '/kerryclements.com-portfolio.png',
+    imageAlt:
+      'Full page screenshot of kerryclements.com portfolio site showing hero, work card, skills and footer',
+  },
 ]
