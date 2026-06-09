@@ -44,7 +44,7 @@ export const Portfolio = () => {
               hello@kerryclements.com
             </a>
             <a
-              href="https://linkedin.com/in/kerryclements"
+              href="https://linkedin.com/in/kerrycx"
               className="hero__link"
               target="_blank"
               rel="noreferrer"
@@ -125,7 +125,7 @@ export const Portfolio = () => {
             hello@kerryclements.com
           </a>
           <a
-            href="https://linkedin.com/in/kerryclements"
+            href="https://linkedin.com/in/kerrycx"
             className="footer__link"
             target="_blank"
             rel="noreferrer"
