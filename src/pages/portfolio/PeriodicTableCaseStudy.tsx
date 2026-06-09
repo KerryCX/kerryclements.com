@@ -111,6 +111,11 @@ export const PeriodicTableCaseStudy = () => {
             periodic-table.kerryclements.com
           </a>
         </p>
+        <p>
+          <a href="https://github.com/KerryCX/periodic-table" target="_blank" rel="noreferrer">
+            View the code on GitHub
+          </a>
+        </p>
       </article>
     </div>
   )
