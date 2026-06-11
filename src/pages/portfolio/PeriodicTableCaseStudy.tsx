@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import '../../styles/portfolio.css'
+import '../../styles/site.css'
 
 export const PeriodicTableCaseStudy = () => {
   return (
     <div className="portfolio">
-      <nav className="nav">
+      <nav className="nav" aria-label="Main">
         <Link to="/portfolio" className="nav__name">
           Kerry Clements
         </Link>
