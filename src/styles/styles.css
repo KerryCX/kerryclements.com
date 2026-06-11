@@ -112,8 +112,3 @@ body {
     background-color: var(--color-bg);
   }
 }
-
-article ul {
-  list-style: none;
-  padding: 0;
-}
