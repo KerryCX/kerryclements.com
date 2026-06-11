@@ -3,7 +3,6 @@ import '../../styles/portfolio.css'
 import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
 
 export const Portfolio = () => {
-  // const [photoOpen, setPhotoOpen] = useState(false)
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   return (
@@ -13,7 +12,6 @@ export const Portfolio = () => {
           <button
             type="button"
             className="nav__photo-button"
-            // onClick={() => setPhotoOpen(true)}
             onClick={() => dialogRef.current?.showModal()}
             aria-label="View larger photo of Kerry Clements"
           >

@@ -339,13 +339,6 @@
   outline-offset: 2px;
 }
 
-/* .photo-overlay {
-  border: none;
-  padding: 0;
-  background: transparent;
-  position: relative;
-} */
-
 .photo-overlay::backdrop {
   /* var() in ::backdrop requires Chrome 122+ / Safari 17+ */
   background: var(--bg-overlay);
