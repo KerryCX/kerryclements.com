@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import Home from './pages/Home'
+import HomePage from './pages/HomePage'
 import { PeriodicTableQuiz } from './pages/apps/PeriodicTableQuiz'
 import { Applications } from './pages/apps'
 import { Articles } from './pages/articles'
@@ -13,10 +13,8 @@ import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCas
 export const App = () => {
   const router = createBrowserRouter([
     {
-      path: '/',
       element: <Layout />,
       children: [
-        { path: '/', element: <Home /> },
         { path: '/apps/periodicTableQuiz', element: <PeriodicTableQuiz /> },
         { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
         { path: '/apps', element: <Applications /> },
@@ -24,6 +22,7 @@ export const App = () => {
         { path: '/articles/Colours', element: <Colours /> },
       ],
     },
+    { path: '/', element: <HomePage /> },
     { path: '/portfolio', element: <Portfolio /> },
     { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
     { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
