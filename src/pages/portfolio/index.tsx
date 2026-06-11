@@ -1,20 +1,22 @@
-import { useState } from 'react'
+import { useRef } from 'react'
 import '../../styles/portfolio.css'
 import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
 
 export const Portfolio = () => {
-  const [photoOpen, setPhotoOpen] = useState(false)
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   return (
     <div className="portfolio">
       <nav className="nav">
         <div className="nav__brand">
-          <img
-            src="/kerry-clements-2025.jpeg"
-            alt="Kerry Clements"
-            className="nav__photo"
-            onClick={() => setPhotoOpen(true)}
-          />
+          <button
+            type="button"
+            className="nav__photo-button"
+            onClick={() => dialogRef.current?.showModal()}
+            aria-label="View larger photo of Kerry Clements"
+          >
+            <img src="/kerry-clements-2025.jpeg" alt="" className="nav__photo" />
+          </button>
           <span className="nav__name">Kerry Clements</span>
         </div>
         <ul className="nav__links">
@@ -104,20 +106,23 @@ export const Portfolio = () => {
         </div>
         <p className="footer__copyright">© 2025 Kerry Clements</p>
       </footer>
-      {photoOpen && (
-        <div className="photo-overlay" onClick={() => setPhotoOpen(false)}>
-          <div className="photo-overlay__container" onClick={(e) => e.stopPropagation()}>
-            <button className="photo-overlay__close" onClick={() => setPhotoOpen(false)}>
-              ✕
-            </button>
-            <img
-              src="/kerry-clements-2025.jpeg"
-              alt="Kerry Clements"
-              className="photo-overlay__img"
-            />
-          </div>
-        </div>
-      )}
+      <dialog
+        ref={dialogRef}
+        className="photo-overlay"
+        onClick={(e) => {
+          if (e.target === dialogRef.current) dialogRef.current.close()
+        }}
+      >
+        <button
+          type="button"
+          className="photo-overlay__close"
+          onClick={() => dialogRef.current?.close()}
+          aria-label="Close photo"
+        >
+          ✕
+        </button>
+        <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="photo-overlay__img" />
+      </dialog>
     </div>
   )
 }
