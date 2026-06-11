@@ -35,9 +35,9 @@ export const KerryClementsComCaseStudy = () => {
         <h2>Design decisions</h2>
         <p>
           I designed the site in Figma before writing any code. A token-based colour system was
-          established first, with tokens named by role rather than value — <code>bg/primary</code>,{' '}
-          <code>text/secondary</code>, <code>accent/rose</code> — to mirror how CSS custom
-          properties would be implemented and to support future theming.
+          established first, with tokens named by role rather than value: <code>bg/primary</code>,{' '}
+          <code>text/secondary</code>, <code>accent/rose</code>, to mirror how CSS custom properties
+          would be implemented and to support future theming.
         </p>
         <p>
           A WCAG AA contrast failure was caught during the design phase. The{' '}
@@ -47,7 +47,7 @@ export const KerryClementsComCaseStudy = () => {
           written.
         </p>
         <p>
-          The layout is desktop first at 1440px with a 1200px content area — the primary audience is
+          The layout is desktop first at 1440px with a 1200px content area. The primary audience is
           recruiters reviewing portfolios on desktop. Full-width case study cards give an editorial
           feel and will scale naturally as more projects are added.
         </p>
@@ -56,7 +56,7 @@ export const KerryClementsComCaseStudy = () => {
         <p>Key decisions made during the build:</p>
         <ul>
           <li>
-            The portfolio route was moved outside the Layout component — the portfolio has its own
+            The portfolio route was moved outside the Layout component. The portfolio has its own
             nav and doesn't need the existing site header
           </li>
           <li>
@@ -64,24 +64,30 @@ export const KerryClementsComCaseStudy = () => {
             design and code in sync
           </li>
           <li>
-            Magic strings extracted to a <code>constants.ts</code> file — email address, LinkedIn
+            Magic strings extracted to a <code>constants.ts</code> file: email address, LinkedIn
             URL, and CV path are defined once and referenced throughout
           </li>
           <li>
-            Work cards and skills are driven by data arrays — adding a new project or skill requires
-            no changes to JSX
-          </li>
-          <li>
-            Photo lightbox built with React <code>useState</code> — no library needed for a simple
-            open/close interaction
+            Work cards and skills are driven by data arrays, so adding a new project or skill
+            requires no changes to JSX
           </li>
         </ul>
 
         <h2>Accessibility</h2>
         <p>
-          Alt text was added via the Stark plugin throughout the design — Figma has no native alt
-          text field. A full accessibility check was run on the complete page design with 0
+          Alt text was added via the Stark plugin throughout the design, since Figma has no native
+          alt text field. A full accessibility check was run on the complete page design with 0
           violations before the build began.
+        </p>
+        <p>
+          After launch, a manual keyboard test revealed the photo lightbox failed WCAG 2.1.1
+          (Keyboard). The trigger was a clickable image, unreachable by Tab. The original
+          implementation was a custom overlay driven by <code>useState</code>. The fix replaced it
+          with a semantic <code>{'<button>'}</code> trigger and a native <code>{'<dialog>'}</code>,
+          which provides Escape-to-close, focus containment, and focus return without a library, and
+          removed more custom code than it added. The <code>:focus-visible</code> styles match the
+          accent token, the close target was enlarged to 44px, and a new <code>bg/overlay</code>{' '}
+          token was added to both Figma and CSS for the backdrop.
         </p>
 
         <h2>What's next</h2>
