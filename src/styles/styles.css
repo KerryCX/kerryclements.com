@@ -10,12 +10,6 @@
   --color-bg: #1a1a1a;
 }
 
-html {
-  height: 100%;
-  color: var(--color-dark-font);
-  box-sizing: border-box;
-}
-
 button {
   background-color: #9be8d9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
