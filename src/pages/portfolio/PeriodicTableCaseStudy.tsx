@@ -3,7 +3,7 @@ import { Nav } from '../../components/Nav'
 
 export const PeriodicTableCaseStudy = () => {
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav links={[{ label: '← Back to portfolio', href: '/portfolio' }]} />
       <article className="case-study">
         <h1 className="case-study__title">Periodic Table App</h1>
