@@ -1,4 +1,4 @@
-import { cvPath, emailAddress, linkedInLink } from '../pages/portfolio/constants'
+import { cvPath, emailAddress, linkedInLink, gitHubLink } from '../pages/portfolio/constants'
 
 export const Footer = () => {
   return (
@@ -14,6 +14,9 @@ export const Footer = () => {
           </a>
           <a href={linkedInLink} className="footer__link" target="_blank" rel="noreferrer">
             LinkedIn
+          </a>
+          <a href={gitHubLink} className="footer__link" target="_blank" rel="noreferrer">
+            GitHub
           </a>
         </div>
         <p className="footer__copyright">© 2026 Kerry Clements</p>
