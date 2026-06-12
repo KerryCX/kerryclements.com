@@ -28,25 +28,25 @@ export const Portfolio = () => {
             </div>
           </div>
         </section>
-        <section className="work" id="work">
+        <section className="cards" id="work">
           <span className="section-label">Work</span>
           {workCards.map((card) => (
-            <div className="work-card" key={card.title}>
-              <div className="work-card__content">
-                <h2 className="work-card__title">{card.title}</h2>
-                <p className="work-card__description">{card.description}</p>
-                <div className="work-card__tags">
+            <div className="card" key={card.title}>
+              <div className="card__content">
+                <h2 className="card__title">{card.title}</h2>
+                <p className="card__description">{card.description}</p>
+                <div className="card__tags">
                   {card.tags.map((tag) => (
-                    <span key={tag} className="work-card__tag">
+                    <span key={tag} className="card__tag">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <a href={card.caseStudyLink} className="work-card__link">
+                <a href={card.caseStudyLink} className="card__link">
                   View case study →
                 </a>
               </div>
-              <div className="work-card__image">
+              <div className="card__image">
                 <img src={card.image} alt={card.imageAlt} />
               </div>
             </div>
