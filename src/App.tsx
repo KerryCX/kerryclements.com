@@ -17,7 +17,6 @@ export const App = () => {
       children: [
         { path: '/apps/periodicTableQuiz', element: <PeriodicTableQuiz /> },
         { path: '/apps/BodyMassIndex', element: <BodyMassIndex /> },
-        { path: '/apps', element: <Applications /> },
         { path: '/articles', element: <Articles /> },
         { path: '/articles/Colours', element: <Colours /> },
       ],
@@ -26,6 +25,7 @@ export const App = () => {
     { path: '/portfolio', element: <Portfolio /> },
     { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
     { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
+    { path: '/apps', element: <Applications /> },
   ])
 
   return <RouterProvider router={router} />
