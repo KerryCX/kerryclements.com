@@ -6,7 +6,7 @@ import { Nav } from '../components/Nav'
 export default function HomePage() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav
         links={[
           { label: 'Portfolio', href: '/portfolio' },

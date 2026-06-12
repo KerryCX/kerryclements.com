@@ -7,7 +7,7 @@ export const Portfolio = () => {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav />
       <main>
         <section className="hero">
