@@ -1,6 +1,7 @@
 export const linkedInLink = 'https://linkedin.com/in/kerrycx'
 export const emailAddress = 'hello@kerryclements.com'
 export const cvPath = '/kerry-clements-cv.pdf'
+export const gitHubLink = 'https://github.com/kerrycx'
 
 export const skills = [
   {
