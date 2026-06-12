@@ -30,7 +30,9 @@ export const Applications = () => {
                 </a>
               </div>
               <div className="card__image">
-                <img src={card.image} alt={card.imageAlt} />
+                <a href={card.appLink}>
+                  <img src={card.image} alt={card.imageAlt} />
+                </a>
               </div>
             </div>
           ))}
