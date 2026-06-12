@@ -1,36 +1,14 @@
 import { useRef } from 'react'
 import '../../styles/site.css'
 import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
+import { Nav } from '../../components/Nav'
 
 export const Portfolio = () => {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   return (
     <div className="portfolio">
-      <nav className="nav" aria-label="Main">
-        <div className="nav__brand">
-          <button
-            type="button"
-            className="nav__photo-button"
-            onClick={() => dialogRef.current?.showModal()}
-            aria-label="View larger photo of Kerry Clements"
-          >
-            <img src="/kerry-clements-2025.jpeg" alt="" className="nav__photo" />
-          </button>
-          <span className="nav__name">Kerry Clements</span>
-        </div>
-        <ul className="nav__links">
-          <li>
-            <a href="#work">Portfolio</a>
-          </li>
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-      </nav>
+      <Nav />
       <main>
         <section className="hero">
           <div className="hero__content">

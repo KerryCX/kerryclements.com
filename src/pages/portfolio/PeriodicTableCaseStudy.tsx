@@ -1,19 +1,10 @@
-import { Link } from 'react-router-dom'
 import '../../styles/site.css'
+import { Nav } from '../../components/Nav'
 
 export const PeriodicTableCaseStudy = () => {
   return (
     <div className="portfolio">
-      <nav className="nav" aria-label="Main">
-        <Link to="/portfolio" className="nav__name">
-          Kerry Clements
-        </Link>
-        <ul className="nav__links">
-          <li>
-            <Link to="/portfolio">← Back to portfolio</Link>
-          </li>
-        </ul>
-      </nav>
+      <Nav links={[{ label: '← Back to portfolio', href: '/portfolio' }]} />
       <article className="case-study">
         <h1 className="case-study__title">Periodic Table App</h1>
         <p className="case-study__subtitle">Case study</p>
