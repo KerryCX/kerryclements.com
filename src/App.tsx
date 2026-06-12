@@ -4,6 +4,7 @@ import { Applications } from './pages/apps'
 import { Portfolio } from './pages/portfolio'
 import { PeriodicTableCaseStudy } from './pages/portfolio/PeriodicTableCaseStudy'
 import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCaseStudy'
+import { JobsDoneCaseStudy } from './pages/portfolio/JobsDoneCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -11,6 +12,7 @@ export const App = () => {
     { path: '/portfolio', element: <Portfolio /> },
     { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
     { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
+    { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy /> },
     { path: '/apps', element: <Applications /> },
   ])
 

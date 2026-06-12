@@ -38,6 +38,16 @@ export const workCards = [
     imageAlt:
       'Full page screenshot of kerryclements.com portfolio site showing hero, work card, skills and footer',
   },
+  {
+    title: 'Jobs Done',
+    description:
+      'A task logger for busy parents, built in vanilla HTML, CSS, and JavaScript. In real use from day one.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Figma', 'WCAG 2.2 AA'],
+    caseStudyLink: '/portfolio/jobs-done',
+    image: '/jobs-done-app.png',
+    imageAlt:
+      'Screenshot of the Jobs Done app showing logged tasks with timestamps and sharing options',
+  },
 ]
 
 export const appCards = [

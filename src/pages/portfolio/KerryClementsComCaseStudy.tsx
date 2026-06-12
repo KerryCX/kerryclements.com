@@ -5,7 +5,12 @@ import '../../styles/site.css'
 export const KerryClementsComCaseStudy = () => {
   return (
     <div className="site">
-      <Nav links={[{ label: '← Back to portfolio', href: '/portfolio' }]} />
+      <Nav
+        links={[
+          { label: '← Back to portfolio', href: '/portfolio' },
+          { label: 'Contact', href: '#contact' },
+        ]}
+      />
       <main>
         <article className="case-study">
           <h1 className="case-study__title">kerryclements.com</h1>
