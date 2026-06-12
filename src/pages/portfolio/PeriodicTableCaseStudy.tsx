@@ -5,7 +5,12 @@ import { Footer } from '../../components/Footer'
 export const PeriodicTableCaseStudy = () => {
   return (
     <div className="site">
-      <Nav links={[{ label: '← Back to portfolio', href: '/portfolio' }]} />
+      <Nav
+        links={[
+          { label: '← Back to portfolio', href: '/portfolio' },
+          { label: 'Contact', href: '#contact' },
+        ]}
+      />
       <main>
         <article className="case-study">
           <h1 className="case-study__title">Periodic Table App</h1>
