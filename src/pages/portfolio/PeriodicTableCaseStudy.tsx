@@ -1,5 +1,6 @@
 import '../../styles/site.css'
 import { Nav } from '../../components/Nav'
+import { Footer } from '../../components/Footer'
 
 export const PeriodicTableCaseStudy = () => {
   return (
@@ -108,6 +109,7 @@ export const PeriodicTableCaseStudy = () => {
           </a>
         </p>
       </article>
+      <Footer />
     </div>
   )
 }
