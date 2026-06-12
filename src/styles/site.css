@@ -25,7 +25,7 @@
 }
 
 /* Base */
-.portfolio {
+.site {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-family);
@@ -152,8 +152,8 @@
   text-decoration: underline;
 }
 
-/* Work */
-.work {
+/* Cards Area */
+.cards {
   padding: 20px 120px 0;
   display: flex;
   flex-direction: column;
@@ -169,7 +169,7 @@
   margin-bottom: 24px;
 }
 
-.work-card {
+.card {
   display: flex;
   align-items: center;
   background-color: var(--bg-surface);
@@ -178,7 +178,7 @@
   overflow: hidden;
 }
 
-.work-card__content {
+.card__content {
   flex: 1;
   padding: 60px;
   display: flex;
@@ -186,14 +186,14 @@
   justify-content: center;
 }
 
-.work-card__title {
+.card__title {
   font-size: var(--font-size-heading);
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 16px;
 }
 
-.work-card__description {
+.card__description {
   font-size: var(--font-size-body);
   color: var(--text-secondary);
   max-width: 480px;
@@ -201,29 +201,29 @@
   margin: 0 0 24px;
 }
 
-.work-card__tags {
+.card__tags {
   display: flex;
   gap: 16px;
   margin-bottom: 32px;
 }
 
-.work-card__tag {
+.card__tag {
   font-size: var(--font-size-label);
   color: var(--accent-sage);
 }
 
-.work-card__link {
+.card__link {
   font-size: var(--font-size-label);
   font-weight: 500;
   color: var(--accent-rose);
   text-decoration: none;
 }
 
-.work-card__link:hover {
+.card__link:hover {
   text-decoration: underline;
 }
 
-.work-card__image {
+.card__image {
   width: 420px;
   height: 340px;
   overflow: hidden;
@@ -232,10 +232,11 @@
   margin: 20px 20px 20px 0;
 }
 
-.work-card__image img {
+.card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 /* Skills */

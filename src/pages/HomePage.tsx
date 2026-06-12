@@ -1,12 +1,10 @@
-import { useRef } from 'react'
 import '../styles/site.css'
 import { cvPath, emailAddress, linkedInLink } from '../pages/portfolio/constants'
 import { Nav } from '../components/Nav'
 
 export default function HomePage() {
-  const dialogRef = useRef<HTMLDialogElement>(null)
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav
         links={[
           { label: 'Portfolio', href: '/portfolio' },
@@ -36,23 +34,6 @@ export default function HomePage() {
         </div>
         <p className="footer__copyright">© 2026 Kerry Clements</p>
       </footer>
-      <dialog
-        ref={dialogRef}
-        className="photo-overlay"
-        onClick={(e) => {
-          if (e.target === dialogRef.current) dialogRef.current.close()
-        }}
-      >
-        <button
-          type="button"
-          className="photo-overlay__close"
-          onClick={() => dialogRef.current?.close()}
-          aria-label="Close photo"
-        >
-          ✕
-        </button>
-        <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="photo-overlay__img" />
-      </dialog>
     </div>
   )
 }

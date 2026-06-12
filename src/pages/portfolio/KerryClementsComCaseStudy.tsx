@@ -3,7 +3,7 @@ import '../../styles/site.css'
 
 export const KerryClementsComCaseStudy = () => {
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav links={[{ label: '← Back to portfolio', href: '/portfolio' }]} />
       <article className="case-study">
         <h1 className="case-study__title">kerryclements.com</h1>

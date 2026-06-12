@@ -1,13 +1,10 @@
-import { useRef } from 'react'
 import '../../styles/site.css'
 import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
 import { Nav } from '../../components/Nav'
 
 export const Portfolio = () => {
-  const dialogRef = useRef<HTMLDialogElement>(null)
-
   return (
-    <div className="portfolio">
+    <div className="site">
       <Nav />
       <main>
         <section className="hero">
@@ -31,25 +28,25 @@ export const Portfolio = () => {
             </div>
           </div>
         </section>
-        <section className="work" id="work">
+        <section className="cards" id="work">
           <span className="section-label">Work</span>
           {workCards.map((card) => (
-            <div className="work-card" key={card.title}>
-              <div className="work-card__content">
-                <h2 className="work-card__title">{card.title}</h2>
-                <p className="work-card__description">{card.description}</p>
-                <div className="work-card__tags">
+            <div className="card" key={card.title}>
+              <div className="card__content">
+                <h2 className="card__title">{card.title}</h2>
+                <p className="card__description">{card.description}</p>
+                <div className="card__tags">
                   {card.tags.map((tag) => (
-                    <span key={tag} className="work-card__tag">
+                    <span key={tag} className="card__tag">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <a href={card.caseStudyLink} className="work-card__link">
+                <a href={card.caseStudyLink} className="card__link">
                   View case study →
                 </a>
               </div>
-              <div className="work-card__image">
+              <div className="card__image">
                 <img src={card.image} alt={card.imageAlt} />
               </div>
             </div>
@@ -86,23 +83,6 @@ export const Portfolio = () => {
         </div>
         <p className="footer__copyright">© 2026 Kerry Clements</p>
       </footer>
-      <dialog
-        ref={dialogRef}
-        className="photo-overlay"
-        onClick={(e) => {
-          if (e.target === dialogRef.current) dialogRef.current.close()
-        }}
-      >
-        <button
-          type="button"
-          className="photo-overlay__close"
-          onClick={() => dialogRef.current?.close()}
-          aria-label="Close photo"
-        >
-          ✕
-        </button>
-        <img src="/kerry-clements-2025.jpeg" alt="Kerry Clements" className="photo-overlay__img" />
-      </dialog>
     </div>
   )
 }
