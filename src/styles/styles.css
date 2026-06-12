@@ -1,5 +1,4 @@
 :root {
-  --color-bg-articles: #ffffff;
   --color-bg: #ffffff;
   --color-bg-main: hsl(320, 50%, 95%);
   --color-bg-vib: hsl(233, 60%, 90%);
@@ -25,16 +24,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: var(--color-bg-main);
   margin: 0;
-}
-
-.application-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-  width: 600px;
-  margin: auto; /* centers horizontally & vertically if parent uses flex/grid */
-  background-color: #00758f;
 }
 
 .article-body {

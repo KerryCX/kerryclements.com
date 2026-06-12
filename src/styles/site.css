@@ -317,6 +317,7 @@
   padding: 16px;
   background: transparent;
   position: relative;
+  overflow: visible;
 }
 
 .photo-overlay__close {
