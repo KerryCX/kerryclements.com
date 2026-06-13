@@ -1,4 +1,3 @@
-import '../../styles/site.css'
 import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
