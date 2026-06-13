@@ -1,6 +1,5 @@
 import { Footer } from '../../components/Footer'
 import { Nav } from '../../components/Nav'
-import '../../styles/site.css'
 
 export const KerryClementsComCaseStudy = () => {
   return (
