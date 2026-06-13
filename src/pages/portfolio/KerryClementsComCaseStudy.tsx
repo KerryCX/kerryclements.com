@@ -69,6 +69,28 @@ export const KerryClementsComCaseStudy = () => {
               Work cards and skills are driven by data arrays, so adding a new project or skill
               requires no changes to JSX
             </li>
+            <li>
+              Nav and Footer extracted as shared components. Adding GitHub to the footer once
+              updated it across every page — no hunting for duplicate markup
+            </li>
+            <li>
+              Kerry Clements in the Nav and Footer links to the homepage, keeping that detail
+              consistent without extra effort
+            </li>
+            <li>
+              Contact was removed from the homepage Nav. The link anchors to the footer, which works
+              on longer pages, but on the homepage — currently just a hero — the page is too short
+              to scroll, making the link appear broken. It will be restored once the homepage has
+              enough content
+            </li>
+            <li>
+              The data-driven work cards paid off immediately: Jobs Done was added to both the
+              portfolio and apps pages with no JSX changes
+            </li>
+            <li>
+              Legacy standalone nav and footer implementations removed once the shared components
+              were verified in place
+            </li>
           </ul>
 
           <h2>Accessibility</h2>
@@ -90,6 +112,11 @@ export const KerryClementsComCaseStudy = () => {
 
           <h2>What's next</h2>
           <ul>
+            <li>
+              Homepage — currently a hero with positioning statement; needs further content and
+              development
+            </li>
+            <li>Contact page, which will also restore the Nav link</li>
             <li>Mobile responsive styles</li>
             <li>Additional case studies as projects are completed</li>
             <li>Scrolling video walkthrough embedded in this case study</li>

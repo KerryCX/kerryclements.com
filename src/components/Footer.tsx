@@ -5,7 +5,11 @@ export const Footer = () => {
     <>
       <footer className="footer" id="contact">
         <div className="footer__top">
-          <span className="footer__name">Kerry Clements</span>
+          <span className="footer__name">
+            <a href="/" className="nav__name">
+              Kerry Clements
+            </a>
+          </span>
           <a href={cvPath} className="footer__link">
             Download CV
           </a>
