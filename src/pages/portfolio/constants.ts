@@ -49,6 +49,16 @@ export const workCards = [
     imageAlt:
       'Screenshot of the Jobs Done app showing logged tasks with timestamps and sharing options',
   },
+  {
+    title: 'Shopping List App',
+    description:
+      'A shopping list app rebuilt from a recruitment coding challenge, with persistence, reordering, and tests, built with React and TypeScript.',
+    tags: ['React', 'TypeScript', 'Vitest'],
+    caseStudyLink: '/portfolio/shopping-list',
+    image: '/shopping-list-app.png',
+    imageAlt:
+      'Screenshot of the Shopping List app showing items with checkboxes, reorder buttons, and delete buttons',
+  },
 ]
 
 export const appCards = [

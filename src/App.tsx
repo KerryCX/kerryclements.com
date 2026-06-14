@@ -5,6 +5,7 @@ import { Portfolio } from './pages/portfolio'
 import { PeriodicTableCaseStudy } from './pages/portfolio/PeriodicTableCaseStudy'
 import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCaseStudy'
 import { JobsDoneCaseStudy } from './pages/portfolio/JobsDoneCaseStudy'
+import { ShoppingListCaseStudy } from './pages/portfolio/ShoppingListCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -13,6 +14,7 @@ export const App = () => {
     { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
     { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
     { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy /> },
+    { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy /> },
     { path: '/apps', element: <Applications /> },
   ])
 
