@@ -91,7 +91,27 @@ export const KerryClementsComCaseStudy = () => {
               were verified in place
             </li>
           </ul>
-
+          <h2>Mobile responsive pass</h2>
+          <p>
+            The site was built desktop-first at 1440px and needed a mobile audit before being usable
+            on phones. The main issues were fixed horizontal padding (120px on nav, hero, cards, and
+            footer), a three-column skills grid, and work cards with a fixed-width side-by-side
+            image and content layout, all of which broke down well before 390px.
+          </p>
+          <p>
+            A single breakpoint at 768px addresses these: padding drops to 20px, the skills grid
+            collapses to one column, and work cards switch from a row to a column layout with the
+            image stacked above the content.
+          </p>
+          <p>
+            The CV download button surfaced a separate cross-browser issue. Linking directly to the
+            PDF with a <code>download</code> attribute opens Chrome's built-in PDF viewer instead of
+            downloading the file, while the same markup works as expected in Edge. Since recruiters
+            are more likely to want the file saved for later (to forward or open in their own PDF
+            reader) the fix fetches the PDF as a blob and triggers the download programmatically,
+            which bypasses the browser's native viewer entirely and behaves consistently across
+            browsers.
+          </p>
           <h2>Accessibility</h2>
           <p>
             Alt text was added via the Stark plugin throughout the design, since Figma has no native
@@ -108,15 +128,28 @@ export const KerryClementsComCaseStudy = () => {
             the accent token, the close target was enlarged to 44px, and a new{' '}
             <code>bg/overlay</code> token was added to both Figma and CSS for the backdrop.
           </p>
-
+          <p>
+            Testing on mobile also surfaced a touch-specific issue: <code>:hover</code> styles on
+            the nav photo and nav links were sticking after a tap, since touch interactions can
+            trigger <code>:hover</code> on devices with no pointer to "unhover" with. Both rules
+            were wrapped in <code>@media (hover: hover)</code> so they only apply on devices with a
+            genuine hover capability. The photo button's <code>:focus-visible</code> outline was
+            split out from this rule first, so keyboard focus styling remains unaffected on all
+            devices.
+          </p>
           <h2>What's next</h2>
           <ul>
             <li>
               Homepage — currently a hero with positioning statement; needs further content and
               development
             </li>
-            <li>Contact page, which will also restore the Nav link</li>
-            <li>Mobile responsive styles</li>
+            <li>
+              Contact page with enough content to justify restoring the Contact link in the homepage
+              Nav (currently anchors to the footer, which only works once the homepage has more
+              content to scroll through). This should also resolve a lingering "brighter text" hover
+              state on the Contact link on touch devices, which the broader hover fix didn't fully
+              address for in-page anchors
+            </li>
             <li>Additional case studies as projects are completed</li>
             <li>Scrolling video walkthrough embedded in this case study</li>
           </ul>
