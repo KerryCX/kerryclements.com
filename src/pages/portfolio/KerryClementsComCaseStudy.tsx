@@ -156,8 +156,8 @@ export const KerryClementsComCaseStudy = () => {
 
           <h2>View it</h2>
           <p>
-            <a href="https://kerryclements.com/portfolio" target="_blank" rel="noreferrer">
-              kerryclements.com/portfolio
+            <a href="https://kerryclements.com" target="_blank" rel="noreferrer">
+              kerryclements.com
             </a>
           </p>
           <p>
