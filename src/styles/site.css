@@ -110,10 +110,6 @@ body {
   text-decoration: none;
 }
 
-.nav__links a:hover {
-  color: var(--text-primary);
-}
-
 @media (hover: hover) {
   .nav__links a:hover {
     color: var(--text-primary);
