@@ -7,7 +7,7 @@ export const PeriodicTableCaseStudy = () => {
       <Nav
         links={[
           { label: '← Back to portfolio', href: '/portfolio' },
-          { label: 'Contact', href: '#contact' },
+          { label: 'Contact', href: '/contact' },
         ]}
       />
       <main>

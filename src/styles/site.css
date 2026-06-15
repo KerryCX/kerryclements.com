@@ -110,10 +110,6 @@ body {
   text-decoration: none;
 }
 
-.nav__links a:hover {
-  color: var(--text-primary);
-}
-
 @media (hover: hover) {
   .nav__links a:hover {
     color: var(--text-primary);
@@ -164,6 +160,10 @@ body {
   text-decoration: underline;
 }
 
+.contact-page .hero {
+  padding-bottom: 24px;
+}
+
 /* Cards Area */
 .cards {
   padding: 20px 120px 0;
@@ -171,6 +171,7 @@ body {
   flex-direction: column;
   gap: 24px;
 }
+
 .section-label {
   font-size: var(--font-size-label);
   font-weight: 500;
@@ -443,6 +444,59 @@ body {
   text-decoration: underline;
 }
 
+/* Contact page */
+.contact-section {
+  padding: 40px 120px;
+  border-top: 1px solid var(--border-default);
+}
+
+.section-label--rose {
+  color: var(--accent-rose);
+}
+
+.section-label--sage {
+  color: var(--accent-sage);
+}
+
+.connect-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.connect-link {
+  font-size: var(--font-size-subheading);
+  font-weight: 600;
+  color: var(--accent-rose);
+  text-decoration: none;
+}
+
+.connect-link:hover {
+  text-decoration: underline;
+}
+
+.connect-link--button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.connect-link--button:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
+.connect-caption {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  margin: 4px 0 0;
+}
+
 @media (max-width: 768px) {
   .nav {
     padding: 0 20px;
@@ -519,5 +573,13 @@ body {
 
   .case-study__title {
     font-size: 36px;
+  }
+
+  .contact-section {
+    padding: 32px 20px;
+  }
+
+  .contact-page .hero {
+    padding-bottom: 16px;
   }
 }

@@ -8,7 +8,7 @@ type NavLink = {
 const DEFAULT_LINKS: NavLink[] = [
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Apps', href: '/apps' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 type NavProps = {

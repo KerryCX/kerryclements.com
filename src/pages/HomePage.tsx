@@ -4,12 +4,7 @@ import { Footer } from '../components/Footer'
 export default function HomePage() {
   return (
     <div className="site">
-      <Nav
-        links={[
-          { label: 'Portfolio', href: '/portfolio' },
-          { label: 'Apps', href: '/apps' },
-        ]}
-      />
+      <Nav />
       <main>
         <section className="hero">
           <div className="hero__content">
