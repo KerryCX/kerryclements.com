@@ -82,15 +82,17 @@ body {
   right: 8px;
 }
 
-.nav__photo-button:hover,
-.nav__photo-button:focus-visible {
-  transform: scale(3) translateX(-8px) translateY(10px);
-}
-
 .nav__photo-button:focus-visible {
   outline: 2px solid var(--accent-rose);
   outline-offset: 3px;
   outline-width: 1px;
+}
+
+@media (hover: hover) {
+  .nav__photo-button:hover,
+  .nav__photo-button:focus-visible {
+    transform: scale(3) translateX(-8px) translateY(10px);
+  }
 }
 
 .nav__links {
@@ -110,6 +112,12 @@ body {
 
 .nav__links a:hover {
   color: var(--text-primary);
+}
+
+@media (hover: hover) {
+  .nav__links a:hover {
+    color: var(--text-primary);
+  }
 }
 
 /* Hero */
@@ -309,6 +317,27 @@ body {
   text-decoration: underline;
 }
 
+.footer__cv-button {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-rose);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.footer__cv-button:hover {
+  text-decoration: underline;
+}
+
+.footer__cv-button:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
 .footer__copyright {
   font-size: var(--font-size-caption);
   color: var(--text-tertiary);
@@ -412,4 +441,83 @@ body {
 
 .case-study a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav__links {
+    gap: 20px;
+  }
+
+  .hero {
+    padding: 60px 20px 40px;
+  }
+
+  .hero__name {
+    font-size: 36px;
+  }
+
+  .hero__tagline {
+    font-size: var(--font-size-body);
+  }
+
+  .hero__links {
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  .cards {
+    padding: 20px 20px 0;
+  }
+
+  .card {
+    flex-direction: column;
+  }
+
+  .card__content {
+    padding: 32px 20px;
+    order: 2;
+  }
+
+  .card__image {
+    width: 100%;
+    height: 220px;
+    margin: 0;
+    border-radius: 0;
+    order: 1;
+  }
+
+  .card__title {
+    font-size: 24px;
+  }
+
+  .skills {
+    padding: 60px 20px 40px;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer {
+    padding: 32px 20px 40px;
+  }
+
+  .footer__top {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .case-study {
+    padding: 60px 20px;
+    max-width: 100%;
+  }
+
+  .case-study__title {
+    font-size: 36px;
+  }
 }

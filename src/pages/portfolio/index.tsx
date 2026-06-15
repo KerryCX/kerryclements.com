@@ -1,6 +1,7 @@
-import { cvPath, emailAddress, linkedInLink, skills, workCards } from './constants'
+import { emailAddress, gitHubLink, linkedInLink, skills, workCards } from './constants'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { downloadCV } from '../../utils'
 
 export const Portfolio = () => {
   return (
@@ -16,14 +17,17 @@ export const Portfolio = () => {
               bring UX thinking to front end development.
             </p>
             <div className="hero__links">
-              <a href={cvPath} className="hero__link">
+              <button className="footer__cv-button" onClick={downloadCV}>
                 Download CV
-              </a>
+              </button>
               <a href={`mailto:${emailAddress}`} className="hero__link">
                 {emailAddress}
               </a>
               <a href={linkedInLink} className="hero__link" target="_blank" rel="noreferrer">
                 LinkedIn
+              </a>
+              <a href={gitHubLink} className="footer__link" target="_blank" rel="noreferrer">
+                GitHub
               </a>
             </div>
           </div>
