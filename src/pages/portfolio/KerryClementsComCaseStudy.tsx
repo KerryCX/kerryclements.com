@@ -70,7 +70,7 @@ export const KerryClementsComCaseStudy = () => {
             </li>
             <li>
               Nav and Footer extracted as shared components. Adding GitHub to the footer once
-              updated it across every page — no hunting for duplicate markup
+              updated it across every page, now there is no hunting for duplicate markup
             </li>
             <li>
               Kerry Clements in the Nav and Footer links to the homepage, keeping that detail
@@ -78,8 +78,8 @@ export const KerryClementsComCaseStudy = () => {
             </li>
             <li>
               Contact was removed from the homepage Nav. The link anchors to the footer, which works
-              on longer pages, but on the homepage — currently just a hero — the page is too short
-              to scroll, making the link appear broken. It will be restored once the homepage has
+              on longer pages, but on the homepage (currently just a hero) the page is too short to
+              scroll, making the link appear broken. It will be restored once the homepage has
               enough content
             </li>
             <li>
@@ -137,18 +137,35 @@ export const KerryClementsComCaseStudy = () => {
             split out from this rule first, so keyboard focus styling remains unaffected on all
             devices.
           </p>
+          <h2>Contact page</h2>
+          <p>
+            The homepage's Contact link previously anchored to the footer, which only worked once
+            the page had enough content to scroll. On a hero-only homepage this appeared to do
+            nothing. The fix was a dedicated <code>/contact</code> route, giving room for a proper
+            "Connect" section (email, LinkedIn, GitHub, CV download, each with a one-line caption)
+            and a separate "Social Media Work" section highlighting content management experience
+            for a local synagogue's Instagram account.
+          </p>
+          <p>
+            Key decisions: no contact form, since email is already public site-wide and a form adds
+            complexity (spam handling, Netlify Forms) without real benefit. Personal Instagram and X
+            were excluded as they didn't serve the portfolio's professional framing. The footer's
+            existing links were kept rather than removed, since it acts as a global utility while
+            the Connect section adds page-specific context.
+          </p>
+          <p>
+            Building the page also resolved the lingering touch hover issue flagged earlier: an
+            unscoped <code>.nav__links a:hover</code> rule, duplicating the one already scoped to{' '}
+            <code>@media (hover: hover)</code>, was still applying on touch devices. Removing it
+            fixed the stuck-hover state site-wide. Several case study pages also had hardcoded{' '}
+            <code>#contact</code> anchors in their nav links, updated to <code>/contact</code>{' '}
+            individually since each page's nav configuration differs slightly.
+          </p>
           <h2>What's next</h2>
           <ul>
             <li>
-              Homepage — currently a hero with positioning statement; needs further content and
+              Homepage: currently a hero with positioning statement; needs further content and
               development
-            </li>
-            <li>
-              Contact page with enough content to justify restoring the Contact link in the homepage
-              Nav (currently anchors to the footer, which only works once the homepage has more
-              content to scroll through). This should also resolve a lingering "brighter text" hover
-              state on the Contact link on touch devices, which the broader hover fix didn't fully
-              address for in-page anchors
             </li>
             <li>Additional case studies as projects are completed</li>
             <li>Scrolling video walkthrough embedded in this case study</li>
