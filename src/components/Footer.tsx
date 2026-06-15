@@ -1,4 +1,5 @@
-import { cvPath, emailAddress, linkedInLink, gitHubLink } from '../pages/portfolio/constants'
+import { emailAddress, linkedInLink, gitHubLink } from '../pages/portfolio/constants'
+import { downloadCV } from '../utils'
 
 export const Footer = () => {
   return (
@@ -10,9 +11,9 @@ export const Footer = () => {
               Kerry Clements
             </a>
           </span>
-          <a href={cvPath} className="footer__link">
+          <button className="footer__cv-button" onClick={downloadCV}>
             Download CV
-          </a>
+          </button>
           <a href={`mailto:${emailAddress}`} className="footer__link">
             {emailAddress}
           </a>
