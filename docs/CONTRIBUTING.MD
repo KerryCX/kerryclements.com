@@ -5,13 +5,13 @@ Format: `prefix/short-kebab-case-description`
 
 ## Prefixes
 
-| Prefix      | Use for                                               | Example                      |
-| ----------- | ----------------------------------------------------- | ---------------------------- |
-| `feat/`     | New capability that didn't exist before               | `feat/homepage`              |
-| `fix/`      | Something that exists but behaves wrongly             | `fix/accessible-lightbox`    |
-| `docs/`     | Documentation-only changes                            | `docs/ci-badge`              |
-| `chore/`    | Tooling, config, dependencies — no user-facing change | `chore/update-vite`          |
-| `refactor/` | Restructuring with no behaviour change                | `refactor/extract-constants` |
+| Prefix      | Use for                                             | Example                      |
+| ----------- | --------------------------------------------------- | ---------------------------- |
+| `feat/`     | New capability that didn't exist before             | `feat/homepage`              |
+| `fix/`      | Something that exists but behaves wrongly           | `fix/accessible-lightbox`    |
+| `docs/`     | Documentation-only changes                          | `docs/ci-badge`              |
+| `chore/`    | Tooling, config, dependencies no user-facing change | `chore/update-vite`          |
+| `refactor/` | Restructuring with no behaviour change              | `refactor/extract-constants` |
 
 ## Deciding fix vs feat
 
@@ -21,7 +21,7 @@ Ask: does the capability already exist?
 - Doesn't exist at all → `feat/`
 
 Accessibility gaps are **defects, not missing features**. A feature that works
-for mouse users but not keyboard users is broken, not incomplete — WCAG
+for mouse users but not keyboard users is broken, not incomplete, WCAG
 classifies these as failures. So accessibility repairs use `fix/`.
 
 ## Workflow reminder

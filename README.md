@@ -2,10 +2,10 @@
 
 # kerryclements.com
 
-My personal website — a place to showcase my frontend and UX work, and
+My personal website. A place to showcase my frontend and UX work, and
 eventually home to some useful small apps.
 
-**Live site:** https://kerryclements.com — start at the [portfolio](https://kerryclements.com/portfolio)
+**Live site:** https://kerryclements.com - start at the [portfolio](https://kerryclements.com/portfolio)
 
 ## Stack
 
