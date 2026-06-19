@@ -7,6 +7,7 @@ import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCas
 import { JobsDoneCaseStudy } from './pages/portfolio/JobsDoneCaseStudy'
 import { ShoppingListCaseStudy } from './pages/portfolio/ShoppingListCaseStudy'
 import ContactPage from './pages/ContactPage'
+import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -17,6 +18,7 @@ export const App = () => {
     { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
     { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy /> },
     { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy /> },
+    { path: '/portfolio/berakhot', element: <BerakhotCaseStudy /> },
     { path: '/apps', element: <Applications /> },
   ])
 
