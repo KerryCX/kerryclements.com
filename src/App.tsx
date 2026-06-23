@@ -9,6 +9,7 @@ import { ShoppingListCaseStudy } from './pages/portfolio/ShoppingListCaseStudy'
 import ContactPage from './pages/ContactPage'
 import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
+import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -21,6 +22,7 @@ export const App = () => {
     { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy /> },
     { path: '/portfolio/berakhot', element: <BerakhotCaseStudy /> },
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
+    { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
     { path: '/apps', element: <Applications /> },
   ])
 
