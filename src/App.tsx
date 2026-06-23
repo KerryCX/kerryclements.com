@@ -8,6 +8,7 @@ import { JobsDoneCaseStudy } from './pages/portfolio/JobsDoneCaseStudy'
 import { ShoppingListCaseStudy } from './pages/portfolio/ShoppingListCaseStudy'
 import ContactPage from './pages/ContactPage'
 import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
+import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -19,6 +20,7 @@ export const App = () => {
     { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy /> },
     { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy /> },
     { path: '/portfolio/berakhot', element: <BerakhotCaseStudy /> },
+    { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/apps', element: <Applications /> },
   ])
 
