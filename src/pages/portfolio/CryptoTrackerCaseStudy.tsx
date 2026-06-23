@@ -63,12 +63,24 @@ export const CryptoTrackerCaseStudy = () => {
             <code>chartTheme.ts</code> constants file bridges that gap, with comments mapping each
             value back to its CSS variable so the relationship stays explicit when colours change.
           </p>
+          <h2>Securing the API key</h2>
+          <p>
+            After adding a CoinGecko Demo API key, I noticed it was visible in the browser's Network
+            tab. Because this is a Vite frontend app, environment variables get bundled into the
+            client-side JavaScript at build time, so anyone inspecting the network requests could
+            read the key.
+          </p>
+          <p>
+            The fix was to proxy the API calls through Netlify Functions. The frontend now calls its
+            own <code>/api/markets</code>, <code>/api/coin/:id</code>, and{' '}
+            <code>/api/price-history/:id</code> endpoints. The functions make the CoinGecko requests
+            server-side with the key in the environment, so it never reaches the client bundle.
+          </p>
           <h2>What's next</h2>
           <ul>
             <li>Vitest unit tests for the hooks and formatters</li>
             <li>Allow the user to switch between more coins (currently fixed at top 50)</li>
             <li>Light mode and system preference support</li>
-            <li>Register for a CoinGecko Demo API key for a stable rate limit</li>
           </ul>
           <h2>Try it</h2>
           <p>
