@@ -69,6 +69,16 @@ export const workCards = [
     imageAlt:
       'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
   },
+  {
+    title: 'Crypto Tracker',
+    description:
+      'A live crypto market dashboard. Browse the top 50 coins by market cap in a sortable, filterable data grid, then click any coin for a detailed view with key stats and a 7-day price history chart.',
+    tags: ['React', 'TypeScript', 'Kendo UI'],
+    caseStudyLink: '/portfolio/crypto-tracker',
+    image: '/crypto-tracker-app.png',
+    imageAlt:
+      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+  },
 ]
 
 export const appCards = [
@@ -99,6 +109,16 @@ export const appCards = [
     tags: ['React', 'JavaScript', 'Tailwind'],
     appLink: 'https://jewishjourney.kerryclements.com',
     image: '/berakhot-app.png',
+    imageAlt:
+      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+  },
+  {
+    title: 'Crypto Tracker',
+    description:
+      'A live crypto market dashboard. Browse the top 50 coins by market cap in a sortable, filterable data grid, then click any coin for a detailed view with key stats and a 7-day price history chart.',
+    tags: ['React', 'TypeScript', 'Kendo UI'],
+    appLink: 'https://cryptotracker.kerryclements.com',
+    image: '/crypto-tracker-app.png',
     imageAlt:
       'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
   },
