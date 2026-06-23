@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage'
 import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
 import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
+import NotFoundPage from './pages/NotFoundPage'
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -24,6 +25,7 @@ export const App = () => {
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
     { path: '/apps', element: <Applications /> },
+    { path: '*', element: <NotFoundPage /> },
   ])
 
   return <RouterProvider router={router} />
