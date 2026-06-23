@@ -13,6 +13,10 @@ import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
 import NotFoundPage from './pages/NotFoundPage'
 
 export const App = () => {
+  const ExternalRedirect = ({ to }: { to: string }) => {
+    window.location.href = to
+    return null
+  }
   const router = createBrowserRouter([
     { path: '/', element: <HomePage /> },
     { path: '/contact', element: <ContactPage /> },
@@ -25,6 +29,7 @@ export const App = () => {
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
     { path: '/apps', element: <Applications /> },
+    { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
     { path: '*', element: <NotFoundPage /> },
   ])
 
