@@ -137,6 +137,14 @@ export const KerryClementsComCaseStudy = () => {
             split out from this rule first, so keyboard focus styling remains unaffected on all
             devices.
           </p>
+          <p>
+            A further Stark audit caught unlabelled region violations across four pages. Any{' '}
+            <code>{'<section>'}</code> element implicitly carries a landmark role, and a landmark
+            without a name gives screen reader users no way to distinguish or navigate between them.
+            An <code>aria-label</code> was added to every <code>{'<section>'}</code> on the
+            homepage, portfolio, apps, and contact pages. 98% score, 1 violation on the homepage
+            becoming 100% across all four pages after the fix.
+          </p>
           <h2>Contact page</h2>
           <p>
             The homepage's Contact link previously anchored to the footer, which only worked once
