@@ -11,6 +11,7 @@ import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
 import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
 import NotFoundPage from './pages/NotFoundPage'
+import Personal from './pages/Personal'
 
 export const App = () => {
   const ExternalRedirect = ({ to }: { to: string }) => {
@@ -29,6 +30,7 @@ export const App = () => {
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
     { path: '/apps', element: <Applications /> },
+    { path: '/personal', element: <Personal /> },
     { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
     { path: '*', element: <NotFoundPage /> },
   ])
