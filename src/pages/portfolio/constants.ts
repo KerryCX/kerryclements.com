@@ -88,6 +88,16 @@ export const workCards = [
     imageAlt:
       'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
   },
+  {
+    title: 'Time Tracking Dashboard',
+    description:
+      'A Frontend Mentor challenge started in 2022 and left unfinished. Returned to it in 2026 to complete the timeframe switching, migrate from Create React App to Vite, and add TypeScript throughout.',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'WCAG 2.2 AA'],
+    caseStudyLink: '/portfolio/time-tracking-dashboard',
+    image: '/time-tracking-dashboard-app.png',
+    imageAlt:
+      'Screenshot of the time tracking dashboard showing six activity cards and a user profile card with Daily, Weekly and Monthly timeframe controls',
+  },
 ]
 
 export const appCards = [
