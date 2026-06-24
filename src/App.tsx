@@ -6,10 +6,11 @@ import { PeriodicTableCaseStudy } from './pages/portfolio/PeriodicTableCaseStudy
 import { KerryClementsComCaseStudy } from './pages/portfolio/KerryClementsComCaseStudy'
 import { JobsDoneCaseStudy } from './pages/portfolio/JobsDoneCaseStudy'
 import { ShoppingListCaseStudy } from './pages/portfolio/ShoppingListCaseStudy'
-import ContactPage from './pages/ContactPage'
 import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
 import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
+import { TimeTrackingCaseStudy } from './pages/portfolio/TimeTrackingCaseStudy'
+import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import Personal from './pages/Personal'
 
@@ -29,6 +30,7 @@ export const App = () => {
     { path: '/portfolio/berakhot', element: <BerakhotCaseStudy /> },
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
+    { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy /> },
     { path: '/apps', element: <Applications /> },
     { path: '/personal', element: <Personal /> },
     { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
