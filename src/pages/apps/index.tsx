@@ -7,12 +7,12 @@ export const Applications = () => {
     <div className="site">
       <Nav />
       <main>
-        <section className="hero">
+        <section className="hero" aria-label="Page header">
           <div className="hero__content">
             <h1 className="hero__name">Apps</h1>
           </div>
         </section>
-        <section className="cards" id="apps">
+        <section className="cards" id="apps" aria-label="Apps">
           {appCards.map((card) => (
             <div className="card" key={card.title}>
               <div className="card__content">
