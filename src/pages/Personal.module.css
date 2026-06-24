@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
+
+.personal {
+  /* Personal page design tokens — scoped here, no global leakage */
+  --personal-bg: #fff6ed;
+  --personal-text: #241433;
+  --personal-text-muted: #6b5470;
+  --personal-border: #ecdbc7;
+  --accent-magenta: #e0218a;
+  --accent-magenta-dark: #9c1568;
+  --personal-radius: 8px;
+  --font-family-display: 'Fraunces', serif;
+
+  background-color: var(--personal-bg);
+  color: var(--personal-text);
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--personal-text);
+  margin: 0 0 16px;
+}
+
+.intro {
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--personal-text);
+  max-width: 480px;
+  margin: 0 0 40px;
+}
+
+.videoWrapper {
+  border: 1px solid var(--personal-border);
+  border-radius: var(--personal-radius);
+  overflow: hidden;
+  margin: 0 0 32px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 60px 20px 60px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}
