@@ -16,9 +16,10 @@ export const TicTacToeCaseStudy = () => {
           <p className="case-study__subtitle">Case study</p>
           <h2>Overview</h2>
           <p>
-            A two-player browser game built with vanilla HTML, CSS, and JavaScript. This was one of
-            my earliest projects. I returned to it recently to refactor the code, and the gap
-            between the two versions is a useful marker of how my thinking has developed.
+            A browser-based Tic Tac Toe game built with vanilla HTML, CSS, and JavaScript. This was
+            one of my earliest projects. I returned to it recently to refactor the code and add new
+            features, and the gap between the two versions is a useful marker of how my thinking has
+            developed.
           </p>
           <h2>The original code</h2>
           <p>
@@ -46,13 +47,40 @@ export const TicTacToeCaseStudy = () => {
             if state ever gets out of sync. Loop variables got <code>let</code>. Reset was rewritten
             to always return to a consistent starting state.
           </p>
+          <h2>Human vs computer mode</h2>
+          <p>
+            With the state model in place, adding a computer opponent was straightforward. The board
+            array and <code>WIN_COMBINATIONS</code> constant were already everything the computer
+            needed to reason about the game.
+          </p>
+          <p>
+            I added two difficulty levels, designed around how they feel to play rather than how
+            they work technically:
+          </p>
+          <ul>
+            <li>
+              <strong>Easy</strong> - picks a random empty square. Plays like a parent who sometimes
+              lets their child win.
+            </li>
+            <li>
+              <strong>Hard</strong> - wins if it can, blocks if it must, otherwise picks randomly.
+              Plays like a decent human opponent who occasionally loses focus.
+            </li>
+          </ul>
+          <p>
+            I considered adding an unbeatable minimax mode but decided against it. Tic Tac Toe is a
+            solved game - perfect play always draws, so an unbeatable opponent is only interesting
+            if you want to prove you can draw every time. Hard mode is more fun.
+          </p>
           <h2>Accessibility</h2>
           <p>
             A Stark WCAG 2.2 AA audit flagged one violation: the <code>&lt;section&gt;</code>{' '}
             wrapping the grid had an implicit ARIA region role but no accessible name. Adding{' '}
-            <code>aria-label="Game board"</code> resolved it. The audit finished at 94%, zero
-            violations, 34 checks passed. Two potentials were flagged but are not visible on Stark's
-            free tier, investigating them is on the to-do list.
+            <code>aria-label="Game board"</code> resolved it. The final audit on desktop finished at
+            97%, zero violations, 76 passed. A separate mobile audit caught a contrast failure on
+            the turn message colour against the pink background, which was resolved by darkening the
+            blue and lightening the background. Two potentials remain flagged but are not visible on
+            Stark's free tier.
           </p>
           <h2>Why vanilla JS</h2>
           <p>
@@ -65,7 +93,6 @@ export const TicTacToeCaseStudy = () => {
           <ul>
             <li>Vitest unit tests for the game logic</li>
             <li>Score tracking across games</li>
-            <li>Human vs computer mode</li>
           </ul>
           <h2>Try it</h2>
           <p>
