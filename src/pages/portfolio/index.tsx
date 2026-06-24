@@ -8,7 +8,7 @@ export const Portfolio = () => {
     <div className="site">
       <Nav />
       <main>
-        <section className="hero">
+        <section className="hero" aria-label="Introduction">
           <div className="hero__content">
             <h1 className="hero__name">Kerry Clements</h1>
             <p className="hero__tagline">Front end developer bridging design and code</p>
@@ -32,7 +32,7 @@ export const Portfolio = () => {
             </div>
           </div>
         </section>
-        <section className="cards" id="work">
+        <section className="cards" id="work" aria-label="Work">
           <span className="section-label">Work</span>
           {workCards.map((card) => (
             <div className="card" key={card.title}>
@@ -58,7 +58,7 @@ export const Portfolio = () => {
             </div>
           ))}
         </section>
-        <section className="skills" id="skills">
+        <section className="skills" id="skills" aria-label="Skills">
           <span className="section-label">Skills</span>
           <div className="skills__grid">
             {skills.map((column) => (

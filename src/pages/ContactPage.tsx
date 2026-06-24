@@ -13,7 +13,7 @@ const ContactPage = () => {
         ]}
       />
       <main>
-        <section className="hero">
+        <section className="hero" aria-label="Page header">
           <span className="section-label">Contact</span>
           <h1 className="hero__name">Let's Talk</h1>
           <p className="hero__tagline">
@@ -22,7 +22,7 @@ const ContactPage = () => {
           </p>
         </section>
 
-        <section className="contact-section">
+        <section className="contact-section" aria-label="Connect">
           <span className="section-label section-label--rose">Connect</span>
           <ul className="connect-list">
             <li>
@@ -51,8 +51,7 @@ const ContactPage = () => {
             </li>
           </ul>
         </section>
-
-        <section className="contact-section">
+        <section className="contact-section" aria-label="Social media work">
           <span className="section-label section-label--sage">Social Media Work</span>
           <ul className="connect-list">
             <li>
