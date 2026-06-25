@@ -84,7 +84,10 @@ export const PeriodicTableCaseStudy = () => {
               Quiz mode uses randomised questions from the full 118 elements, with guaranteed unique
               options per question
             </li>
-            <li>Utility functions were unit tested with Vitest before the components were built</li>
+            <li>
+              Utility functions and all three main components are covered by unit tests using Vitest
+              and Testing Library, with coverage reporting configured
+            </li>
           </ul>
           <h2>Progressive Web App</h2>
           <p>
@@ -114,11 +117,12 @@ export const PeriodicTableCaseStudy = () => {
           </p>
 
           <h2>What's next</h2>
+          <p>Version 1 is complete. Planned improvements for future versions:</p>
           <ul>
             <li>Aggregated flashcard rating results at the end of a session</li>
             <li>localStorage persistence so progress is saved between sessions</li>
             <li>Category filtering to focus on specific element groups</li>
-            <li>Component tests for Flashcard, Quiz, and EndScreen</li>
+            <li>Hard mode for the quiz, with more similar wrong answers to increase difficulty</li>
           </ul>
 
           <h2>Try it</h2>
