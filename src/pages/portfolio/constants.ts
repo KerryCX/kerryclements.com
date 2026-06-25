@@ -12,10 +12,7 @@ export const skills = [
     heading: 'Design',
     items: ['Figma', 'WCAG 2.2', 'UX thinking'],
   },
-  {
-    heading: 'Tools',
-    items: ['Vite', 'Vitest', 'Jest', 'Git', 'Netlify'],
-  },
+  { heading: 'Tools', items: ['Vite', 'Vitest', 'Jest', 'Git', 'Netlify', 'PWA'] },
 ]
 
 export const workCards = [
