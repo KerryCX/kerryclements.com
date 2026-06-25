@@ -97,6 +97,26 @@ export const workCards = [
   },
 ]
 
+export const featuredWorkCards = ['Periodic Table', 'Crypto Tracker', 'Shopping List'].map(
+  (title) => workCards.find((card) => card.title === title)!
+)
+
+export const homepageSkills = [
+  'React',
+  'TypeScript',
+  'JavaScript',
+  'HTML/CSS',
+  'Tailwind',
+  'Kendo UI',
+  'Figma',
+  'WCAG 2.2',
+  'UX thinking',
+  'Vite',
+  'Vitest',
+  'Git',
+  'Netlify',
+]
+
 export const appCards = [
   {
     title: 'Periodic Table',
