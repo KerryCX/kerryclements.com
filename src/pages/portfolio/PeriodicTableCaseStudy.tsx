@@ -86,7 +86,19 @@ export const PeriodicTableCaseStudy = () => {
             </li>
             <li>Utility functions were unit tested with Vitest before the components were built</li>
           </ul>
-
+          <h2>Progressive Web App</h2>
+          <p>
+            After launch, the app was extended to work as a Progressive Web App. Rather than
+            packaging it for the App Store, a PWA was the deliberate choice: no review process, no
+            annual developer fee, and implementing it properly is a stronger demonstration of front
+            end craft than wrapping a React app in a native shell.
+          </p>
+          <p>
+            The Vite PWA plugin handles the service worker and manifest. The app can be installed
+            from Chrome on Android via the browser menu, and from Safari on iOS via Add to Home
+            Screen. Once installed it opens without browser chrome and works offline after the first
+            visit.
+          </p>
           <h2>What I learned</h2>
           <p>
             Designing before coding changes the quality of the decisions. Issues that would have
