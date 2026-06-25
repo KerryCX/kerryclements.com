@@ -20,7 +20,7 @@ export const workCards = [
     title: 'Periodic Table',
     description:
       'A learning app for chemistry students with flashcard and quiz modes, built with React and TypeScript.',
-    tags: ['React', 'TypeScript', 'Figma', 'WCAG 2.2 AA', 'Progressive Web App'],
+    tags: ['React', 'TypeScript', 'Figma', 'WCAG AA', 'PWA', 'Vitest'],
     caseStudyLink: '/portfolio/periodic-table',
     image: '/periodic-table-app.png',
     imageAlt:
@@ -102,7 +102,7 @@ export const appCards = [
     title: 'Periodic Table',
     description:
       'A learning app for chemistry students with flashcard and quiz modes, built with React and TypeScript.',
-    tags: ['React', 'TypeScript', 'Figma', 'WCAG 2.2 AA', 'Progressive Web App'],
+    tags: ['React', 'TypeScript', 'Figma', 'WCAG AA', 'PWA', 'Vitest'],
     appLink: 'https://periodic-table.kerryclements.com',
     image: '/periodic-table-app.png',
     imageAlt:
