@@ -167,4 +167,14 @@ export const appCards = [
     image: '/tic-tac-toe-app.png',
     imageAlt: 'Tic Tac Toe game board showing X and O in a three by three grid',
   },
+  {
+    title: 'Measure for Measure',
+    description:
+      'A BMI calculator built with Material UI v6. Supports multiple height and weight units with live conversion, input validation, and a show/dismiss category pattern.',
+    tags: ['React', 'TypeScript', 'Material UI', 'Vitest', 'WCAG 2.2 AA'],
+    appLink: 'https://measureformeasure.kerryclements.com',
+    image: '/measure-for-measure-app.png',
+    imageAlt:
+      'Measure for Measure BMI calculator showing height and weight input cards with a BMI result',
+  },
 ]
