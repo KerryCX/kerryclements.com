@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
 
 .personal {
-  /* Personal page design tokens — scoped here, no global leakage */
+  /* Personal page design tokens - scoped here, no global leakage */
   --personal-bg: #fff6ed;
   --personal-text: #241433;
   --personal-text-muted: #6b5470;
