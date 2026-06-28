@@ -35,7 +35,10 @@ export const Portfolio = () => {
         <section className="cards" id="work" aria-label="Work">
           <span className="section-label">Work</span>
           {workCards.map((card) => (
-            <div className="card" key={card.title}>
+            <div className="card card--clickable" key={card.title}>
+              <div className="card__image">
+                <img src={card.image} alt={card.imageAlt} />
+              </div>
               <div className="card__content">
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
@@ -48,11 +51,6 @@ export const Portfolio = () => {
                 </div>
                 <a href={card.caseStudyLink} className="card__link">
                   View case study →
-                </a>
-              </div>
-              <div className="card__image">
-                <a href={card.caseStudyLink}>
-                  <img src={card.image} alt={card.imageAlt} />
                 </a>
               </div>
             </div>

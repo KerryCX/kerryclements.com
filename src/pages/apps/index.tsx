@@ -14,7 +14,10 @@ export const Applications = () => {
         </section>
         <section className="cards" id="apps" aria-label="Apps">
           {appCards.map((card) => (
-            <div className="card" key={card.title}>
+            <div className="card card--clickable" key={card.title}>
+              <div className="card__image">
+                <img src={card.image} alt={card.imageAlt} />
+              </div>
               <div className="card__content">
                 <h2 className="card__title">{card.title}</h2>
                 <p className="card__description">{card.description}</p>
@@ -27,11 +30,6 @@ export const Applications = () => {
                 </div>
                 <a href={card.appLink} className="card__link" target="_blank" rel="noreferrer">
                   Open app →
-                </a>
-              </div>
-              <div className="card__image">
-                <a href={card.appLink}>
-                  <img src={card.image} alt={card.imageAlt} />
                 </a>
               </div>
             </div>

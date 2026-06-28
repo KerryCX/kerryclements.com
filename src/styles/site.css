@@ -165,10 +165,12 @@ body {
 }
 
 /* Cards Area */
+/* Grid: 3 columns desktop, 2 tablet, 1 mobile */
+/* Used by both the work cards (Portfolio) and app cards (Applications) */
 .cards {
   padding: 20px 120px 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -180,44 +182,46 @@ body {
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 24px;
+  grid-column: 1 / -1; /* spans all columns so it sits above the grid */
 }
 
 .card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 8px;
   overflow: hidden;
+  position: relative; /* required for the stretched link ::after to position against */
 }
 
 .card__content {
   flex: 1;
-  padding: 60px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .card__title {
-  font-size: var(--font-size-heading);
+  font-size: var(--font-size-subheading);
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .card__description {
   font-size: var(--font-size-body);
   color: var(--text-secondary);
-  max-width: 480px;
   line-height: 1.6;
   margin: 0 0 24px;
 }
 
 .card__tags {
   display: flex;
-  gap: 16px;
-  margin-bottom: 32px;
+  flex-wrap: wrap; /* allows tags to wrap when there are many */
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .card__tag {
@@ -237,12 +241,12 @@ body {
 }
 
 .card__image {
-  width: 420px;
-  height: 340px;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
   flex-shrink: 0;
-  border-radius: 8px;
-  margin: 20px 20px 20px 0;
+  border-radius: 0;
+  margin: 0;
 }
 
 .card__image img {
@@ -250,6 +254,15 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+/* Stretched link — expands the card__link click area to cover the whole card.
+   Uses ::after pseudo-element positioned absolutely over the card.
+   card must have position: relative for this to work. */
+.card--clickable .card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 /* Skills */
@@ -442,6 +455,27 @@ body {
 
 .case-study a:hover {
   text-decoration: underline;
+}
+
+/* Side by side screenshots in case studies.
+   Mobile image constrained to 40% width, desktop image takes 60%. */
+.case-study__images {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.case-study__images .case-study__image--mobile {
+  width: 40%;
+  height: auto;
+  margin: 0;
+}
+
+.case-study__images .case-study__image {
+  width: 60%;
+  height: auto;
+  margin: 0;
 }
 
 /* Contact page */
@@ -678,7 +712,16 @@ body {
   margin: 0 0 32px;
 }
 
-@media (max-width: 768px) {
+/* Tablet — 2 column cards */
+@media (max-width: 899px) and (min-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 40px 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 599px) {
   .nav {
     padding: 0 20px;
   }
@@ -705,24 +748,12 @@ body {
   }
 
   .cards {
+    grid-template-columns: 1fr;
     padding: 20px 20px 0;
   }
 
-  .card {
-    flex-direction: column;
-  }
-
   .card__content {
-    padding: 32px 20px;
-    order: 2;
-  }
-
-  .card__image {
-    width: 100%;
-    height: 220px;
-    margin: 0;
-    border-radius: 0;
-    order: 1;
+    padding: 24px 20px;
   }
 
   .card__title {
@@ -764,13 +795,12 @@ body {
     padding-bottom: 16px;
   }
 
-  /* Responsive - homepage additions */
   .hero__ctas {
     flex-wrap: wrap;
   }
 
   .story {
-    padding: 40px 120px 60px;
+    padding: 40px 20px 60px;
   }
 
   .featured {
@@ -784,23 +814,4 @@ body {
   .home-cta {
     padding: 60px 20px;
   }
-}
-
-.case-study__images {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  margin: 1.5rem 0;
-}
-
-.case-study__images .case-study__image--mobile {
-  width: 40%;
-  height: auto;
-  margin: 0;
-}
-
-.case-study__images .case-study__image {
-  width: 60%;
-  height: auto;
-  margin: 0;
 }
