@@ -95,6 +95,16 @@ export const workCards = [
     imageAlt:
       'Screenshot of the time tracking dashboard showing six activity cards and a user profile card with Daily, Weekly and Monthly timeframe controls',
   },
+  {
+    title: 'Measure for Measure',
+    description:
+      'A BMI calculator built with Material UI v6. Supports multiple height and weight units with live conversion, input validation, and a show/dismiss category pattern.',
+    tags: ['React', 'TypeScript', 'Material UI', 'Vitest', 'WCAG 2.2 AA'],
+    caseStudyLink: '/portfolio/measure-for-measure',
+    image: '/measure-for-measure-app.png',
+    imageAlt:
+      'Measure for Measure BMI calculator showing height and weight input cards with a BMI result',
+  },
 ]
 
 export const featuredWorkCards = ['Periodic Table', 'Crypto Tracker', 'Shopping List'].map(
