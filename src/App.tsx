@@ -13,6 +13,7 @@ import { TimeTrackingCaseStudy } from './pages/portfolio/TimeTrackingCaseStudy'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import Personal from './pages/Personal'
+import { MeasureForMeasureCaseStudy } from './pages/portfolio/MeasureForMeasureCaseStudy'
 
 export const App = () => {
   const ExternalRedirect = ({ to }: { to: string }) => {
@@ -31,6 +32,7 @@ export const App = () => {
     { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
     { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
     { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy /> },
+    { path: '/portfolio/measure-for-measure', element: <MeasureForMeasureCaseStudy /> },
     { path: '/apps', element: <Applications /> },
     { path: '/personal', element: <Personal /> },
     { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
