@@ -713,7 +713,7 @@ body {
 }
 
 /* Tablet — 2 column cards */
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 899px) and (min-width: 600px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
     padding: 20px 40px 0;
@@ -721,7 +721,7 @@ body {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 599px) {
   .nav {
     padding: 0 20px;
   }
