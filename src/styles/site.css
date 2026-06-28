@@ -2,26 +2,26 @@
 
 /* Portfolio Design Tokens */
 :root {
-  --bg-primary: #111111; /* Main page background */
-  --bg-surface: #1a1a1a; /* Card and surface background */
-  --bg-overlay: rgba(0, 0, 0, 0.8); /* Modal/lightbox backdrop. Dims page content behind dialogs */
-  --border-default: #2e2e2e; /* Default border colour */
-  --text-primary: #e5e5e5; /* Primary text */
-  --text-secondary: #999999; /* Secondary and body text */
-  --text-tertiary: #888888; /* Muted text, labels, metadata */
-  --accent-rose: #e0607a; /* Primary accent, links, CTAs */
-  --accent-sage: #7aae8e; /* Secondary accent, tags, tech stack labels */
+  --bg-primary: #111111;
+  --bg-surface: #1a1a1a;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --border-default: #2e2e2e;
+  --text-primary: #e5e5e5;
+  --text-secondary: #999999;
+  --text-tertiary: #888888;
+  --accent-rose: #e0607a;
+  --accent-sage: #7aae8e;
 }
 
 /* Typography */
 :root {
   --font-family: 'Inter', sans-serif;
-  --font-size-display: 52px; /* Hero name or large heading */
-  --font-size-heading: 32px; /* Section headings */
-  --font-size-subheading: 20px; /* Subheadings and card titles */
-  --font-size-body: 16px; /* Body text */
-  --font-size-label: 13px; /* Labels, navigation, buttons */
-  --font-size-caption: 12px; /* Metadata, timestamps, fine print */
+  --font-size-display: 52px;
+  --font-size-heading: 32px;
+  --font-size-subheading: 20px;
+  --font-size-body: 16px;
+  --font-size-label: 13px;
+  --font-size-caption: 12px;
 }
 
 /* Base */
@@ -68,7 +68,7 @@ body {
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  display: block; /* kills the stray baseline gap inline images get */
+  display: block;
 }
 
 .nav__photo-button {
@@ -167,8 +167,8 @@ body {
 /* Cards Area */
 .cards {
   padding: 20px 120px 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -180,44 +180,46 @@ body {
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 24px;
+  grid-column: 1 / -1;
 }
 
 .card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__content {
   flex: 1;
-  padding: 60px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .card__title {
-  font-size: var(--font-size-heading);
+  font-size: var(--font-size-subheading);
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .card__description {
   font-size: var(--font-size-body);
   color: var(--text-secondary);
-  max-width: 480px;
   line-height: 1.6;
   margin: 0 0 24px;
 }
 
 .card__tags {
   display: flex;
-  gap: 16px;
-  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .card__tag {
@@ -237,12 +239,12 @@ body {
 }
 
 .card__image {
-  width: 420px;
-  height: 340px;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
   flex-shrink: 0;
-  border-radius: 8px;
-  margin: 20px 20px 20px 0;
+  border-radius: 0;
+  margin: 0;
 }
 
 .card__image img {
@@ -250,6 +252,13 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+/* Stretched link — makes the whole card clickable via the card__link anchor */
+.card--clickable .card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 /* Skills */
@@ -377,7 +386,6 @@ body {
 }
 
 .photo-overlay::backdrop {
-  /* var() in ::backdrop requires Chrome 122+ / Safari 17+ */
   background: var(--bg-overlay);
 }
 
@@ -442,6 +450,25 @@ body {
 
 .case-study a:hover {
   text-decoration: underline;
+}
+
+.case-study__images {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.case-study__images .case-study__image--mobile {
+  width: 40%;
+  height: auto;
+  margin: 0;
+}
+
+.case-study__images .case-study__image {
+  width: 60%;
+  height: auto;
+  margin: 0;
 }
 
 /* Contact page */
@@ -678,6 +705,15 @@ body {
   margin: 0 0 32px;
 }
 
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 40px 0;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .nav {
     padding: 0 20px;
@@ -705,24 +741,12 @@ body {
   }
 
   .cards {
+    grid-template-columns: 1fr;
     padding: 20px 20px 0;
   }
 
-  .card {
-    flex-direction: column;
-  }
-
   .card__content {
-    padding: 32px 20px;
-    order: 2;
-  }
-
-  .card__image {
-    width: 100%;
-    height: 220px;
-    margin: 0;
-    border-radius: 0;
-    order: 1;
+    padding: 24px 20px;
   }
 
   .card__title {
@@ -764,13 +788,12 @@ body {
     padding-bottom: 16px;
   }
 
-  /* Responsive - homepage additions */
   .hero__ctas {
     flex-wrap: wrap;
   }
 
   .story {
-    padding: 40px 120px 60px;
+    padding: 40px 20px 60px;
   }
 
   .featured {
@@ -784,23 +807,4 @@ body {
   .home-cta {
     padding: 60px 20px;
   }
-}
-
-.case-study__images {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  margin: 1.5rem 0;
-}
-
-.case-study__images .case-study__image--mobile {
-  width: 40%;
-  height: auto;
-  margin: 0;
-}
-
-.case-study__images .case-study__image {
-  width: 60%;
-  height: auto;
-  margin: 0;
 }
