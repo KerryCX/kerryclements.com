@@ -785,3 +785,22 @@ body {
     padding: 60px 20px;
   }
 }
+
+.case-study__images {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.case-study__images .case-study__image--mobile {
+  width: 40%;
+  height: auto;
+  margin: 0;
+}
+
+.case-study__images .case-study__image {
+  width: 60%;
+  height: auto;
+  margin: 0;
+}
