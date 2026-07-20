@@ -1,0 +1,95 @@
+.clearSkin {
+  background-color: var(--personal-bg);
+  color: var(--personal-text);
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--personal-text);
+  margin: 0 0 8px;
+}
+
+.meta {
+  font-size: var(--font-size-label);
+  color: var(--personal-text-muted);
+  margin: 0 0 40px;
+}
+
+.paragraph {
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--personal-text);
+  margin: 0 0 24px;
+}
+
+.figure {
+  margin: 32px 0;
+}
+
+.figureImage {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--personal-border);
+  border-radius: var(--personal-radius);
+}
+
+.figureSmall {
+  float: left;
+  width: 30%;
+  margin: 4px 24px 16px 0;
+}
+
+@media (max-width: 600px) {
+  .figureSmall {
+    float: none;
+    width: 60%;
+    margin: 0 auto 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 40px 20px 60px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}

@@ -1,0 +1,131 @@
+.personal {
+  background-color: var(--personal-bg);
+  color: var(--personal-text);
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--personal-text);
+  margin: 0 0 16px;
+}
+
+.intro {
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--personal-text);
+  max-width: 480px;
+  margin: 0 0 40px;
+}
+
+.videoWrapper {
+  border: 1px solid var(--personal-border);
+  border-radius: var(--personal-radius);
+  overflow: hidden;
+  margin: 0 0 32px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+}
+
+.entries {
+  margin: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.entryCard {
+  display: block;
+  border: 1px solid var(--personal-border);
+  border-radius: var(--personal-radius);
+  padding: 24px;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.entryCard:hover {
+  border-color: var(--accent-magenta);
+}
+
+.entryCard:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
+
+.entryLabel {
+  display: block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.entryTitle {
+  font-family: var(--font-family-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--personal-text);
+  margin: 0 0 8px;
+}
+
+.entryDescription {
+  font-size: var(--font-size-body);
+  color: var(--personal-text-muted);
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.entryLink {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+}
+
+.backLink {
+  display: inline-block;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 60px 20px 60px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}

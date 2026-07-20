@@ -10,10 +10,10 @@ import { BerakhotCaseStudy } from './pages/portfolio/BerakhotCaseStudy'
 import { CryptoTrackerCaseStudy } from './pages/portfolio/CryptoTrackerCaseStudy'
 import { TicTacToeCaseStudy } from './pages/portfolio/TicTacToeCaseStudy'
 import { TimeTrackingCaseStudy } from './pages/portfolio/TimeTrackingCaseStudy'
+import { MeasureForMeasureCaseStudy } from './pages/portfolio/MeasureForMeasureCaseStudy'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
-import Personal from './pages/Personal'
-import { MeasureForMeasureCaseStudy } from './pages/portfolio/MeasureForMeasureCaseStudy'
+import { personalRoutes } from './routes/personalRoutes'
 
 export const App = () => {
   const ExternalRedirect = ({ to }: { to: string }) => {
@@ -34,7 +34,7 @@ export const App = () => {
     { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy /> },
     { path: '/portfolio/measure-for-measure', element: <MeasureForMeasureCaseStudy /> },
     { path: '/apps', element: <Applications /> },
-    { path: '/personal', element: <Personal /> },
+    ...personalRoutes,
     { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
     { path: '*', element: <NotFoundPage /> },
   ])
