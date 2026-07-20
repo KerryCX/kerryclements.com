@@ -1,9 +1,13 @@
 import styles from './Personal.module.css'
 import './../../styles/personal-scope.css'
+import { Nav } from '../../components/Nav'
+
+import { PersonalFooter } from '../../components/PersonalFooter'
 
 const Personal = () => {
   return (
     <div className={`personal-scope ${styles.personal}`}>
+      <Nav />
       <main className={styles.content}>
         <span className={styles.eyebrow}>personal</span>
 
@@ -49,10 +53,7 @@ const Personal = () => {
             <span className={styles.entryLink}>Read more →</span>
           </a>
         </div>
-
-        <a href="/" className={styles.backLink}>
-          ← Back to portfolio
-        </a>
+        <PersonalFooter backHref="/" backLabel="Back to homepage" />
       </main>
     </div>
   )

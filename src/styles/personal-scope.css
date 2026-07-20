@@ -10,3 +10,24 @@
   --personal-radius: 8px;
   --font-family-display: 'Fraunces', serif;
 }
+
+.personal-scope .nav {
+  background: var(--personal-bg);
+  border-bottom: 1px solid var(--personal-border);
+}
+
+.personal-scope .nav__name {
+  color: var(--personal-text);
+  font-size: 15px;
+}
+
+.personal-scope .nav__links a {
+  color: var(--personal-text);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.personal-scope .nav__links a:hover {
+  color: var(--accent-magenta-dark);
+  text-decoration: underline;
+}

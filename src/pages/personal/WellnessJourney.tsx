@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import styles from './WellnessJourney.module.css'
+import { Nav } from '../../components/Nav'
+import { PersonalFooter } from '../../components/PersonalFooter'
 
 const CANONICAL_URL = 'https://kerryclements.com/personal/wellness-journey'
 
@@ -22,6 +24,7 @@ const WellnessJourney = () => {
 
   return (
     <div className={`personal-scope ${styles.wellness}`}>
+      <Nav />
       <main className={styles.content}>
         <a href="/personal" className={styles.backLink}>
           ← Back to personal
@@ -337,9 +340,7 @@ const WellnessJourney = () => {
           </figcaption>
         </figure>
 
-        <a href="/personal" className={styles.backLink}>
-          ← Back to personal
-        </a>
+        <PersonalFooter backHref="/personal" backLabel="Back to personal" />
       </main>
     </div>
   )

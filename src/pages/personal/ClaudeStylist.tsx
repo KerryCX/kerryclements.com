@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import styles from './ClaudeStylist.module.css'
 import './../../styles/personal-scope.css'
+import { Nav } from '../../components/Nav'
+import { PersonalFooter } from '../../components/PersonalFooter'
 
 const CANONICAL_URL = 'https://kerryclements.com/personal/claude-personal-stylist'
 
@@ -23,6 +25,7 @@ const ClaudeStylist = () => {
 
   return (
     <div className={`personal-scope ${styles.claudeStylist}`}>
+      <Nav />
       <main className={styles.content}>
         <a href="/personal" className={styles.backLink}>
           ← Back to personal
@@ -297,9 +300,7 @@ const ClaudeStylist = () => {
           light-hearted intro. I'll also add a photo of me after I've had my hair done on Tuesday.
         </p>
 
-        <a href="/personal" className={styles.backLink}>
-          ← Back to personal
-        </a>
+        <PersonalFooter backHref="/personal" backLabel="Back to personal" />
       </main>
     </div>
   )
