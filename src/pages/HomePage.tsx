@@ -3,10 +3,17 @@ import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
 import { featuredWorkCards, homepageSkills } from '../pages/portfolio/constants'
 
+const homeNavLinks = [
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Apps', href: '/apps' },
+  { label: 'Personal', href: '/personal' },
+  { label: 'Contact', href: '/contact' },
+]
+
 export default function HomePage() {
   return (
     <div className="site">
-      <Nav />
+      <Nav links={homeNavLinks} />
       <main>
         <section className="hero" aria-label="Introduction">
           <div className="hero__content">
