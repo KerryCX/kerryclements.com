@@ -1,0 +1,45 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--personal-border);
+}
+
+.backLink {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
+
+.instagramLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-magenta-dark);
+  text-decoration: none;
+}
+
+.instagramLink:hover {
+  text-decoration: underline;
+}
+
+.instagramLink:focus-visible {
+  outline: 2px solid var(--accent-magenta-dark);
+  outline-offset: 3px;
+}
