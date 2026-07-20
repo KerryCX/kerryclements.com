@@ -6,12 +6,7 @@ import { emailAddress, gitHubLink, linkedInLink } from './portfolio/constants'
 const ContactPage = () => {
   return (
     <div className="site contact-page">
-      <Nav
-        links={[
-          { label: 'Portfolio', href: '/portfolio' },
-          { label: 'Apps', href: '/apps' },
-        ]}
-      />
+      <Nav />
       <main>
         <section className="hero" aria-label="Page header">
           <span className="section-label">Contact</span>
