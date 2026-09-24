@@ -20,7 +20,6 @@ jobs:
       # 2. Set up Node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
-
         with:
           node-version: ${{ matrix.node-version }}
       # 3. Cache npm dependencies
@@ -31,12 +30,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-${{ matrix.node-version }}-
-      # 4. Install dependencies
+      # 4. Lint YAML files
+      - name: Lint YAML
+        run: npx --yes yaml-lint .github/*.yml .github/workflows/*.yml
+      # 5. Install dependencies
       - name: Install dependencies
         run: npm ci
-      # 5. Build the project
+      # 6. Build the project
       - name: Build
         run: npm run build
-      # 6. Run tests
+      # 7. Run tests
       - name: Run tests
         run: npm test
