@@ -5,3 +5,11 @@ updates:
     schedule:
       interval: 'weekly'
     target-branch: 'dev'
+    groups:
+      eslint:
+        patterns:
+          - 'eslint'
+          - '@eslint/*'
+    ignore:
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
