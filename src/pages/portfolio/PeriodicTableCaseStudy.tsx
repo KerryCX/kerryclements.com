@@ -127,8 +127,8 @@ export const PeriodicTableCaseStudy = () => {
 
           <h2>Try it</h2>
           <p>
-            <a href="https://periodic-table.kerryclements.com" target="_blank" rel="noreferrer">
-              periodic-table.kerryclements.com
+            <a href="https://periodictable.kerryclements.com" target="_blank" rel="noreferrer">
+              periodictable.kerryclements.com
             </a>
           </p>
           <p>
