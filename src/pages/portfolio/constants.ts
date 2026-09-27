@@ -133,7 +133,7 @@ export const appCards = [
     description:
       'A learning app for chemistry students with flashcard and quiz modes, built with React and TypeScript.',
     tags: ['React', 'TypeScript', 'Figma', 'WCAG AA', 'PWA', 'Vitest'],
-    appLink: 'https://periodic-table.kerryclements.com',
+    appLink: 'https://periodictable.kerryclements.com',
     image: '/periodic-table-app.png',
     imageAlt:
       'Screenshot of the Periodic Table app mode select screen, showing Flashcard and Quiz options',
