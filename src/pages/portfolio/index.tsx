@@ -57,7 +57,7 @@ export const Portfolio = () => {
           ))}
         </section>
         <section className="skills" id="skills" aria-label="Skills">
-          <span className="section-label">Skills</span>
+          <h2 className="section-label">Skills</h2>
           <div className="skills__grid">
             {skills.map((column) => (
               <div className="skills__column" key={column.heading}>

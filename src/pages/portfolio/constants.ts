@@ -79,11 +79,10 @@ export const workCards = [
     title: 'Tic Tac Toe',
     description:
       'An early project, refactored. Vanilla JS Tic Tac Toe rebuilt around a proper game state model, fixing a win detection bug and improving the code structure in the process.',
-    tags: ['HTML', 'Javascript', 'CSS', 'WCAG 2.2 AA'],
+    tags: ['HTML', 'JavaScript', 'CSS', 'WCAG 2.2 AA'],
     caseStudyLink: '/portfolio/tic-tac-toe',
     image: '/tic-tac-toe-app.png',
-    imageAlt:
-      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+    imageAlt: 'Tic Tac Toe game board showing X and O in a three by three grid',
   },
   {
     title: 'Time Tracking Dashboard',
@@ -165,14 +164,13 @@ export const appCards = [
     tags: ['React', 'TypeScript', 'Kendo UI'],
     appLink: 'https://cryptotracker.kerryclements.com',
     image: '/crypto-tracker-app.png',
-    imageAlt:
-      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+    imageAlt: 'Screenshot of the Crypto Tracker app showing coin details page with chart',
   },
   {
     title: 'Tic Tac Toe',
     description:
       'An early project, refactored. Vanilla JS Tic Tac Toe rebuilt around a proper game state model, fixing a win detection bug and improving the code structure in the process.',
-    tags: ['HTML', 'Javascript', 'CSS', 'WCAG 2.2 AA'],
+    tags: ['HTML', 'JavaScript', 'CSS', 'WCAG 2.2 AA'],
     appLink: 'https://tictactoe.kerryclements.com',
     image: '/tic-tac-toe-app.png',
     imageAlt: 'Tic Tac Toe game board showing X and O in a three by three grid',
