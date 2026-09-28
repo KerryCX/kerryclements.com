@@ -11,7 +11,7 @@ export const Footer = () => {
               Kerry Clements
             </a>
           </span>
-          <button className="footer__cv-button" onClick={downloadCV}>
+          <button type="button" className="footer__cv-button" onClick={downloadCV}>
             Download CV
           </button>
           <a href={`mailto:${emailAddress}`} className="footer__link">
