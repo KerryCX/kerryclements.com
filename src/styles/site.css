@@ -181,6 +181,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   display: block;
+  margin-top: 0; /* resets default h2 margin when used as a heading */
   margin-bottom: 24px;
   grid-column: 1 / -1; /* spans all columns so it sits above the grid */
 }
