@@ -1,28 +1,9 @@
-import { useEffect } from 'react'
 import styles from './ClaudeStylist.module.css'
 import './../../styles/personal-scope.css'
 import { Nav } from '../../components/Nav'
 import { PersonalFooter } from '../../components/PersonalFooter'
 
-const CANONICAL_URL = 'https://kerryclements.com/personal/claude-personal-stylist'
-
 const ClaudeStylist = () => {
-  useEffect(() => {
-    document.title = 'I Asked Claude to Be My Personal Stylist for a Day — Kerry Clements'
-
-    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    if (!link) {
-      link = document.createElement('link')
-      link.rel = 'canonical'
-      document.head.appendChild(link)
-    }
-    link.href = CANONICAL_URL
-
-    return () => {
-      document.title = 'Kerry Clements'
-    }
-  }, [])
-
   return (
     <div className={`personal-scope ${styles.claudeStylist}`}>
       <Nav />

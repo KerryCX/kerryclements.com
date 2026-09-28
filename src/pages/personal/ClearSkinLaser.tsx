@@ -1,28 +1,9 @@
-import { useEffect } from 'react'
 import styles from './ClearSkinLaser.module.css'
 import './../../styles/personal-scope.css'
 import { Nav } from '../../components/Nav'
 import { PersonalFooter } from '../../components/PersonalFooter'
 
-const CANONICAL_URL = 'https://kerryclements.com/personal/clear-skin-co2-laser'
-
 const ClearSkinLaser = () => {
-  useEffect(() => {
-    document.title = 'Why I Had the CO2 Laser — Kerry Clements'
-
-    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    if (!link) {
-      link = document.createElement('link')
-      link.rel = 'canonical'
-      document.head.appendChild(link)
-    }
-    link.href = CANONICAL_URL
-
-    return () => {
-      document.title = 'Kerry Clements'
-    }
-  }, [])
-
   return (
     <div className={`personal-scope ${styles.clearSkin}`}>
       <Nav />

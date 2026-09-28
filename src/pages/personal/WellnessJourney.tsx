@@ -1,27 +1,8 @@
-import { useEffect } from 'react'
 import styles from './WellnessJourney.module.css'
 import { Nav } from '../../components/Nav'
 import { PersonalFooter } from '../../components/PersonalFooter'
 
-const CANONICAL_URL = 'https://kerryclements.com/personal/wellness-journey'
-
 const WellnessJourney = () => {
-  useEffect(() => {
-    document.title = 'My Wellness Journey: Sleep — Kerry Clements'
-
-    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    if (!link) {
-      link = document.createElement('link')
-      link.rel = 'canonical'
-      document.head.appendChild(link)
-    }
-    link.href = CANONICAL_URL
-
-    return () => {
-      document.title = 'Kerry Clements'
-    }
-  }, [])
-
   return (
     <div className={`personal-scope ${styles.wellness}`}>
       <Nav />

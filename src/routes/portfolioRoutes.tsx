@@ -1,4 +1,5 @@
 import type { RouteObject } from 'react-router-dom'
+import { pageMeta } from './pageMeta'
 import { Portfolio } from '../pages/portfolio'
 import { PeriodicTableCaseStudy } from '../pages/portfolio/PeriodicTableCaseStudy'
 import { KerryClementsComCaseStudy } from '../pages/portfolio/KerryClementsComCaseStudy'
@@ -11,14 +12,14 @@ import { TimeTrackingCaseStudy } from '../pages/portfolio/TimeTrackingCaseStudy'
 import { MeasureForMeasureCaseStudy } from '../pages/portfolio/MeasureForMeasureCaseStudy'
 
 export const portfolioRoutes: RouteObject[] = [
-  { path: '/portfolio', element: <Portfolio /> },
-  { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy /> },
-  { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy /> },
-  { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy /> },
-  { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy /> },
-  { path: '/portfolio/berakhot', element: <BerakhotCaseStudy /> },
-  { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy /> },
-  { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy /> },
-  { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy /> },
-  { path: '/portfolio/measure-for-measure', element: <MeasureForMeasureCaseStudy /> },
+  { path: '/portfolio', element: <Portfolio />, handle: pageMeta.portfolio },
+  { path: '/portfolio/periodic-table', element: <PeriodicTableCaseStudy />, handle: pageMeta.periodicTable },
+  { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy />, handle: pageMeta.kerryClementsCom },
+  { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy />, handle: pageMeta.jobsDone },
+  { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy />, handle: pageMeta.shoppingList },
+  { path: '/portfolio/berakhot', element: <BerakhotCaseStudy />, handle: pageMeta.berakhot },
+  { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy />, handle: pageMeta.cryptoTracker },
+  { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy />, handle: pageMeta.ticTacToe },
+  { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy />, handle: pageMeta.timeTracking },
+  { path: '/portfolio/measure-for-measure', element: <MeasureForMeasureCaseStudy />, handle: pageMeta.measureForMeasure },
 ]

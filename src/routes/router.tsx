@@ -7,18 +7,19 @@ import { personalRoutes } from './personalRoutes'
 import { portfolioRoutes } from './portfolioRoutes'
 import { ExternalRedirect } from '../components/ExternalRedirect'
 import { RootLayout } from './RootLayout'
+import { pageMeta } from './pageMeta'
 
 export const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
-      { path: '/', element: <HomePage /> },
-      { path: '/contact', element: <ContactPage /> },
+      { path: '/', element: <HomePage />, handle: pageMeta.home },
+      { path: '/contact', element: <ContactPage />, handle: pageMeta.contact },
       ...portfolioRoutes,
-      { path: '/apps', element: <Applications /> },
+      { path: '/apps', element: <Applications />, handle: pageMeta.apps },
       ...personalRoutes,
       { path: '/store', element: <ExternalRedirect to="https://store.kerryclements.com" /> },
-      { path: '*', element: <NotFoundPage />, handle: { noCanonical: true } },
+      { path: '*', element: <NotFoundPage />, handle: pageMeta.notFound },
     ],
   },
 ])
