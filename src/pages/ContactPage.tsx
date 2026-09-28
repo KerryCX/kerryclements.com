@@ -39,7 +39,7 @@ const ContactPage = () => {
               <p className="connect-caption">Code for portfolio projects and case studies</p>
             </li>
             <li>
-              <button onClick={downloadCV} className="connect-link connect-link--button">
+              <button type="button" onClick={downloadCV} className="connect-link connect-link--button">
                 Download CV
               </button>
               <p className="connect-caption">Tech experience and skills</p>

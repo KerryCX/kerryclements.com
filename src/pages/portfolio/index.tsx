@@ -17,7 +17,7 @@ export const Portfolio = () => {
               bring UX thinking to front end development.
             </p>
             <div className="hero__links">
-              <button className="footer__cv-button" onClick={downloadCV}>
+              <button type="button" className="footer__cv-button" onClick={downloadCV}>
                 Download CV
               </button>
               <a href={`mailto:${emailAddress}`} className="hero__link">
