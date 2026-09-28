@@ -79,7 +79,7 @@ export const workCards = [
     title: 'Tic Tac Toe',
     description:
       'An early project, refactored. Vanilla JS Tic Tac Toe rebuilt around a proper game state model, fixing a win detection bug and improving the code structure in the process.',
-    tags: ['HTML', 'Javascript', 'CSS', 'WCAG 2.2 AA'],
+    tags: ['HTML', 'JavaScript', 'CSS', 'WCAG 2.2 AA'],
     caseStudyLink: '/portfolio/tic-tac-toe',
     image: '/tic-tac-toe-app.png',
     imageAlt: 'Tic Tac Toe game board showing X and O in a three by three grid',
@@ -170,7 +170,7 @@ export const appCards = [
     title: 'Tic Tac Toe',
     description:
       'An early project, refactored. Vanilla JS Tic Tac Toe rebuilt around a proper game state model, fixing a win detection bug and improving the code structure in the process.',
-    tags: ['HTML', 'Javascript', 'CSS', 'WCAG 2.2 AA'],
+    tags: ['HTML', 'JavaScript', 'CSS', 'WCAG 2.2 AA'],
     appLink: 'https://tictactoe.kerryclements.com',
     image: '/tic-tac-toe-app.png',
     imageAlt: 'Tic Tac Toe game board showing X and O in a three by three grid',
