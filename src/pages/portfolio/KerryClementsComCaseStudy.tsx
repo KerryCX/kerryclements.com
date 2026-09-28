@@ -219,8 +219,13 @@ export const KerryClementsComCaseStudy = () => {
               Move from the Prerender extension to build-time prerendering with React Router
               framework mode, so every visitor gets real HTML, not just crawlers
             </li>
-            <li>Light mode for the main pages</li>
-            <li>Dark mode for the personal pages</li>
+            <li>
+              Consistent colour modes across the site. The main pages are dark and the personal
+              pages are light, so clicking through to Personal is a jarring jump to a bright page.
+              Both will follow the visitor's system setting with{' '}
+              <code>prefers-color-scheme</code>, adding a light mode to the main pages and a dark
+              mode to the personal pages, while the personal pages keep their own palette
+            </li>
           </ul>
 
           <h2>View it</h2>
