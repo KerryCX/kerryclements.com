@@ -169,6 +169,48 @@ export const KerryClementsComCaseStudy = () => {
             <code>#contact</code> anchors in their nav links, updated to <code>/contact</code>{' '}
             individually since each page's nav configuration differs slightly.
           </p>
+          <h2>Discoverability</h2>
+          <p>
+            While looking at other developers' portfolios with an AI tool, I noticed it could
+            read their sites but not mine. All it saw were my meta tags. The site is a client-side
+            React app, so the server sends an empty <code>{'<div id="root">'}</code> and the content
+            only appears once JavaScript runs. Browsers were fine, but anything that doesn't run
+            JavaScript saw a blank page. That includes the AI tools a recruiter might use to
+            summarise a candidate, link previews, and some search crawlers.
+          </p>
+          <p>
+            As a quick fix I enabled Netlify's Prerender extension, which serves fully rendered
+            HTML to crawlers and AI agents while visitors still get the normal app. I checked it by
+            requesting the page with <code>curl</code> and a Googlebot user agent.
+          </p>
+          <p>
+            Reading the rendered HTML for the first time surfaced issues I hadn't spotted in the
+            browser:
+          </p>
+          <ul>
+            <li>
+              Two cards had alt text copied from the Berakhot card, so screen reader users heard a
+              description of the wrong app
+            </li>
+            <li>
+              Every page declared the homepage as its canonical URL, which tells search engines
+              those pages are duplicates of the homepage
+            </li>
+            <li>
+              The Skills column headings were <code>{'<h3>'}</code>s with no <code>{'<h2>'}</code>{' '}
+              above them, so they nested under the last project card in the heading outline
+            </li>
+            <li>Every page shared the same title and description</li>
+          </ul>
+          <p>
+            The alt text and heading fixes were quick. For the rest, I added a root layout route
+            with a <code>SiteMeta</code> component. Each route carries its own title and
+            description in its React Router <code>handle</code>, and <code>SiteMeta</code> renders
+            the <code>{'<title>'}</code>, meta description, canonical, and Open Graph tags. React 19
+            hoists these into <code>{'<head>'}</code> on its own, so no extra library was needed. It
+            also replaced three hand-written <code>useEffect</code> hooks on the personal pages
+            that had been setting the title and canonical directly on the DOM.
+          </p>
           <h2>What's next</h2>
           <ul>
             <li>
@@ -177,6 +219,10 @@ export const KerryClementsComCaseStudy = () => {
             </li>
             <li>Additional case studies as projects are completed</li>
             <li>Scrolling video walkthrough embedded in this case study</li>
+            <li>
+              Move from the Prerender extension to build-time prerendering with React Router
+              framework mode, so every visitor gets real HTML, not just crawlers
+            </li>
           </ul>
 
           <h2>View it</h2>
