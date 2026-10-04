@@ -80,7 +80,7 @@ export const ThemeSwitcher = (): ReactElement => {
               value={value}
               checked={preference === value}
               onChange={() => setPreference(value)}
-              className="visually-hidden"
+              className="theme-switcher__input"
             />
             <Icon />
             <span className="theme-switcher__label">{label}</span>
