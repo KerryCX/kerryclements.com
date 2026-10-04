@@ -1,73 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
 
-/* Personal pages share the main site's colours, so moving between them feels like one site.
-   Differences: in light mode the page is a very warm "paper" white, and the magenta accents
-   and Fraunces headings stay as the personal touch. */
+/* Personal pages use exactly the main site's light and dark colours.
+   The personal tokens are aliases, so the page modules don't need to change.
+   The only personal touch left is the Fraunces display font for headings. */
 .personal-scope {
   --personal-bg: var(--bg-primary);
   --personal-text: var(--text-primary);
   --personal-text-muted: var(--text-secondary);
   --personal-border: var(--border-default);
-  --accent-magenta: #ff4fa8;
-  --accent-magenta-dark: #f590c4; /* the stronger-contrast accent, so lighter on dark */
+  --accent-magenta: var(--accent-rose);
+  --accent-magenta-dark: var(--accent-rose);
   --personal-radius: 8px;
   --font-family-display: 'Fraunces', serif;
 }
 
-:root[data-theme='light'] .personal-scope {
-  --personal-bg: #fff6ed; /* paper */
-  --accent-magenta: #e0218a;
-  --accent-magenta-dark: #9c1568;
-}
-
+/* The personal pages don't sit inside .site, so give the nav the site font to match exactly */
 .personal-scope .nav {
-  background: var(--personal-bg);
-  border-bottom: 1px solid var(--personal-border);
-}
-
-.personal-scope .nav__name {
-  color: var(--personal-text);
-  font-size: 15px;
-}
-
-.personal-scope .nav__links a {
-  color: var(--personal-text);
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.personal-scope .theme-switcher__options,
-.personal-scope .theme-switcher__trigger {
-  border-color: var(--personal-border);
-}
-
-.personal-scope .theme-switcher__options--open {
-  background-color: var(--personal-bg);
-}
-
-.personal-scope .theme-switcher__trigger,
-.personal-scope .theme-switcher__option {
-  color: var(--personal-text-muted);
-}
-
-.personal-scope .theme-switcher__option:has(input:checked) {
-  background-color: var(--personal-border);
-  color: var(--personal-text);
-}
-
-.personal-scope .theme-switcher__trigger:focus-visible,
-.personal-scope .theme-switcher__option:has(input:focus-visible) {
-  outline-color: var(--accent-magenta-dark);
-}
-
-@media (hover: hover) {
-  .personal-scope .theme-switcher__trigger:hover,
-  .personal-scope .theme-switcher__option:hover {
-    color: var(--personal-text);
-  }
-}
-
-.personal-scope .nav__links a:hover {
-  color: var(--accent-magenta-dark);
-  text-decoration: underline;
+  font-family: var(--font-family);
 }
