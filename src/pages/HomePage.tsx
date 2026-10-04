@@ -11,10 +11,12 @@ export default function HomePage() {
         <section className="hero" aria-label="Introduction">
           <div className="hero__content">
             <h1 className="hero__name">Hi, I'm Kerry</h1>
-            <p className="hero__tagline">Front end developer bridging design and code</p>
+            <p className="hero__tagline">
+              Software engineer building accessible, well-tested web applications
+            </p>
             <p className="hero__bio">
-              I started in front end, grew into design, and now I work where they meet. I care about
-              how things look, how they work, and how they're made.
+              I'm a Bristol-based software engineer. The work I enjoy most sits where good code
+              meets good user experience.
             </p>
             <div className="hero__ctas">
               <Link to="/portfolio" className="btn btn--primary">
@@ -29,10 +31,10 @@ export default function HomePage() {
 
         <section className="story" aria-label="About">
           <p className="story__text">
-            I have 3.5 years of experience building production React and TypeScript applications.
-            Over time I grew into design and UX, learning Figma, running accessibility audits, and
-            thinking carefully about the gap between what's designed and what gets built. I work
-            across the full front end stack, from components and tokens to testing and deployment.
+            Over 6 years of commercial software development, most recently 3+ years building
+            production React and TypeScript applications, from data-dense analytics features to REST
+            API integrations. On my own projects I've built APIs in Node.js and Python, set up CI
+            with GitHub Actions, and run full WCAG 2.2 AA accessibility audits.
           </p>
           <ul className="story__skills" aria-label="Skills">
             {homepageSkills.map((skill) => (
@@ -76,7 +78,9 @@ export default function HomePage() {
         </section>
 
         <section className="home-cta" aria-label="Contact">
-          <p className="home-cta__heading">Open to front end and UX roles</p>
+          <p className="home-cta__heading">
+            Open to frontend, full stack and product engineering roles
+          </p>
           <p className="home-cta__sub">Let's talk about what you're building.</p>
           <Link to="/contact" className="btn btn--primary">
             Let's talk

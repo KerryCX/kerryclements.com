@@ -11,10 +11,12 @@ export const Portfolio = () => {
         <section className="hero" aria-label="Introduction">
           <div className="hero__content">
             <h1 className="hero__name">Kerry Clements</h1>
-            <p className="hero__tagline">Front end developer bridging design and code</p>
+            <p className="hero__tagline">
+              Software engineer building accessible, well-tested web applications
+            </p>
             <p className="hero__bio">
-              I started as a front end developer and recently found a passion for design and UX. I
-              bring UX thinking to front end development.
+              Case studies from my own projects, covering React, TypeScript, APIs, testing and
+              accessibility.
             </p>
             <div className="hero__links">
               <button type="button" className="footer__cv-button" onClick={downloadCV}>
