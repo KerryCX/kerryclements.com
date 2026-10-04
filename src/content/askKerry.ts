@@ -4,6 +4,9 @@
 // followUps: the ids of the suggested questions shown after this answer.
 // text: one string, or a list of strings for several paragraphs, e.g.
 //   text: ['First paragraph.', 'Second paragraph.'],
+// link: one link, added to the end of the last paragraph.
+// links: several links, shown together under the answer, e.g.
+//   links: [{ label: 'See all my projects', href: '/portfolio' }, { label: 'GitHub', href: '...' }],
 
 export type AskKerryLink = {
   label: string
@@ -13,10 +16,16 @@ export type AskKerryLink = {
 export type AskKerryAnswer = {
   text: string | string[]
   link?: AskKerryLink
+  links?: AskKerryLink[]
 }
 
 export const paragraphsOf = (answer: AskKerryAnswer): string[] =>
   typeof answer.text === 'string' ? [answer.text] : answer.text
+
+export const linksOf = (answer: AskKerryAnswer): AskKerryLink[] => [
+  ...(answer.link ? [answer.link] : []),
+  ...(answer.links ?? []),
+]
 
 export type AskKerryEntry = {
   id: string

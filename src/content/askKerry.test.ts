@@ -4,6 +4,7 @@ import {
   askKerryFallback,
   askKerryGreeting,
   askKerryStarters,
+  linksOf,
   paragraphsOf,
 } from './askKerry'
 
@@ -34,5 +35,13 @@ describe('askKerry content', () => {
   it('reads one string as one paragraph and a list as several', () => {
     expect(paragraphsOf({ text: 'One.' })).toEqual(['One.'])
     expect(paragraphsOf({ text: ['One.', 'Two.'] })).toEqual(['One.', 'Two.'])
+  })
+
+  it('collects a single link and a list of links together', () => {
+    const portfolio = { label: 'Portfolio', href: '/portfolio' }
+    const gitHub = { label: 'GitHub', href: 'https://github.com/KerryCX' }
+    expect(linksOf({ text: 'One.' })).toEqual([])
+    expect(linksOf({ text: 'One.', link: portfolio })).toEqual([portfolio])
+    expect(linksOf({ text: 'One.', links: [portfolio, gitHub] })).toEqual([portfolio, gitHub])
   })
 })

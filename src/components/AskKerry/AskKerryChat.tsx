@@ -4,6 +4,7 @@ import {
   askKerryFallback,
   askKerryGreeting,
   askKerryStarters,
+  linksOf,
   paragraphsOf,
   type AskKerryAnswer,
   type AskKerryEntry,
@@ -23,7 +24,7 @@ type ChatMessage = {
   id: number
   author: 'kerry' | 'visitor'
   paragraphs: string[]
-  link?: AskKerryLink
+  links: AskKerryLink[]
   // For typed questions: the written question being answered, so a short or vague
   // question like "current" still makes sense next to the answer
   answering?: string
@@ -35,7 +36,7 @@ const allIds = askKerryEntries.map((entry) => entry.id)
 const kerryMessage = (answer: AskKerryAnswer): Omit<ChatMessage, 'id'> => ({
   author: 'kerry',
   paragraphs: paragraphsOf(answer),
-  link: answer.link,
+  links: linksOf(answer),
 })
 
 const findEntries = (ids: string[]): AskKerryEntry[] =>
@@ -84,7 +85,7 @@ export const AskKerryChat = (): ReactElement => {
   const ask = (question: string, knownEntry?: AskKerryEntry): void => {
     if (isTyping) return
 
-    addMessage({ author: 'visitor', paragraphs: [question] })
+    addMessage({ author: 'visitor', paragraphs: [question], links: [] })
     setIsTyping(true)
     setSuggestionIds([])
 
@@ -132,19 +133,33 @@ export const AskKerryChat = (): ReactElement => {
                 <span className={styles.answering}>Answering: {message.answering}</span>
               )}
               {message.paragraphs.map((paragraph, index) => {
-                const isLast = index === message.paragraphs.length - 1
+                // A single link reads as the end of the last sentence
+                const inlineLink =
+                  message.links.length === 1 && index === message.paragraphs.length - 1
+                    ? message.links[0]
+                    : undefined
                 return (
                   <p key={index} className={styles.paragraph}>
                     {paragraph}
-                    {isLast && message.link && (
+                    {inlineLink && (
                       <>
                         {' '}
-                        <a href={message.link.href}>{message.link.label}</a>
+                        <a href={inlineLink.href}>{inlineLink.label}</a>
                       </>
                     )}
                   </p>
                 )
               })}
+              {/* Several links are listed together under the answer */}
+              {message.links.length > 1 && (
+                <ul className={styles.links}>
+                  {message.links.map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href}>{link.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
           {isTyping && (

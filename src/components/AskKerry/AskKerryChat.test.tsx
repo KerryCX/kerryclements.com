@@ -6,6 +6,7 @@ import {
   askKerryEntries,
   askKerryGreeting,
   askKerryStarters,
+  linksOf,
   paragraphsOf,
   type AskKerryAnswer,
 } from '../../content/askKerry'
@@ -123,6 +124,24 @@ describe('AskKerryChat', () => {
     finishTyping()
     paragraphsOf(multiParagraph.answer).forEach((paragraph) => {
       expect(within(conversation()).getByText(paragraph, { exact: false }).tagName).toBe('P')
+    })
+  })
+
+  // Runs once at least one answer in the content has several links
+  const multiLink = askKerryEntries.find((item) => linksOf(item.answer).length > 1)
+  it.runIf(multiLink)('lists every link for an answer with several links', async () => {
+    if (!multiLink) return
+    const user = setup()
+    await user.type(
+      screen.getByRole('textbox', { name: 'Your question' }),
+      `${multiLink.question}{Enter}`
+    )
+    finishTyping()
+    linksOf(multiLink.answer).forEach((link) => {
+      expect(within(conversation()).getByRole('link', { name: link.label })).toHaveAttribute(
+        'href',
+        link.href
+      )
     })
   })
 
