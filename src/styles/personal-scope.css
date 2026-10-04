@@ -39,18 +39,26 @@
   font-size: 15px;
 }
 
-.personal-scope .theme-toggle {
-  color: var(--personal-text);
+.personal-scope .theme-switcher {
   border-color: var(--personal-border);
 }
 
-.personal-scope .theme-toggle:focus-visible {
+.personal-scope .theme-switcher__option {
+  color: var(--personal-text-muted);
+}
+
+.personal-scope .theme-switcher__option:has(input:checked) {
+  background-color: var(--personal-border);
+  color: var(--personal-text);
+}
+
+.personal-scope .theme-switcher__option:has(input:focus-visible) {
   outline-color: var(--accent-magenta-dark);
 }
 
 @media (hover: hover) {
-  .personal-scope .theme-toggle:hover {
-    border-color: var(--accent-magenta);
+  .personal-scope .theme-switcher__option:hover {
+    color: var(--personal-text);
   }
 }
 

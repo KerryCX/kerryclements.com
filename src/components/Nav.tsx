@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { ThemeToggle } from './ThemeToggle'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 type NavLink = {
   label: string
@@ -42,7 +42,7 @@ export const Nav = ({ links = DEFAULT_LINKS }: NavProps) => {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          <ThemeSwitcher />
         </div>
       </nav>
       <dialog

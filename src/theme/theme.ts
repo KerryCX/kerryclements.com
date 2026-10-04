@@ -1,27 +1,33 @@
 // Theme logic shared by useTheme and the tests.
-// The inline script in index.html repeats resolveInitialTheme so the right theme is set
-// before first paint (no flash of the wrong colours). Keep the two in step.
+// The inline script in index.html repeats the "saved choice, else system setting" logic so
+// the right theme is set before first paint (no flash of the wrong colours). Keep them in step.
 
 export type Theme = 'light' | 'dark'
+export type ThemePreference = 'system' | Theme
 
 export const THEME_STORAGE_KEY = 'theme'
 export const LIGHT_SCHEME_QUERY = '(prefers-color-scheme: light)'
 
 const isTheme = (value: unknown): value is Theme => value === 'light' || value === 'dark'
 
-// localStorage can throw (private browsing, blocked storage), so every access is guarded.
-export const getStoredTheme = (): Theme | null => {
+// Nothing saved means "follow the system". localStorage can throw (private browsing,
+// blocked storage), so every access is guarded.
+export const getStoredPreference = (): ThemePreference => {
   try {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
-    return isTheme(stored) ? stored : null
+    return isTheme(stored) ? stored : 'system'
   } catch {
-    return null
+    return 'system'
   }
 }
 
-export const storeTheme = (theme: Theme): void => {
+export const storePreference = (preference: ThemePreference): void => {
   try {
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+    if (preference === 'system') {
+      window.localStorage.removeItem(THEME_STORAGE_KEY)
+    } else {
+      window.localStorage.setItem(THEME_STORAGE_KEY, preference)
+    }
   } catch {
     // Storage unavailable: the choice still applies for this visit
   }
@@ -29,8 +35,6 @@ export const storeTheme = (theme: Theme): void => {
 
 export const getSystemTheme = (): Theme =>
   window.matchMedia(LIGHT_SCHEME_QUERY).matches ? 'light' : 'dark'
-
-export const resolveInitialTheme = (): Theme => getStoredTheme() ?? getSystemTheme()
 
 export const applyTheme = (theme: Theme): void => {
   document.documentElement.dataset.theme = theme

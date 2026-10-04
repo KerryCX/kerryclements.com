@@ -34,13 +34,13 @@ describe('Nav', () => {
     expect(screen.queryByRole('link', { name: 'Portfolio' })).not.toBeInTheDocument()
   })
 
-  it('renders the theme toggle', () => {
+  it('renders the theme switcher', () => {
     render(
       <MemoryRouter>
         <Nav />
       </MemoryRouter>
     )
-    expect(screen.getByRole('button', { name: 'Dark mode' })).toBeInTheDocument()
+    expect(screen.getByRole('group', { name: 'Theme' })).toBeInTheDocument()
   })
 
   it('has an accessible button for viewing the larger photo', () => {
