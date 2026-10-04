@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { AskKerrySection } from '../components/AskKerry/AskKerrySection'
 import { featuredWorkCards, homepageSkills } from '../pages/portfolio/constants'
 
 export default function HomePage() {
@@ -44,6 +45,8 @@ export default function HomePage() {
             ))}
           </ul>
         </section>
+
+        <AskKerrySection />
 
         <section className="featured" aria-label="Featured work">
           <div className="featured__header">
