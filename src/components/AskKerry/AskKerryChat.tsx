@@ -1,0 +1,217 @@
+import { useEffect, useId, useRef, useState, type FormEvent, type ReactElement } from 'react'
+import {
+  askKerryEntries,
+  askKerryFallback,
+  askKerryGreeting,
+  askKerryStarters,
+  linksOf,
+  paragraphsOf,
+  type AskKerryAnswer,
+  type AskKerryEntry,
+  type AskKerryLink,
+} from '../../content/askKerry'
+import { matchQuestion } from '../../askKerry/matchQuestion'
+import { pickSuggestions } from '../../askKerry/pickSuggestions'
+import styles from './AskKerry.module.css'
+
+// A short pause before each answer, so it reads like a conversation
+export const TYPING_DELAY_MS = 500
+
+// Space left above the question when scrolling an answer into view
+const QUESTION_SCROLL_MARGIN = 12
+
+type ChatMessage = {
+  id: number
+  author: 'kerry' | 'visitor'
+  paragraphs: string[]
+  links: AskKerryLink[]
+  // For typed questions: the written question being answered, so a short or vague
+  // question like "current" still makes sense next to the answer
+  answering?: string
+}
+
+const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
+const allIds = askKerryEntries.map((entry) => entry.id)
+
+const kerryMessage = (answer: AskKerryAnswer): Omit<ChatMessage, 'id'> => ({
+  author: 'kerry',
+  paragraphs: paragraphsOf(answer),
+  links: linksOf(answer),
+})
+
+const findEntries = (ids: string[]): AskKerryEntry[] =>
+  ids.flatMap((id) => entriesById.get(id) ?? [])
+
+export const AskKerryChat = (): ReactElement => {
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    { id: 0, ...kerryMessage(askKerryGreeting) },
+  ])
+  const [suggestionIds, setSuggestionIds] = useState<string[]>(askKerryStarters)
+  const [isTyping, setIsTyping] = useState(false)
+  const [draft, setDraft] = useState('')
+
+  const nextMessageId = useRef(1)
+  // Questions already answered in this conversation, so they aren't suggested again
+  const answeredIds = useRef(new Set<string>())
+  const typingTimer = useRef<number | undefined>(undefined)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const logRef = useRef<HTMLOListElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const inputId = useId()
+
+  useEffect(() => () => window.clearTimeout(typingTimer.current), [])
+
+  // While waiting, show the newest message. When an answer arrives, scroll so the question
+  // that was asked sits at the top, and the answer can be read from its start downwards.
+  useEffect(() => {
+    const scrollArea = scrollAreaRef.current
+    const log = logRef.current
+    if (!scrollArea || !log) return
+    const lastMessage = messages[messages.length - 1]
+    if (isTyping || lastMessage.author === 'visitor' || messages.length < 2) {
+      scrollArea.scrollTop = scrollArea.scrollHeight
+      return
+    }
+    const items = log.querySelectorAll<HTMLLIElement>(':scope > li')
+    const question = items[items.length - 2]
+    if (question) scrollArea.scrollTop = question.offsetTop - QUESTION_SCROLL_MARGIN
+  }, [messages, isTyping])
+
+  const addMessage = (message: Omit<ChatMessage, 'id'>): void => {
+    const id = nextMessageId.current++
+    setMessages((current) => [...current, { id, ...message }])
+  }
+
+  const ask = (question: string, knownEntry?: AskKerryEntry): void => {
+    if (isTyping) return
+
+    addMessage({ author: 'visitor', paragraphs: [question], links: [] })
+    setIsTyping(true)
+    setSuggestionIds([])
+
+    const entry = knownEntry ?? matchQuestion(question, askKerryEntries)
+    if (entry) answeredIds.current.add(entry.id)
+    const preferredIds = entry ? entry.followUps : askKerryStarters
+    // Suggestions already show the question, so only typed questions need the reminder
+    const answering = entry && !knownEntry ? entry.question : undefined
+
+    typingTimer.current = window.setTimeout(() => {
+      addMessage({ ...kerryMessage(entry ? entry.answer : askKerryFallback), answering })
+      setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, askKerryStarters, allIds))
+      setIsTyping(false)
+    }, TYPING_DELAY_MS)
+  }
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+    const question = draft.trim()
+    if (!question || isTyping) return
+    ask(question)
+    setDraft('')
+  }
+
+  const handleSuggestion = (entry: AskKerryEntry): void => {
+    ask(entry.question, entry)
+    // The suggestion buttons are replaced, so keep focus somewhere useful
+    inputRef.current?.focus()
+  }
+
+  return (
+    <div className={styles.chat}>
+      {/* Messages and suggestions scroll together, so a long answer gets the full height */}
+      <div className={styles.scrollArea} ref={scrollAreaRef}>
+        <ol className={styles.log} ref={logRef} aria-live="polite" aria-label="Conversation">
+          {messages.map((message) => (
+            <li
+              key={message.id}
+              className={`${styles.message} ${
+                message.author === 'kerry' ? styles.messageKerry : styles.messageVisitor
+              }`}
+            >
+              <span className={styles.author}>{message.author === 'kerry' ? 'Kerry' : 'You'}</span>
+              {message.answering && (
+                <span className={styles.answering}>Answering: {message.answering}</span>
+              )}
+              {message.paragraphs.map((paragraph, index) => {
+                // A single link reads as the end of the last sentence
+                const inlineLink =
+                  message.links.length === 1 && index === message.paragraphs.length - 1
+                    ? message.links[0]
+                    : undefined
+                return (
+                  <p key={index} className={styles.paragraph}>
+                    {paragraph}
+                    {inlineLink && (
+                      <>
+                        {' '}
+                        <a href={inlineLink.href}>{inlineLink.label}</a>
+                      </>
+                    )}
+                  </p>
+                )
+              })}
+              {/* Several links are listed together under the answer */}
+              {message.links.length > 1 && (
+                <ul className={styles.links}>
+                  {message.links.map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href}>{link.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+          {isTyping && (
+            <li className={`${styles.message} ${styles.messageKerry}`} aria-hidden="true">
+              <span className={styles.typing} data-testid="typing-indicator">
+                <span />
+                <span />
+                <span />
+              </span>
+            </li>
+          )}
+        </ol>
+
+        {suggestionIds.length > 0 && (
+          <ul className={styles.suggestions} aria-label="Suggested questions">
+            {findEntries(suggestionIds).map((entry) => (
+              <li key={entry.id}>
+                <button
+                  type="button"
+                  className={styles.suggestion}
+                  onClick={() => handleSuggestion(entry)}
+                >
+                  {entry.question}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className="visually-hidden" htmlFor={inputId}>
+          Your question
+        </label>
+        <input
+          ref={inputRef}
+          id={inputId}
+          className={styles.input}
+          type="text"
+          maxLength={200}
+          autoComplete="off"
+          placeholder="Ask a question…"
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+        />
+        <button type="submit" className={styles.askButton}>
+          Ask
+        </button>
+      </form>
+      <p className={styles.note}>
+        Not AI. Answers are matched to questions I've written, so it may not know everything.
+      </p>
+    </div>
+  )
+}
