@@ -14,6 +14,9 @@ import styles from './AskKerry.module.css'
 // A short pause before each answer, so it reads like a conversation
 export const TYPING_DELAY_MS = 500
 
+// Space left above the question when scrolling an answer into view
+const QUESTION_SCROLL_MARGIN = 12
+
 type ChatMessage = {
   id: number
   author: 'kerry' | 'visitor'
@@ -42,16 +45,27 @@ export const AskKerryChat = (): ReactElement => {
   // Questions already answered in this conversation, so they aren't suggested again
   const answeredIds = useRef(new Set<string>())
   const typingTimer = useRef<number | undefined>(undefined)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
   const logRef = useRef<HTMLOListElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const inputId = useId()
 
   useEffect(() => () => window.clearTimeout(typingTimer.current), [])
 
-  // Keep the latest message in view
+  // While waiting, show the newest message. When an answer arrives, scroll so the question
+  // that was asked sits at the top, and the answer can be read from its start downwards.
   useEffect(() => {
+    const scrollArea = scrollAreaRef.current
     const log = logRef.current
-    if (log) log.scrollTop = log.scrollHeight
+    if (!scrollArea || !log) return
+    const lastMessage = messages[messages.length - 1]
+    if (isTyping || lastMessage.author === 'visitor' || messages.length < 2) {
+      scrollArea.scrollTop = scrollArea.scrollHeight
+      return
+    }
+    const items = log.querySelectorAll<HTMLLIElement>(':scope > li')
+    const question = items[items.length - 2]
+    if (question) scrollArea.scrollTop = question.offsetTop - QUESTION_SCROLL_MARGIN
   }, [messages, isTyping])
 
   const addMessage = (message: Omit<ChatMessage, 'id'>): void => {
@@ -95,53 +109,56 @@ export const AskKerryChat = (): ReactElement => {
 
   return (
     <div className={styles.chat}>
-      <ol className={styles.log} ref={logRef} aria-live="polite" aria-label="Conversation">
-        {messages.map((message) => (
-          <li
-            key={message.id}
-            className={`${styles.message} ${
-              message.author === 'kerry' ? styles.messageKerry : styles.messageVisitor
-            }`}
-          >
-            <span className={styles.author}>{message.author === 'kerry' ? 'Kerry' : 'You'}</span>
-            {message.answering && (
-              <span className={styles.answering}>Answering: {message.answering}</span>
-            )}
-            {message.text}
-            {message.link && (
-              <>
-                {' '}
-                <a href={message.link.href}>{message.link.label}</a>
-              </>
-            )}
-          </li>
-        ))}
-        {isTyping && (
-          <li className={`${styles.message} ${styles.messageKerry}`} aria-hidden="true">
-            <span className={styles.typing} data-testid="typing-indicator">
-              <span />
-              <span />
-              <span />
-            </span>
-          </li>
-        )}
-      </ol>
-
-      {suggestionIds.length > 0 && (
-        <ul className={styles.suggestions} aria-label="Suggested questions">
-          {findEntries(suggestionIds).map((entry) => (
-            <li key={entry.id}>
-              <button
-                type="button"
-                className={styles.suggestion}
-                onClick={() => handleSuggestion(entry)}
-              >
-                {entry.question}
-              </button>
+      {/* Messages and suggestions scroll together, so a long answer gets the full height */}
+      <div className={styles.scrollArea} ref={scrollAreaRef}>
+        <ol className={styles.log} ref={logRef} aria-live="polite" aria-label="Conversation">
+          {messages.map((message) => (
+            <li
+              key={message.id}
+              className={`${styles.message} ${
+                message.author === 'kerry' ? styles.messageKerry : styles.messageVisitor
+              }`}
+            >
+              <span className={styles.author}>{message.author === 'kerry' ? 'Kerry' : 'You'}</span>
+              {message.answering && (
+                <span className={styles.answering}>Answering: {message.answering}</span>
+              )}
+              {message.text}
+              {message.link && (
+                <>
+                  {' '}
+                  <a href={message.link.href}>{message.link.label}</a>
+                </>
+              )}
             </li>
           ))}
-        </ul>
-      )}
+          {isTyping && (
+            <li className={`${styles.message} ${styles.messageKerry}`} aria-hidden="true">
+              <span className={styles.typing} data-testid="typing-indicator">
+                <span />
+                <span />
+                <span />
+              </span>
+            </li>
+          )}
+        </ol>
+
+        {suggestionIds.length > 0 && (
+          <ul className={styles.suggestions} aria-label="Suggested questions">
+            {findEntries(suggestionIds).map((entry) => (
+              <li key={entry.id}>
+                <button
+                  type="button"
+                  className={styles.suggestion}
+                  onClick={() => handleSuggestion(entry)}
+                >
+                  {entry.question}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className="visually-hidden" htmlFor={inputId}>

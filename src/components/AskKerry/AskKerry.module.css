@@ -8,15 +8,20 @@
   min-height: 0; /* lets the log scroll inside the panel */
 }
 
+.scrollArea {
+  position: relative; /* so message offsetTop is measured from here, for scrolling */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
 .log {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 12px;
   margin: 0;
   padding: 20px;
   list-style: none;
-  overflow-y: auto;
 }
 
 .message {
@@ -215,8 +220,8 @@
 .panel {
   display: flex;
   flex-direction: column;
-  width: min(380px, calc(100vw - 32px));
-  max-height: min(560px, calc(100vh - 120px));
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(720px, calc(100vh - 120px));
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 12px;
