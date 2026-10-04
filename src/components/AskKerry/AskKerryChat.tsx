@@ -8,6 +8,7 @@ import {
   type AskKerryLink,
 } from '../../content/askKerry'
 import { matchQuestion } from '../../askKerry/matchQuestion'
+import { pickSuggestions } from '../../askKerry/pickSuggestions'
 import styles from './AskKerry.module.css'
 
 // A short pause before each answer, so it reads like a conversation
@@ -21,6 +22,7 @@ type ChatMessage = {
 }
 
 const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
+const allIds = askKerryEntries.map((entry) => entry.id)
 
 const findEntries = (ids: string[]): AskKerryEntry[] =>
   ids.flatMap((id) => entriesById.get(id) ?? [])
@@ -34,6 +36,8 @@ export const AskKerryChat = (): ReactElement => {
   const [draft, setDraft] = useState('')
 
   const nextMessageId = useRef(1)
+  // Questions already answered in this conversation, so they aren't suggested again
+  const answeredIds = useRef(new Set<string>())
   const typingTimer = useRef<number | undefined>(undefined)
   const logRef = useRef<HTMLOListElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -60,9 +64,12 @@ export const AskKerryChat = (): ReactElement => {
     setSuggestionIds([])
 
     const entry = knownEntry ?? matchQuestion(question, askKerryEntries)
+    if (entry) answeredIds.current.add(entry.id)
+    const preferredIds = entry ? entry.followUps : askKerryStarters
+
     typingTimer.current = window.setTimeout(() => {
       addMessage({ author: 'kerry', ...(entry ? entry.answer : askKerryFallback) })
-      setSuggestionIds(entry ? entry.followUps : askKerryStarters)
+      setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, askKerryStarters, allIds))
       setIsTyping(false)
     }, TYPING_DELAY_MS)
   }

@@ -94,7 +94,7 @@ describe('AskKerryChat', () => {
     const user = setup()
     await user.type(
       screen.getByRole('textbox', { name: 'Your question' }),
-      "What's your favourite colour?{Enter}"
+      'Do you like pineapple on pizza?{Enter}'
     )
     finishTyping()
 
@@ -104,6 +104,23 @@ describe('AskKerryChat', () => {
     askKerryStarters.forEach((id) => {
       expect(screen.getByRole('button', { name: entry(id).question })).toBeInTheDocument()
     })
+  })
+
+  it('does not suggest a question that has already been answered', async () => {
+    const user = setup()
+    const who = entry('who')
+    await user.click(screen.getByRole('button', { name: who.question }))
+    finishTyping()
+
+    // "Who are you?" is a starter, and the fallback shows the starters again
+    await user.type(
+      screen.getByRole('textbox', { name: 'Your question' }),
+      'pineapple on pizza{Enter}'
+    )
+    finishTyping()
+
+    const suggestions = within(screen.getByRole('list', { name: 'Suggested questions' }))
+    expect(suggestions.queryByRole('button', { name: who.question })).not.toBeInTheDocument()
   })
 
   it('ignores an empty question', async () => {

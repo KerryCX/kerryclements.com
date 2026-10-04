@@ -37,7 +37,7 @@ describe('matchQuestion', () => {
   })
 
   it('returns null when nothing matches', () => {
-    expect(matchId("what's your favourite colour?")).toBeNull()
+    expect(matchId('do you like pineapple on pizza?')).toBeNull()
   })
 
   it('returns null for empty or filler-only input', () => {
