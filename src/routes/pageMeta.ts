@@ -28,6 +28,11 @@ export const pageMeta = {
     description:
       'Open to front end and UX roles. Get in touch with Kerry Clements by email, LinkedIn, or GitHub, or download her CV.',
   },
+  cv: {
+    title: 'CV - Kerry Clements',
+    description:
+      'CV for Kerry Clements, a front end developer with 3+ years of commercial React and TypeScript experience and a focus on UX and accessibility.',
+  },
   notFound: {
     title: 'Page not found - Kerry Clements',
     description: "This page doesn't exist, or it may have moved.",
