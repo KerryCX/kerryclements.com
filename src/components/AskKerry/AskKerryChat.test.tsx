@@ -83,6 +83,22 @@ describe('AskKerryChat', () => {
     expect(screen.getByRole('textbox', { name: 'Your question' })).toHaveValue('')
   })
 
+  it('shows which question is being answered when the question was typed', async () => {
+    const user = setup()
+    await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'remote{Enter}')
+    finishTyping()
+    expect(
+      within(conversation()).getByText(`Answering: ${entry('roles').question}`)
+    ).toBeInTheDocument()
+  })
+
+  it('does not repeat the question when a suggestion was picked', async () => {
+    const user = setup()
+    await user.click(screen.getByRole('button', { name: entry('who').question }))
+    finishTyping()
+    expect(within(conversation()).queryByText(/^Answering:/)).not.toBeInTheDocument()
+  })
+
   it('submits with the Enter key', async () => {
     const user = setup()
     await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'tech stack{Enter}')

@@ -54,6 +54,14 @@
   color: var(--text-tertiary);
 }
 
+.answering {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--font-size-label);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 /* Typing indicator: three dots that pulse in turn */
 .typing {
   display: inline-flex;

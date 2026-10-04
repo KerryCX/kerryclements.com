@@ -19,6 +19,9 @@ type ChatMessage = {
   author: 'kerry' | 'visitor'
   text: string
   link?: AskKerryLink
+  // For typed questions: the written question being answered, so a short or vague
+  // question like "current" still makes sense next to the answer
+  answering?: string
 }
 
 const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
@@ -66,9 +69,11 @@ export const AskKerryChat = (): ReactElement => {
     const entry = knownEntry ?? matchQuestion(question, askKerryEntries)
     if (entry) answeredIds.current.add(entry.id)
     const preferredIds = entry ? entry.followUps : askKerryStarters
+    // Suggestions already show the question, so only typed questions need the reminder
+    const answering = entry && !knownEntry ? entry.question : undefined
 
     typingTimer.current = window.setTimeout(() => {
-      addMessage({ author: 'kerry', ...(entry ? entry.answer : askKerryFallback) })
+      addMessage({ author: 'kerry', ...(entry ? entry.answer : askKerryFallback), answering })
       setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, askKerryStarters, allIds))
       setIsTyping(false)
     }, TYPING_DELAY_MS)
@@ -99,6 +104,9 @@ export const AskKerryChat = (): ReactElement => {
             }`}
           >
             <span className={styles.author}>{message.author === 'kerry' ? 'Kerry' : 'You'}</span>
+            {message.answering && (
+              <span className={styles.answering}>Answering: {message.answering}</span>
+            )}
             {message.text}
             {message.link && (
               <>
