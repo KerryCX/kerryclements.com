@@ -5,9 +5,9 @@ export type PageMeta = {
 }
 
 export const siteMeta: PageMeta = {
-  title: 'Kerry Clements - Front End Developer & UX Portfolio',
+  title: 'Kerry Clements - Software Engineer Portfolio',
   description:
-    'Front end developer bridging design and code. Portfolio of React/TypeScript projects with case studies on accessibility, design systems, and UX decisions.',
+    'Software engineer building accessible, well-tested web applications. React, TypeScript and Node.js projects covering accessibility, testing and APIs.',
 }
 
 // One entry per route. Titles follow "Page - Kerry Clements"; descriptions stay under about 160 characters.
@@ -16,7 +16,7 @@ export const pageMeta = {
   portfolio: {
     title: 'Portfolio - Kerry Clements',
     description:
-      'Case studies from front end developer Kerry Clements. React and TypeScript projects covering accessibility, design systems, and UX decisions.',
+      'Case studies from software engineer Kerry Clements. React, TypeScript and Node.js projects covering accessibility, testing, APIs and design systems.',
   },
   apps: {
     title: 'Apps - Kerry Clements',
@@ -26,12 +26,12 @@ export const pageMeta = {
   contact: {
     title: 'Contact - Kerry Clements',
     description:
-      'Open to front end and UX roles. Get in touch with Kerry Clements by email, LinkedIn, or GitHub, or download her CV.',
+      'Open to frontend, full stack and product engineering roles. Get in touch with Kerry Clements by email, LinkedIn, or GitHub, or download her CV.',
   },
   cv: {
     title: 'CV - Kerry Clements',
     description:
-      'CV for Kerry Clements, a front end developer with 3+ years of commercial React and TypeScript experience and a focus on UX and accessibility.',
+      'CV for Kerry Clements, a software engineer with over 6 years of commercial experience, most recently in React and TypeScript, with a focus on accessibility.',
   },
   notFound: {
     title: 'Page not found - Kerry Clements',
@@ -47,7 +47,7 @@ export const pageMeta = {
   kerryClementsCom: {
     title: 'kerryclements.com case study - Kerry Clements',
     description:
-      'How I designed my portfolio in Figma with a token-based design system and built it in React and TypeScript to show front end craft and UX thinking.',
+      'How I designed my portfolio in Figma with a token-based design system and built it in React and TypeScript, with CI, tests and accessibility built in.',
   },
   jobsDone: {
     title: 'Jobs Done case study - Kerry Clements',

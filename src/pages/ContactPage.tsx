@@ -12,8 +12,9 @@ const ContactPage = () => {
           <span className="section-label">Contact</span>
           <h1 className="hero__name">Let's Talk</h1>
           <p className="hero__tagline">
-            Open to Front End and UX roles. Happy to chat about opportunities, collaborations, or
-            anything portfolio-related.
+            Open to frontend, full stack and product engineering roles in Bristol or remote across
+            the UK. Happy to chat about opportunities, collaborations, or anything
+            portfolio-related.
           </p>
         </section>
 

@@ -17,16 +17,18 @@ export const KerryClementsComCaseStudy = () => {
 
           <h2>Overview</h2>
           <p>
-            A personal portfolio site designed to demonstrate both front end craft and UX thinking.
-            Built with React and TypeScript, designed in Figma with a token-based design system, and
-            deployed on Netlify.
+            A personal portfolio site, built to show engineering craft and care for the people using
+            it. Built with React and TypeScript, designed in Figma with a token-based design system,
+            and deployed on Netlify.
           </p>
 
           <h2>The brief</h2>
           <p>
-            Between roles and actively looking for front end and UX positions, I needed a portfolio
-            that reflected my positioning: a front end developer who brings UX thinking to their
-            work. The site needed to demonstrate both skills, not just list them.
+            When I built this site I was between roles and positioning myself for front end and UX
+            positions, so I needed a portfolio that showed a front end developer who brings UX
+            thinking to their work. The site needed to demonstrate both skills, not just list them.
+            I've since broadened my focus to software engineering roles, but those foundations still
+            shape how I work.
           </p>
 
           <h2>Design decisions</h2>
@@ -211,6 +213,40 @@ export const KerryClementsComCaseStudy = () => {
             also replaced three hand-written <code>useEffect</code> hooks on the personal pages that
             had been setting the title and canonical directly on the DOM.
           </p>
+          <h2>Light and dark themes</h2>
+          <p>
+            The site launched dark only, while the personal pages had a cream light theme. Clicking
+            through to Personal was a jarring jump from near-black to near-white, and nothing
+            followed the visitor's own system setting.
+          </p>
+          <p>
+            I added a light theme and a theme switcher in the nav with three options: System, Light
+            and Dark. System is the default and follows the device, even if it changes while the
+            page is open. Choosing Light or Dark saves that choice on the device. A small inline
+            script in <code>index.html</code> sets the theme before the first paint, so there is no
+            flash of the wrong colours.
+          </p>
+          <p>
+            The switcher is a radio group inside a <code>{'<fieldset>'}</code>, so screen readers
+            announce it as a group and the arrow keys move between options. On small screens it
+            collapses into a single button that opens a dropdown with text labels. A Stark scan
+            flagged the options for target size, because the real radio inputs were visually hidden
+            at 1px. Stretching the invisible inputs over each 28px option fixed it.
+          </p>
+          <p>
+            My first light theme was a straight inversion of the dark one, and it felt empty: a pale
+            grey page, white cards, and nothing defining the space. Dark mode gets its depth from
+            contrast, but light mode needed structure. I moved to a warm off-white palette and added
+            three light-only tokens: a card shadow, a nav shadow and a soft rose wash at the top of
+            each page. They are set to <code>none</code> in dark mode, so the dark theme is
+            unchanged. The personal pages now use the same colours, so moving between pages feels
+            like one site.
+          </p>
+          <p>
+            With both themes in place, the generous spacing stood out more. I replaced the hardcoded
+            values with three spacing tokens and tightened the vertical rhythm on every page.
+          </p>
+
           <h2>What's next</h2>
           <ul>
             <li>Additional case studies as projects are completed</li>
@@ -218,13 +254,6 @@ export const KerryClementsComCaseStudy = () => {
             <li>
               Move from the Prerender extension to build-time prerendering with React Router
               framework mode, so every visitor gets real HTML, not just crawlers
-            </li>
-            <li>
-              Consistent colour modes across the site. The main pages are dark and the personal
-              pages are light, so clicking through to Personal is a jarring jump to a bright page.
-              Both will follow the visitor's system setting with{' '}
-              <code>prefers-color-scheme</code>, adding a light mode to the main pages and a dark
-              mode to the personal pages, while the personal pages keep their own palette
             </li>
           </ul>
 
