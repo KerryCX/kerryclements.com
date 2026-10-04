@@ -17,16 +17,18 @@ export const KerryClementsComCaseStudy = () => {
 
           <h2>Overview</h2>
           <p>
-            A personal portfolio site designed to demonstrate both front end craft and UX thinking.
-            Built with React and TypeScript, designed in Figma with a token-based design system, and
-            deployed on Netlify.
+            A personal portfolio site, built to show engineering craft and care for the people using
+            it. Built with React and TypeScript, designed in Figma with a token-based design system,
+            and deployed on Netlify.
           </p>
 
           <h2>The brief</h2>
           <p>
-            Between roles and actively looking for front end and UX positions, I needed a portfolio
-            that reflected my positioning: a front end developer who brings UX thinking to their
-            work. The site needed to demonstrate both skills, not just list them.
+            When I built this site I was between roles and positioning myself for front end and UX
+            positions, so I needed a portfolio that showed a front end developer who brings UX
+            thinking to their work. The site needed to demonstrate both skills, not just list them.
+            I've since broadened my focus to software engineering roles, but those foundations still
+            shape how I work.
           </p>
 
           <h2>Design decisions</h2>
@@ -222,9 +224,9 @@ export const KerryClementsComCaseStudy = () => {
             <li>
               Consistent colour modes across the site. The main pages are dark and the personal
               pages are light, so clicking through to Personal is a jarring jump to a bright page.
-              Both will follow the visitor's system setting with{' '}
-              <code>prefers-color-scheme</code>, adding a light mode to the main pages and a dark
-              mode to the personal pages, while the personal pages keep their own palette
+              Both will follow the visitor's system setting with <code>prefers-color-scheme</code>,
+              adding a light mode to the main pages and a dark mode to the personal pages, while the
+              personal pages keep their own palette
             </li>
           </ul>
 
