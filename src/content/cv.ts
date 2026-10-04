@@ -47,7 +47,7 @@ export const cv: Cv = {
   name: 'Kerry Clements',
   location: 'Bristol, UK',
   profile:
-    'Front-end leaning software engineer with 3+ years of commercial React and TypeScript experience, building data-dense features for a workplace analytics product in a small cross-functional team. Comfortable owning work end to end: taking partly-formed requirements, working them through with the people who raised them, and shipping tested features with Jest and Cypress. On personal projects has built REST APIs in Node.js/Express and Python/FastAPI, and a serverless API proxy. Strong interest in UI/UX, currently completing the Google UX Design Professional Certificate, with a consistent focus on usability and accessibility (WCAG 2.2 AA). Uses AI tools daily to work faster.',
+    'Software engineer with over 6 years of commercial software development, most recently 3+ years building production React and TypeScript applications, including data-dense features for a workplace analytics product in a small cross-functional team. Comfortable owning work end to end: taking partly-formed requirements, working them through with the people who raised them, and shipping tested features with Jest and Cypress. On personal projects has built REST APIs in Node.js/Express and Python/FastAPI, and a serverless API proxy. Strong interest in UI/UX, currently completing the Google UX Design Professional Certificate, with a consistent focus on usability and accessibility (WCAG 2.2 AA). Uses AI tools daily to work faster.',
   skills: [
     {
       heading: 'Technical',
