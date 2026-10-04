@@ -20,16 +20,12 @@ type ChatMessage = {
   link?: AskKerryLink
 }
 
-type AskKerryChatProps = {
-  variant?: 'inline' | 'panel'
-}
-
 const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
 
 const findEntries = (ids: string[]): AskKerryEntry[] =>
   ids.flatMap((id) => entriesById.get(id) ?? [])
 
-export const AskKerryChat = ({ variant = 'inline' }: AskKerryChatProps): ReactElement => {
+export const AskKerryChat = (): ReactElement => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { id: 0, author: 'kerry', ...askKerryGreeting },
   ])
@@ -86,7 +82,7 @@ export const AskKerryChat = ({ variant = 'inline' }: AskKerryChatProps): ReactEl
   }
 
   return (
-    <div className={`${styles.chat} ${variant === 'panel' ? styles.chatPanel : ''}`}>
+    <div className={styles.chat}>
       <ol className={styles.log} ref={logRef} aria-live="polite" aria-label="Conversation">
         {messages.map((message) => (
           <li

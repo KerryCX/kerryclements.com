@@ -1,45 +1,18 @@
-/* Ask about Kerry: Home section, chat, and the floating launcher on other pages */
-
-/* Home section */
-.section {
-  padding: var(--space-section) 120px;
-  border-top: 1px solid var(--border-default);
-}
-
-.sectionTitle {
-  font-size: var(--font-size-heading);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 8px;
-}
-
-.sectionIntro {
-  font-size: var(--font-size-body);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0 0 24px;
-}
-
-.section .chat {
-  max-width: 720px;
-}
+/* Ask about Kerry: floating launcher and chat panel, on every page */
 
 /* Chat */
 .chat {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
+  min-height: 0; /* lets the log scroll inside the panel */
 }
 
 .log {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 12px;
-  max-height: 420px;
   margin: 0;
   padding: 20px;
   list-style: none;
@@ -277,25 +250,7 @@
   cursor: pointer;
 }
 
-/* In the panel the chat fills the space and the log scrolls */
-.chatPanel {
-  flex: 1;
-  min-height: 0;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.chatPanel .log {
-  flex: 1;
-  max-height: none;
-}
-
 @media (max-width: 599px) {
-  .section {
-    padding: var(--space-section) 20px;
-  }
-
   .message {
     max-width: 92%;
   }

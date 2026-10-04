@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactEleme
 import { AskKerryChat } from './AskKerryChat'
 import styles from './AskKerry.module.css'
 
-// Floating "Ask about Kerry" button for pages other than Home.
+// Floating "Ask about Kerry" button, shown on every page.
 // The panel stays mounted while closed (just hidden), so the conversation is kept.
 export const AskKerryLauncher = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
@@ -51,7 +51,7 @@ export const AskKerryLauncher = (): ReactElement => {
             </svg>
           </button>
         </div>
-        <AskKerryChat variant="panel" />
+        <AskKerryChat />
       </div>
 
       <button

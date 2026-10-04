@@ -20,13 +20,8 @@ const renderAt = (path: string): void => {
 }
 
 describe('RootLayout', () => {
-  it('shows the floating Ask about Kerry button on pages other than Home', () => {
-    renderAt('/cv')
+  it.each(['/', '/cv'])('shows the floating Ask about Kerry button on %s', (path) => {
+    renderAt(path)
     expect(screen.getByRole('button', { name: 'Ask about Kerry' })).toBeInTheDocument()
-  })
-
-  it('leaves it off Home, which has its own Ask about Kerry section', () => {
-    renderAt('/')
-    expect(screen.queryByRole('button', { name: 'Ask about Kerry' })).not.toBeInTheDocument()
   })
 })
