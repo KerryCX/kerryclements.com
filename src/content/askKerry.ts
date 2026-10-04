@@ -2,6 +2,8 @@
 // To change an answer, edit the text here. Keep answers short enough for a chat bubble.
 // keywords: extra words a visitor might type that should lead to this answer.
 // followUps: the ids of the suggested questions shown after this answer.
+// text: one string, or a list of strings for several paragraphs, e.g.
+//   text: ['First paragraph.', 'Second paragraph.'],
 
 export type AskKerryLink = {
   label: string
@@ -9,9 +11,12 @@ export type AskKerryLink = {
 }
 
 export type AskKerryAnswer = {
-  text: string
+  text: string | string[]
   link?: AskKerryLink
 }
+
+export const paragraphsOf = (answer: AskKerryAnswer): string[] =>
+  typeof answer.text === 'string' ? [answer.text] : answer.text
 
 export type AskKerryEntry = {
   id: string

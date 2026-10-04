@@ -51,6 +51,14 @@
   color: var(--accent-rose);
 }
 
+.paragraph {
+  margin: 0 0 10px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
 .author {
   display: block;
   margin-bottom: 4px;

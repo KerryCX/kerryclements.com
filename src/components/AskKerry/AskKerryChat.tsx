@@ -4,6 +4,8 @@ import {
   askKerryFallback,
   askKerryGreeting,
   askKerryStarters,
+  paragraphsOf,
+  type AskKerryAnswer,
   type AskKerryEntry,
   type AskKerryLink,
 } from '../../content/askKerry'
@@ -20,7 +22,7 @@ const QUESTION_SCROLL_MARGIN = 12
 type ChatMessage = {
   id: number
   author: 'kerry' | 'visitor'
-  text: string
+  paragraphs: string[]
   link?: AskKerryLink
   // For typed questions: the written question being answered, so a short or vague
   // question like "current" still makes sense next to the answer
@@ -30,12 +32,18 @@ type ChatMessage = {
 const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
 const allIds = askKerryEntries.map((entry) => entry.id)
 
+const kerryMessage = (answer: AskKerryAnswer): Omit<ChatMessage, 'id'> => ({
+  author: 'kerry',
+  paragraphs: paragraphsOf(answer),
+  link: answer.link,
+})
+
 const findEntries = (ids: string[]): AskKerryEntry[] =>
   ids.flatMap((id) => entriesById.get(id) ?? [])
 
 export const AskKerryChat = (): ReactElement => {
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { id: 0, author: 'kerry', ...askKerryGreeting },
+    { id: 0, ...kerryMessage(askKerryGreeting) },
   ])
   const [suggestionIds, setSuggestionIds] = useState<string[]>(askKerryStarters)
   const [isTyping, setIsTyping] = useState(false)
@@ -76,7 +84,7 @@ export const AskKerryChat = (): ReactElement => {
   const ask = (question: string, knownEntry?: AskKerryEntry): void => {
     if (isTyping) return
 
-    addMessage({ author: 'visitor', text: question })
+    addMessage({ author: 'visitor', paragraphs: [question] })
     setIsTyping(true)
     setSuggestionIds([])
 
@@ -87,7 +95,7 @@ export const AskKerryChat = (): ReactElement => {
     const answering = entry && !knownEntry ? entry.question : undefined
 
     typingTimer.current = window.setTimeout(() => {
-      addMessage({ author: 'kerry', ...(entry ? entry.answer : askKerryFallback), answering })
+      addMessage({ ...kerryMessage(entry ? entry.answer : askKerryFallback), answering })
       setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, askKerryStarters, allIds))
       setIsTyping(false)
     }, TYPING_DELAY_MS)
@@ -123,13 +131,20 @@ export const AskKerryChat = (): ReactElement => {
               {message.answering && (
                 <span className={styles.answering}>Answering: {message.answering}</span>
               )}
-              {message.text}
-              {message.link && (
-                <>
-                  {' '}
-                  <a href={message.link.href}>{message.link.label}</a>
-                </>
-              )}
+              {message.paragraphs.map((paragraph, index) => {
+                const isLast = index === message.paragraphs.length - 1
+                return (
+                  <p key={index} className={styles.paragraph}>
+                    {paragraph}
+                    {isLast && message.link && (
+                      <>
+                        {' '}
+                        <a href={message.link.href}>{message.link.label}</a>
+                      </>
+                    )}
+                  </p>
+                )
+              })}
             </li>
           ))}
           {isTyping && (

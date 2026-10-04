@@ -2,7 +2,15 @@ import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { AskKerryChat, TYPING_DELAY_MS } from './AskKerryChat'
-import { askKerryEntries, askKerryGreeting, askKerryStarters } from '../../content/askKerry'
+import {
+  askKerryEntries,
+  askKerryGreeting,
+  askKerryStarters,
+  paragraphsOf,
+  type AskKerryAnswer,
+} from '../../content/askKerry'
+
+const firstParagraph = (answer: AskKerryAnswer): string => paragraphsOf(answer)[0]
 
 const entry = (id: string) => {
   const found = askKerryEntries.find((item) => item.id === id)
@@ -35,7 +43,7 @@ describe('AskKerryChat', () => {
 
   it('starts with a greeting and the starter questions', () => {
     setup()
-    expect(within(conversation()).getByText(askKerryGreeting.text)).toBeInTheDocument()
+    expect(within(conversation()).getByText(firstParagraph(askKerryGreeting))).toBeInTheDocument()
     const suggestions = within(screen.getByRole('list', { name: 'Suggested questions' }))
     expect(suggestions.getAllByRole('button')).toHaveLength(askKerryStarters.length)
   })
@@ -53,11 +61,13 @@ describe('AskKerryChat', () => {
 
     expect(within(conversation()).getByText(experience.question)).toBeInTheDocument()
     expect(screen.getByTestId('typing-indicator')).toBeInTheDocument()
-    expect(within(conversation()).queryByText(experience.answer.text)).not.toBeInTheDocument()
+    expect(
+      within(conversation()).queryByText(firstParagraph(experience.answer))
+    ).not.toBeInTheDocument()
 
     finishTyping()
 
-    expect(within(conversation()).getByText(experience.answer.text)).toBeInTheDocument()
+    expect(within(conversation()).getByText(firstParagraph(experience.answer))).toBeInTheDocument()
     expect(screen.queryByTestId('typing-indicator')).not.toBeInTheDocument()
     experience.followUps.forEach((id) => {
       expect(screen.getByRole('button', { name: entry(id).question })).toBeInTheDocument()
@@ -79,7 +89,9 @@ describe('AskKerryChat', () => {
     await user.click(screen.getByRole('button', { name: 'Ask' }))
     finishTyping()
 
-    expect(within(conversation()).getByText(entry('roles').answer.text)).toBeInTheDocument()
+    expect(
+      within(conversation()).getByText(firstParagraph(entry('roles').answer))
+    ).toBeInTheDocument()
     expect(screen.getByRole('textbox', { name: 'Your question' })).toHaveValue('')
   })
 
@@ -99,11 +111,28 @@ describe('AskKerryChat', () => {
     expect(within(conversation()).queryByText(/^Answering:/)).not.toBeInTheDocument()
   })
 
+  // Runs once at least one answer in the content is written as several paragraphs
+  const multiParagraph = askKerryEntries.find((item) => paragraphsOf(item.answer).length > 1)
+  it.runIf(multiParagraph)('shows a multi-paragraph answer as separate paragraphs', async () => {
+    if (!multiParagraph) return
+    const user = setup()
+    await user.type(
+      screen.getByRole('textbox', { name: 'Your question' }),
+      `${multiParagraph.question}{Enter}`
+    )
+    finishTyping()
+    paragraphsOf(multiParagraph.answer).forEach((paragraph) => {
+      expect(within(conversation()).getByText(paragraph, { exact: false }).tagName).toBe('P')
+    })
+  })
+
   it('submits with the Enter key', async () => {
     const user = setup()
     await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'tech stack{Enter}')
     finishTyping()
-    expect(within(conversation()).getByText(entry('stack').answer.text)).toBeInTheDocument()
+    expect(
+      within(conversation()).getByText(firstParagraph(entry('stack').answer))
+    ).toBeInTheDocument()
   })
 
   it('offers the email link and starter questions when there is no answer', async () => {
