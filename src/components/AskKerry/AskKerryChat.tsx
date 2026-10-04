@@ -1,4 +1,12 @@
-import { useEffect, useId, useRef, useState, type FormEvent, type ReactElement } from 'react'
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+  type MouseEvent,
+  type ReactElement,
+} from 'react'
 import {
   askKerryEntries,
   askKerryFallback,
@@ -12,6 +20,7 @@ import {
 } from '../../content/askKerry'
 import { matchQuestion } from '../../askKerry/matchQuestion'
 import { pickSuggestions } from '../../askKerry/pickSuggestions'
+import { isTouchTap } from '../../askKerry/touchKeyboard'
 import styles from './AskKerry.module.css'
 
 // A short pause before each answer, so it reads like a conversation
@@ -102,25 +111,38 @@ export const AskKerryChat = (): ReactElement => {
     }, TYPING_DELAY_MS)
   }
 
+  // Moves focus to the conversation without scrolling, which also closes an on-screen keyboard
+  const focusConversation = (): void => logRef.current?.focus({ preventScroll: true })
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
     const question = draft.trim()
     if (!question || isTyping) return
     ask(question)
     setDraft('')
+    // On a touch device, close the keyboard so the answer has room
+    if (window.matchMedia('(pointer: coarse)').matches) focusConversation()
   }
 
-  const handleSuggestion = (entry: AskKerryEntry): void => {
+  const handleSuggestion = (entry: AskKerryEntry, event: MouseEvent<HTMLButtonElement>): void => {
     ask(entry.question, entry)
-    // The suggestion buttons are replaced, so keep focus somewhere useful
-    inputRef.current?.focus()
+    // The suggestion buttons are replaced, so keep focus somewhere useful: the question box,
+    // unless that would pop up a touch keyboard
+    if (isTouchTap(event)) focusConversation()
+    else inputRef.current?.focus()
   }
 
   return (
     <div className={styles.chat}>
       {/* Messages and suggestions scroll together, so a long answer gets the full height */}
       <div className={styles.scrollArea} ref={scrollAreaRef}>
-        <ol className={styles.log} ref={logRef} aria-live="polite" aria-label="Conversation">
+        <ol
+          className={styles.log}
+          ref={logRef}
+          tabIndex={-1}
+          aria-live="polite"
+          aria-label="Conversation"
+        >
           {messages.map((message) => (
             <li
               key={message.id}
@@ -180,7 +202,7 @@ export const AskKerryChat = (): ReactElement => {
                 <button
                   type="button"
                   className={styles.suggestion}
-                  onClick={() => handleSuggestion(entry)}
+                  onClick={(event) => handleSuggestion(entry, event)}
                 >
                   {entry.question}
                 </button>
