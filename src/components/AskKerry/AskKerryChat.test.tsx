@@ -187,6 +187,38 @@ describe('AskKerryChat', () => {
     expect(suggestions.queryByRole('button', { name: who.question })).not.toBeInTheDocument()
   })
 
+  describe('on a touch device', () => {
+    const touchMatchMedia = ((query: string) => ({
+      matches: query === '(pointer: coarse)',
+      media: query,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    })) as unknown as typeof window.matchMedia
+    let originalMatchMedia: typeof window.matchMedia
+
+    beforeEach(() => {
+      originalMatchMedia = window.matchMedia
+      window.matchMedia = touchMatchMedia
+    })
+
+    afterEach(() => {
+      window.matchMedia = originalMatchMedia
+    })
+
+    it('does not move focus to the question box after tapping a suggestion', async () => {
+      const user = setup()
+      await user.click(screen.getByRole('button', { name: entry('stack').question }))
+      expect(screen.getByRole('textbox', { name: 'Your question' })).not.toHaveFocus()
+      expect(conversation()).toHaveFocus()
+    })
+
+    it('moves focus off the question box after asking, to close the keyboard', async () => {
+      const user = setup()
+      await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'tech stack{Enter}')
+      expect(screen.getByRole('textbox', { name: 'Your question' })).not.toHaveFocus()
+    })
+  })
+
   it('ignores an empty question', async () => {
     const user = setup()
     await user.type(screen.getByRole('textbox', { name: 'Your question' }), '   {Enter}')

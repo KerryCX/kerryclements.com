@@ -1,4 +1,13 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactElement } from 'react'
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+  type ReactElement,
+} from 'react'
+import { isTouchTap } from '../../askKerry/touchKeyboard'
 import { AskKerryChat } from './AskKerryChat'
 import styles from './AskKerry.module.css'
 
@@ -11,10 +20,20 @@ export const AskKerryLauncher = (): ReactElement => {
   const panelId = useId()
   const titleId = useId()
 
-  // Move focus into the question box when the panel opens
+  const openedByTouch = useRef(false)
+
+  // When the panel opens, move focus into the question box, or on a touch device to the
+  // panel itself so the on-screen keyboard doesn't cover the conversation
   useEffect(() => {
-    if (isOpen) panelRef.current?.querySelector('input')?.focus()
+    if (!isOpen) return
+    if (openedByTouch.current) panelRef.current?.focus()
+    else panelRef.current?.querySelector('input')?.focus()
   }, [isOpen])
+
+  const toggle = (event: MouseEvent<HTMLButtonElement>): void => {
+    openedByTouch.current = isTouchTap(event)
+    setIsOpen((wasOpen) => !wasOpen)
+  }
 
   const close = (): void => {
     setIsOpen(false)
@@ -32,6 +51,7 @@ export const AskKerryLauncher = (): ReactElement => {
         id={panelId}
         className={styles.panel}
         role="dialog"
+        tabIndex={-1}
         aria-labelledby={titleId}
         hidden={!isOpen}
         onKeyDown={handleKeyDown}
@@ -60,7 +80,7 @@ export const AskKerryLauncher = (): ReactElement => {
         className={styles.launcherButton}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        onClick={() => setIsOpen((wasOpen) => !wasOpen)}
+        onClick={toggle}
       >
         <svg
           aria-hidden="true"
