@@ -39,6 +39,21 @@
   font-size: 15px;
 }
 
+.personal-scope .theme-toggle {
+  color: var(--personal-text);
+  border-color: var(--personal-border);
+}
+
+.personal-scope .theme-toggle:focus-visible {
+  outline-color: var(--accent-magenta-dark);
+}
+
+@media (hover: hover) {
+  .personal-scope .theme-toggle:hover {
+    border-color: var(--accent-magenta);
+  }
+}
+
 .personal-scope .nav__links a:hover {
   color: var(--accent-magenta-dark);
   text-decoration: underline;

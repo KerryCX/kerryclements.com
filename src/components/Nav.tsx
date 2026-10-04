@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { ThemeToggle } from './ThemeToggle'
 
 type NavLink = {
   label: string
@@ -33,13 +34,16 @@ export const Nav = ({ links = DEFAULT_LINKS }: NavProps) => {
             Kerry Clements
           </a>
         </div>
-        <ul className="nav__links">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav__end">
+          <ul className="nav__links">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
       </nav>
       <dialog
         ref={dialogRef}

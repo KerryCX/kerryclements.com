@@ -114,6 +114,39 @@ body {
   }
 }
 
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 32px square meets the WCAG 2.2 AA target size (24px minimum) */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .theme-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+  }
+}
+
 .nav__links {
   display: flex;
   gap: 40px;
@@ -748,6 +781,10 @@ body {
 
   .nav__links {
     gap: 20px;
+  }
+
+  .nav__end {
+    gap: 16px;
   }
 
   .hero {
