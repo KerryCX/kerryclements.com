@@ -89,6 +89,18 @@ body {
   text-decoration: none;
 }
 
+.nav__name:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Photo inside the home link, only shown on small screens.
+   Scoped to .nav__name so it outranks the display: block on .nav__photo. */
+.nav__name .nav__home-photo {
+  display: none;
+}
+
 .nav__brand {
   display: flex;
   align-items: center;
@@ -883,10 +895,28 @@ body {
     padding: 0 16px;
   }
 
-  /* No room for the name beside the links and theme switcher.
-     The photo stays, and every page shows the name in its heading or hero. */
-  .nav__name {
+  /* No room for the name beside the links and theme switcher, so the photo becomes
+     the home link instead of opening the larger photo. The name stays as hidden text,
+     so the link is still announced as "Kerry Clements". */
+  .nav__photo-button {
     display: none;
+  }
+
+  .nav__name .nav__home-photo {
+    display: block;
+  }
+
+  .nav__name:focus-visible {
+    border-radius: 50%;
+  }
+
+  .nav__name-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .nav__links {
