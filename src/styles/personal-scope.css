@@ -11,6 +11,18 @@
   --font-family-display: 'Fraunces', serif;
 }
 
+/* Dark theme for the personal pages. PLACEHOLDER values, to be finalised.
+   A warm plum rather than the portfolio's neutral black, so these pages keep their own feel.
+   All text pairs pass WCAG AA. */
+:root[data-theme='dark'] .personal-scope {
+  --personal-bg: #1d1424;
+  --personal-text: #f6ece1;
+  --personal-text-muted: #c9b5cc;
+  --personal-border: #3d2c47;
+  --accent-magenta: #ff4fa8;
+  --accent-magenta-dark: #f590c4; /* "dark" is the stronger-contrast accent; lighter on a dark background */
+}
+
 .personal-scope .nav {
   background: var(--personal-bg);
   border-bottom: 1px solid var(--personal-border);

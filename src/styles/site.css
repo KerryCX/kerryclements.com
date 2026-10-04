@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Portfolio Design Tokens */
+/* Portfolio colour tokens
+   Dark is the default. The theme is set as data-theme on <html> by the inline
+   script in index.html (system setting or saved choice) and by the ThemeToggle. */
 :root {
+  color-scheme: dark; /* matches scrollbars and form controls to the theme */
   --bg-primary: #111111; /* Main page background */
   --bg-surface: #1a1a1a; /* Card and surface background */
   --bg-overlay: rgba(0, 0, 0, 0.8); /* Modal/lightbox backdrop. Dims page content behind dialogs */
@@ -10,7 +13,23 @@
   --text-secondary: #999999; /* Secondary and body text */
   --text-tertiary: #888888; /* Muted text, labels, metadata */
   --accent-rose: #e0607a; /* Primary accent, links, CTAs */
+  --accent-rose-tint: rgba(224, 96, 122, 0.08); /* Primary button hover background */
   --accent-sage: #7aae8e; /* Secondary accent, tags, tech stack labels */
+}
+
+/* Light theme. PLACEHOLDER values, to be finalised. All text pairs pass WCAG AA. */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg-primary: #f7f7f7;
+  --bg-surface: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --border-default: #dcdcdc;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
+  --text-tertiary: #636363;
+  --accent-rose: #b3304b;
+  --accent-rose-tint: rgba(179, 48, 75, 0.08);
+  --accent-sage: #3b7350;
 }
 
 /* Typography */
@@ -555,7 +574,7 @@ body {
 }
 
 .btn--primary:hover {
-  background-color: rgba(224, 96, 122, 0.08);
+  background-color: var(--accent-rose-tint);
 }
 
 .btn--outline {
