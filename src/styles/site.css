@@ -133,9 +133,34 @@ body {
   gap: 24px;
 }
 
-/* Theme switcher: three icon radio buttons in a pill.
-   28px options meet the WCAG 2.2 AA target size (24px minimum). */
+/* Theme switcher
+   Wide screens: three icon options inline in a pill. The trigger button is hidden.
+   Small screens: a single trigger opens the options as a dropdown with text labels.
+   28px options and the 32px trigger meet the WCAG 2.2 AA target size (24px minimum). */
 .theme-switcher {
+  position: relative;
+}
+
+.theme-switcher__trigger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.theme-switcher__trigger:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
+.theme-switcher__options {
   display: inline-flex;
   gap: 2px;
   margin: 0;
@@ -148,11 +173,22 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
   color: var(--text-tertiary);
   cursor: pointer;
+}
+
+/* Text labels: hidden in the pill, shown in the dropdown */
+.theme-switcher__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .theme-switcher__option:has(input:checked) {
@@ -166,8 +202,51 @@ body {
 }
 
 @media (hover: hover) {
+  .theme-switcher__trigger:hover,
   .theme-switcher__option:hover {
     color: var(--text-primary);
+  }
+}
+
+@media (max-width: 599px) {
+  .theme-switcher__trigger {
+    display: inline-flex;
+  }
+
+  .theme-switcher__options {
+    display: none;
+  }
+
+  .theme-switcher__options--open {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 140px;
+    padding: 6px;
+    background-color: var(--bg-surface);
+    border-radius: 8px;
+  }
+
+  .theme-switcher__options--open .theme-switcher__option {
+    justify-content: flex-start;
+    width: auto;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: var(--font-size-label);
+    font-weight: 500;
+  }
+
+  .theme-switcher__options--open .theme-switcher__label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
   }
 }
 

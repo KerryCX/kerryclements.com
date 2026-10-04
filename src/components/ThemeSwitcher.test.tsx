@@ -115,8 +115,8 @@ describe('ThemeSwitcher', () => {
     const user = userEvent.setup()
     render(<ThemeSwitcher />)
 
-    await user.tab()
-    expect(getOption('System')).toHaveFocus()
+    // jsdom has no CSS, so the small-screen trigger is focusable here too; focus the group directly
+    getOption('System').focus()
     await user.keyboard('{ArrowRight}')
 
     expect(getOption('Light')).toBeChecked()
@@ -134,5 +134,84 @@ describe('ThemeSwitcher', () => {
     await user.click(getOption('Dark'))
     act(() => system.changeTo(true))
     expect(currentTheme()).toBe('dark')
+  })
+
+  describe('small-screen dropdown', () => {
+    const getTrigger = (): HTMLElement => screen.getByRole('button', { name: 'Theme' })
+
+    it('opens and closes from the trigger button', async () => {
+      system = mockSystemTheme(false)
+      const user = userEvent.setup()
+      render(<ThemeSwitcher />)
+
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'false')
+      await user.click(getTrigger())
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'true')
+      await user.click(getTrigger())
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('points the trigger at the options it controls', () => {
+      system = mockSystemTheme(false)
+      render(<ThemeSwitcher />)
+      const options = screen.getByRole('group', { name: 'Theme' })
+      expect(getTrigger()).toHaveAttribute('aria-controls', options.id)
+    })
+
+    it('closes on Escape and returns focus to the trigger', async () => {
+      system = mockSystemTheme(false)
+      const user = userEvent.setup()
+      render(<ThemeSwitcher />)
+
+      await user.click(getTrigger())
+      await user.click(getOption('Light'))
+      await user.click(getTrigger())
+      getOption('Dark').focus()
+      await user.keyboard('{Escape}')
+
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'false')
+      expect(getTrigger()).toHaveFocus()
+    })
+
+    it('closes after an option is tapped', async () => {
+      system = mockSystemTheme(false)
+      const user = userEvent.setup()
+      render(<ThemeSwitcher />)
+
+      await user.click(getTrigger())
+      await user.click(getOption('Light'))
+
+      expect(currentTheme()).toBe('light')
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('stays open while arrowing through options', async () => {
+      system = mockSystemTheme(false)
+      const user = userEvent.setup()
+      render(<ThemeSwitcher />)
+
+      await user.click(getTrigger())
+      getOption('System').focus()
+      await user.keyboard('{ArrowRight}')
+
+      expect(getOption('Light')).toBeChecked()
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'true')
+    })
+
+    it('closes when tapping outside', async () => {
+      system = mockSystemTheme(false)
+      const user = userEvent.setup()
+      render(
+        <>
+          <ThemeSwitcher />
+          <p>Outside</p>
+        </>
+      )
+
+      await user.click(getTrigger())
+      await user.click(screen.getByText('Outside'))
+
+      expect(getTrigger()).toHaveAttribute('aria-expanded', 'false')
+    })
   })
 })

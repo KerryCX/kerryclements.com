@@ -1,4 +1,4 @@
-import { useId, type ReactElement } from 'react'
+import { useEffect, useId, useRef, useState, type MouseEvent, type ReactElement } from 'react'
 import { useTheme } from '../theme/useTheme'
 import type { ThemePreference } from '../theme/theme'
 
@@ -8,30 +8,86 @@ type ThemeOption = {
   Icon: () => ReactElement
 }
 
-// A radio group: one choice from three, with arrow-key navigation built in.
-// Screen readers announce "Theme, group" then e.g. "System, radio button, selected, 1 of 3".
+// Wide screens: the three options show inline as an icon pill (the trigger is hidden by CSS).
+// Small screens: a single "Theme" button opens the same options as a dropdown with text labels.
+// The options are a radio group either way, so arrow keys move between them and screen readers
+// announce "Theme, group" then e.g. "Light, radio button, 2 of 3".
 export const ThemeSwitcher = (): ReactElement => {
   const { preference, setPreference } = useTheme()
+  const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
   const groupName = useId()
+  const optionsId = useId()
+
+  // While open: Escape closes and returns focus to the trigger; a tap or click outside closes
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+        triggerRef.current?.focus()
+      }
+    }
+    const handlePointerDown = (event: PointerEvent): void => {
+      if (!containerRef.current?.contains(event.target as Node)) setIsOpen(false)
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('pointerdown', handlePointerDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('pointerdown', handlePointerDown)
+    }
+  }, [isOpen])
+
+  // Close after a tap or click on an option. Keyboard selection (arrow keys, Space) also
+  // fires click, but with detail 0, so the dropdown stays open while someone arrows through.
+  const handleOptionClick = (event: MouseEvent<HTMLLabelElement>): void => {
+    if (event.detail > 0) setIsOpen(false)
+  }
 
   return (
-    <fieldset className="theme-switcher">
-      <legend className="visually-hidden">Theme</legend>
-      {themeOptions.map(({ value, label, Icon }) => (
-        <label key={value} className="theme-switcher__option" title={label}>
-          <input
-            type="radio"
-            name={groupName}
-            value={value}
-            checked={preference === value}
-            onChange={() => setPreference(value)}
-            className="visually-hidden"
-          />
-          <Icon />
-          <span className="visually-hidden">{label}</span>
-        </label>
-      ))}
-    </fieldset>
+    <div className="theme-switcher" ref={containerRef}>
+      <button
+        ref={triggerRef}
+        type="button"
+        className="theme-switcher__trigger"
+        aria-label="Theme"
+        aria-expanded={isOpen}
+        aria-controls={optionsId}
+        onClick={() => setIsOpen((wasOpen) => !wasOpen)}
+      >
+        <ContrastIcon />
+      </button>
+
+      <fieldset
+        id={optionsId}
+        className={`theme-switcher__options${isOpen ? ' theme-switcher__options--open' : ''}`}
+      >
+        <legend className="visually-hidden">Theme</legend>
+        {themeOptions.map(({ value, label, Icon }) => (
+          <label
+            key={value}
+            className="theme-switcher__option"
+            title={label}
+            onClick={handleOptionClick}
+          >
+            <input
+              type="radio"
+              name={groupName}
+              value={value}
+              checked={preference === value}
+              onChange={() => setPreference(value)}
+              className="visually-hidden"
+            />
+            <Icon />
+            <span className="theme-switcher__label">{label}</span>
+          </label>
+        ))}
+      </fieldset>
+    </div>
   )
 }
 
@@ -47,6 +103,14 @@ const iconProps = {
   strokeLinecap: 'round',
   strokeLinejoin: 'round',
 } as const
+
+// Half-filled circle: a common "appearance" icon, used for the small-screen trigger
+const ContrastIcon = (): ReactElement => (
+  <svg {...iconProps}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+  </svg>
+)
 
 const SystemIcon = (): ReactElement => (
   <svg {...iconProps}>
