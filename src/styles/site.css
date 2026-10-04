@@ -879,15 +879,22 @@ body {
 /* Mobile */
 @media (max-width: 599px) {
   .nav {
-    padding: 0 20px;
+    gap: 12px; /* keeps the photo and links apart on very narrow screens */
+    padding: 0 16px;
+  }
+
+  /* No room for the name beside the links and theme switcher.
+     The photo stays, and every page shows the name in its heading or hero. */
+  .nav__name {
+    display: none;
   }
 
   .nav__links {
-    gap: 20px;
+    gap: 16px;
   }
 
   .nav__end {
-    gap: 16px;
+    gap: 12px;
   }
 
   .hero {
@@ -973,5 +980,12 @@ body {
 
   .home-cta {
     padding: 60px 20px;
+  }
+}
+
+/* Very narrow screens, including 400% zoom on a 1280px wide window (320px) */
+@media (max-width: 359px) {
+  .nav__links {
+    gap: 12px;
   }
 }
