@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 type NavLink = {
   label: string
@@ -29,17 +30,23 @@ export const Nav = ({ links = DEFAULT_LINKS }: NavProps) => {
           >
             <img src="/kerry-clements-2025.jpeg" alt="" className="nav__photo" />
           </button>
+          {/* On small screens the photo button is hidden and this link shows the photo instead,
+              so tapping the photo goes home. Its accessible name stays "Kerry Clements". */}
           <a href="/" className="nav__name">
-            Kerry Clements
+            <img src="/kerry-clements-2025.jpeg" alt="" className="nav__photo nav__home-photo" />
+            <span className="nav__name-text">Kerry Clements</span>
           </a>
         </div>
-        <ul className="nav__links">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav__end">
+          <ul className="nav__links">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+          <ThemeSwitcher />
+        </div>
       </nav>
       <dialog
         ref={dialogRef}
