@@ -15,21 +15,31 @@
   --accent-rose: #e0607a; /* Primary accent, links, CTAs */
   --accent-rose-tint: rgba(224, 96, 122, 0.08); /* Primary button hover background */
   --accent-sage: #7aae8e; /* Secondary accent, tags, tech stack labels */
+
+  /* Structure. Dark mode gets its depth from luminance, so these are off by default
+     and switched on for the light theme, where flat surfaces read as empty space. */
+  --shadow-card: none;
+  --shadow-nav: none;
+  --hero-wash: none;
 }
 
-/* Light theme. PLACEHOLDER values, to be finalised. All text pairs pass WCAG AA. */
+/* Light theme: warm paper. All text pairs pass WCAG AA (lowest 5.1:1). */
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg-primary: #f7f7f7;
-  --bg-surface: #ffffff;
+  --bg-primary: #f3efe8;
+  --bg-surface: #fffdf9;
   --bg-overlay: rgba(0, 0, 0, 0.6);
-  --border-default: #dcdcdc;
-  --text-primary: #1a1a1a;
-  --text-secondary: #555555;
-  --text-tertiary: #636363;
-  --accent-rose: #b3304b;
-  --accent-rose-tint: rgba(179, 48, 75, 0.08);
-  --accent-sage: #3b7350;
+  --border-default: #ddd5c9;
+  --text-primary: #1c1a17;
+  --text-secondary: #57524b;
+  --text-tertiary: #66605a;
+  --accent-rose: #ad2e48;
+  --accent-rose-tint: rgba(173, 46, 72, 0.08);
+  --accent-sage: #3a6f4e;
+
+  --shadow-card: 0 1px 2px rgba(28, 26, 23, 0.04), 0 6px 16px rgba(28, 26, 23, 0.06);
+  --shadow-nav: 0 1px 8px rgba(28, 26, 23, 0.05);
+  --hero-wash: linear-gradient(180deg, rgba(173, 46, 72, 0.06) 0%, rgba(173, 46, 72, 0) 100%);
 }
 
 /* Typography */
@@ -85,6 +95,7 @@ body {
   padding: 0 120px;
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-default);
+  box-shadow: var(--shadow-nav);
 }
 
 .nav__name {
@@ -304,6 +315,7 @@ body {
 /* Hero */
 .hero {
   padding: 100px 120px 80px;
+  background-image: var(--hero-wash);
 }
 
 .hero__name {
@@ -377,6 +389,7 @@ body {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 8px;
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   position: relative; /* required for the stretched link ::after to position against */
 }
