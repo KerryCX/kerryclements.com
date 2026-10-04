@@ -2,20 +2,24 @@ import type { AskKerryEntry } from '../content/askKerry'
 
 // Matches a typed question to the closest written answer. No AI: it compares words.
 // 1. Split both sides into lowercase words and drop filler words ("what", "your"...).
-// 2. Score each entry: +1 for an exact word match, +0.75 for a near match (typo or word stem).
-// 3. Return the highest-scoring entry, or null if nothing reaches the minimum score.
+// 2. Score each entry for every typed word it contains:
+//    - a word in the entry's keywords counts a little more than one only in its question
+//    - a word that appears in lots of entries counts for less, so "remote" (one entry)
+//      outweighs "work" (several entries)
+//    - if a typed word isn't known anywhere, near matches (typos, word starts) count instead
+// 3. Return the highest-scoring entry, or null if nothing matched at all.
 
 // Filler words that say nothing about which answer someone wants
 const STOP_WORDS = new Set(
   (
     'a an and any are about at can did do does for have how i in is it know like me of on open ' +
-    'or please stuff tell that the this to was what whats with work you your youre'
+    'or please stuff tell that the this to was what whats with you your youre'
   ).split(' ')
 )
 
-const EXACT_MATCH_SCORE = 1
-const NEAR_MATCH_SCORE = 0.75
-const MINIMUM_SCORE = NEAR_MATCH_SCORE
+const KEYWORD_WEIGHT = 1
+const QUESTION_WEIGHT = 0.9
+const NEAR_MATCH_WEIGHT = 0.75
 
 // Light stemming so "tests" matches "test" and "apis" matches "api" (but "access" stays whole)
 const stem = (word: string): string =>
@@ -56,14 +60,18 @@ const isNearMatch = (typed: string, known: string): boolean => {
   return false
 }
 
-const scoreEntry = (typedWords: string[], entry: AskKerryEntry): number => {
-  const knownWords = new Set(toWords([entry.question, ...entry.keywords].join(' ')))
-  return typedWords.reduce((score, typed) => {
-    if (knownWords.has(typed)) return score + EXACT_MATCH_SCORE
-    const hasNearMatch = [...knownWords].some((known) => isNearMatch(typed, known))
-    return hasNearMatch ? score + NEAR_MATCH_SCORE : score
-  }, 0)
+type WordSource = 'keyword' | 'question'
+
+// Each entry's known words, and whether each came from its keywords or its question
+const knownWordsFor = (entry: AskKerryEntry): Map<string, WordSource> => {
+  const known = new Map<string, WordSource>()
+  toWords(entry.question).forEach((word) => known.set(word, 'question'))
+  toWords(entry.keywords.join(' ')).forEach((word) => known.set(word, 'keyword'))
+  return known
 }
+
+const sourceWeight = (source: WordSource): number =>
+  source === 'keyword' ? KEYWORD_WEIGHT : QUESTION_WEIGHT
 
 export const matchQuestion = (
   typedQuestion: string,
@@ -72,15 +80,35 @@ export const matchQuestion = (
   const typedWords = toWords(typedQuestion)
   if (typedWords.length === 0) return null
 
-  let bestEntry: AskKerryEntry | null = null
+  const knownWords = entries.map(knownWordsFor)
+
+  // How many entries each word appears in
+  const entryCount = new Map<string, number>()
+  knownWords.forEach((known) =>
+    known.forEach((_, word) => entryCount.set(word, (entryCount.get(word) ?? 0) + 1))
+  )
+
+  const scores = entries.map((_, index) => {
+    const known = knownWords[index]
+    return typedWords.reduce((score, typed) => {
+      if (entryCount.has(typed)) {
+        const source = known.get(typed)
+        return source ? score + sourceWeight(source) / (entryCount.get(typed) ?? 1) : score
+      }
+      // Unknown word: allow a typo or the start of a longer word
+      const near = [...known].find(([word]) => isNearMatch(typed, word))
+      return near ? score + NEAR_MATCH_WEIGHT * sourceWeight(near[1]) : score
+    }, 0)
+  })
+
+  // Strictly greater, so on a tie the earlier entry in the content file wins
+  let bestIndex = -1
   let bestScore = 0
-  for (const entry of entries) {
-    const score = scoreEntry(typedWords, entry)
-    // Strictly greater, so on a tie the earlier entry in the content file wins
+  scores.forEach((score, index) => {
     if (score > bestScore) {
-      bestEntry = entry
+      bestIndex = index
       bestScore = score
     }
-  }
-  return bestScore >= MINIMUM_SCORE ? bestEntry : null
+  })
+  return bestIndex >= 0 ? entries[bestIndex] : null
 }

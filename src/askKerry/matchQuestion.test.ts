@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { matchQuestion, toWords } from './matchQuestion'
-import { askKerryEntries } from '../content/askKerry'
+import { askKerryEntries, type AskKerryEntry } from '../content/askKerry'
 
 const matchId = (question: string): string | null =>
   matchQuestion(question, askKerryEntries)?.id ?? null
@@ -43,5 +43,36 @@ describe('matchQuestion', () => {
   it('returns null for empty or filler-only input', () => {
     expect(matchId('')).toBeNull()
     expect(matchId('what is the')).toBeNull()
+  })
+})
+
+describe('matchQuestion weighting', () => {
+  const fixture = (id: string, question: string, keywords: string[]): AskKerryEntry => ({
+    id,
+    question,
+    keywords,
+    answer: { text: id },
+    followUps: [],
+  })
+  const entries = [
+    fixture('stakeholders', 'Do you work with stakeholders?', []),
+    fixture('agile', 'Have you worked in teams?', []),
+    fixture('workProject', 'Which work project are you proudest of?', ['work', 'wizard']),
+    fixture('roles', 'What roles are you looking for?', ['remote']),
+  ]
+  const matchFixture = (question: string): string | null =>
+    matchQuestion(question, entries)?.id ?? null
+
+  it('prefers an entry that lists the word as a keyword', () => {
+    expect(matchFixture('work')).toBe('workProject')
+  })
+
+  it('lets a rarer word outweigh a common one', () => {
+    expect(matchFixture('remote work')).toBe('roles')
+  })
+
+  it('ignores near matches for a word that is known exactly somewhere', () => {
+    // "work" is known, so "worked" in the agile question shouldn't count as a near match
+    expect(matchFixture('work')).not.toBe('agile')
   })
 })
