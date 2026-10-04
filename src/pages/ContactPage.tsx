@@ -12,8 +12,9 @@ const ContactPage = () => {
           <span className="section-label">Contact</span>
           <h1 className="hero__name">Let's Talk</h1>
           <p className="hero__tagline">
-            Open to Front End and UX roles. Happy to chat about opportunities, collaborations, or
-            anything portfolio-related.
+            Open to frontend, full stack and product engineering roles in Bristol or remote across
+            the UK. Happy to chat about opportunities, collaborations, or anything
+            portfolio-related.
           </p>
         </section>
 
@@ -39,7 +40,17 @@ const ContactPage = () => {
               <p className="connect-caption">Code for portfolio projects and case studies</p>
             </li>
             <li>
-              <button type="button" onClick={downloadCV} className="connect-link connect-link--button">
+              <a href="/cv" className="connect-link">
+                CV
+              </a>
+              <p className="connect-caption">Read my CV online</p>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={downloadCV}
+                className="connect-link connect-link--button"
+              >
                 Download CV
               </button>
               <p className="connect-caption">Tech experience and skills</p>

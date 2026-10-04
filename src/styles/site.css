@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Portfolio Design Tokens */
+/* Portfolio colour tokens
+   Dark is the default. The theme is set as data-theme on <html> by the inline
+   script in index.html (system setting or saved choice) and by the ThemeSwitcher. */
 :root {
+  color-scheme: dark; /* matches scrollbars and form controls to the theme */
   --bg-primary: #111111; /* Main page background */
   --bg-surface: #1a1a1a; /* Card and surface background */
   --bg-overlay: rgba(0, 0, 0, 0.8); /* Modal/lightbox backdrop. Dims page content behind dialogs */
@@ -10,7 +13,33 @@
   --text-secondary: #999999; /* Secondary and body text */
   --text-tertiary: #888888; /* Muted text, labels, metadata */
   --accent-rose: #e0607a; /* Primary accent, links, CTAs */
+  --accent-rose-tint: rgba(224, 96, 122, 0.08); /* Primary button hover background */
   --accent-sage: #7aae8e; /* Secondary accent, tags, tech stack labels */
+
+  /* Structure. Dark mode gets its depth from luminance, so these are off by default
+     and switched on for the light theme, where flat surfaces read as empty space. */
+  --shadow-card: none;
+  --shadow-nav: none;
+  --hero-wash: none;
+}
+
+/* Light theme: warm paper. All text pairs pass WCAG AA (lowest 5.1:1). */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg-primary: #f3efe8;
+  --bg-surface: #fffdf9;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --border-default: #ddd5c9;
+  --text-primary: #1c1a17;
+  --text-secondary: #57524b;
+  --text-tertiary: #66605a;
+  --accent-rose: #ad2e48;
+  --accent-rose-tint: rgba(173, 46, 72, 0.08);
+  --accent-sage: #3a6f4e;
+
+  --shadow-card: 0 1px 2px rgba(28, 26, 23, 0.04), 0 6px 16px rgba(28, 26, 23, 0.06);
+  --shadow-nav: 0 1px 8px rgba(28, 26, 23, 0.05);
+  --hero-wash: linear-gradient(180deg, rgba(173, 46, 72, 0.06) 0%, rgba(173, 46, 72, 0) 100%);
 }
 
 /* Typography */
@@ -24,6 +53,21 @@
   --font-size-caption: 12px; /* Metadata, timestamps, fine print */
 }
 
+/* Vertical spacing. One scale for every page, so the rhythm is consistent and easy to tune. */
+:root {
+  --space-page-top: 64px; /* Above the first section on a page */
+  --space-section: 40px; /* Top and bottom padding of each section */
+  --space-page-bottom: 64px; /* Below the last content before the footer */
+}
+
+@media (max-width: 599px) {
+  :root {
+    --space-page-top: 40px;
+    --space-section: 32px;
+    --space-page-bottom: 48px;
+  }
+}
+
 /* Base */
 .site {
   background-color: var(--bg-primary);
@@ -32,8 +76,36 @@
   min-height: 100vh;
 }
 
+/* Rose wash at the top of every page (light theme only; --hero-wash is none in dark).
+   On the wrapper rather than the hero, so pages without a hero (case studies, CV,
+   personal) start the same way. */
+.site,
+.personal-scope {
+  background-image: var(--hero-wash);
+  background-repeat: no-repeat;
+  background-size: 100% 420px;
+}
+
+/* Keeps focused or linked-to content clear of the 64px sticky nav (WCAG 2.4.11) */
+html {
+  scroll-padding-top: 80px;
+}
+
 body {
   margin: 0;
+}
+
+/* Hides content visually but keeps it available to screen readers and keyboard focus */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Nav */
@@ -48,6 +120,7 @@ body {
   padding: 0 120px;
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-default);
+  box-shadow: var(--shadow-nav);
 }
 
 .nav__name {
@@ -55,6 +128,18 @@ body {
   font-weight: 500;
   color: var(--text-primary);
   text-decoration: none;
+}
+
+.nav__name:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Photo inside the home link, only shown on small screens.
+   Scoped to .nav__name so it outranks the display: block on .nav__photo. */
+.nav__name .nav__home-photo {
+  display: none;
 }
 
 .nav__brand {
@@ -95,6 +180,142 @@ body {
   }
 }
 
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Theme switcher
+   Wide screens: three icon options inline in a pill. The trigger button is hidden.
+   Small screens: a single trigger opens the options as a dropdown with text labels.
+   28px options and the 32px trigger meet the WCAG 2.2 AA target size (24px minimum). */
+.theme-switcher {
+  position: relative;
+}
+
+.theme-switcher__trigger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.theme-switcher__trigger:focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
+.theme-switcher__options {
+  display: inline-flex;
+  gap: 2px;
+  margin: 0;
+  padding: 2px;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+}
+
+.theme-switcher__option {
+  position: relative; /* anchors the invisible radio input */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--text-tertiary);
+  cursor: pointer;
+}
+
+/* The real radio input is invisible but stretched over the whole option,
+   so its hit area matches the visible 28px target (a 1px hidden input fails 2.5.8) */
+.theme-switcher__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Text labels: hidden in the pill, shown in the dropdown */
+.theme-switcher__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.theme-switcher__option:has(input:checked) {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.theme-switcher__option:has(input:focus-visible) {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .theme-switcher__trigger:hover,
+  .theme-switcher__option:hover {
+    color: var(--text-primary);
+  }
+}
+
+@media (max-width: 599px) {
+  .theme-switcher__trigger {
+    display: inline-flex;
+  }
+
+  .theme-switcher__options {
+    display: none;
+  }
+
+  .theme-switcher__options--open {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 140px;
+    padding: 6px;
+    background-color: var(--bg-surface);
+    border-radius: 8px;
+  }
+
+  .theme-switcher__options--open .theme-switcher__option {
+    justify-content: flex-start;
+    width: auto;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: var(--font-size-label);
+    font-weight: 500;
+  }
+
+  .theme-switcher__options--open .theme-switcher__label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+}
+
 .nav__links {
   display: flex;
   gap: 40px;
@@ -118,7 +339,7 @@ body {
 
 /* Hero */
 .hero {
-  padding: 100px 120px 80px;
+  padding: var(--space-page-top) 120px var(--space-section);
 }
 
 .hero__name {
@@ -186,12 +407,18 @@ body {
   grid-column: 1 / -1; /* spans all columns so it sits above the grid */
 }
 
+/* In the cards grid the row gap already adds 24px, so the label needs less of its own */
+.cards .section-label {
+  margin-bottom: 8px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-default);
   border-radius: 8px;
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   position: relative; /* required for the stretched link ::after to position against */
 }
@@ -268,7 +495,7 @@ body {
 
 /* Skills */
 .skills {
-  padding: 80px 120px 40px;
+  padding: var(--space-section) 120px;
 }
 
 .skills__grid {
@@ -303,7 +530,7 @@ body {
 
 /* Footer */
 .footer {
-  padding: 40px 120px 60px;
+  padding: var(--space-section) 120px 48px;
   border-top: 1px solid var(--border-default);
   margin-top: 0;
 }
@@ -405,7 +632,7 @@ body {
 /* Case Study */
 .case-study {
   max-width: 720px;
-  padding: 80px 120px;
+  padding: var(--space-page-top) 120px var(--space-page-bottom);
 }
 
 .case-study__title {
@@ -420,14 +647,14 @@ body {
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 48px;
+  margin: 0 0 32px;
 }
 
 .case-study h2 {
   font-size: var(--font-size-heading);
   font-weight: 600;
   color: var(--text-primary);
-  margin: 48px 0 16px;
+  margin: 40px 0 16px;
 }
 
 .case-study p {
@@ -481,7 +708,7 @@ body {
 
 /* Contact page */
 .contact-section {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -555,7 +782,7 @@ body {
 }
 
 .btn--primary:hover {
-  background-color: rgba(224, 96, 122, 0.08);
+  background-color: var(--accent-rose-tint);
 }
 
 .btn--outline {
@@ -577,7 +804,7 @@ body {
 
 /* Story section */
 .story {
-  padding: 40px 120px 60px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -608,7 +835,7 @@ body {
 
 /* Featured work section */
 .featured {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -696,7 +923,7 @@ body {
 
 /* Home closing CTA */
 .home-cta {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -724,15 +951,44 @@ body {
 /* Mobile */
 @media (max-width: 599px) {
   .nav {
-    padding: 0 20px;
+    gap: 12px; /* keeps the photo and links apart on very narrow screens */
+    padding: 0 16px;
+  }
+
+  /* No room for the name beside the links and theme switcher, so the photo becomes
+     the home link instead of opening the larger photo. The name stays as hidden text,
+     so the link is still announced as "Kerry Clements". */
+  .nav__photo-button {
+    display: none;
+  }
+
+  .nav__name .nav__home-photo {
+    display: block;
+  }
+
+  .nav__name:focus-visible {
+    border-radius: 50%;
+  }
+
+  .nav__name-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .nav__links {
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .nav__end {
+    gap: 12px;
   }
 
   .hero {
-    padding: 40px 20px 40px;
+    padding: var(--space-page-top) 20px var(--space-section);
   }
 
   .hero__name {
@@ -762,7 +1018,7 @@ body {
   }
 
   .skills {
-    padding: 40px 20px 40px;
+    padding: var(--space-section) 20px;
   }
 
   .skills__grid {
@@ -771,7 +1027,7 @@ body {
   }
 
   .footer {
-    padding: 32px 20px 40px;
+    padding: var(--space-section) 20px 40px;
   }
 
   .footer__top {
@@ -780,7 +1036,7 @@ body {
   }
 
   .case-study {
-    padding: 60px 20px;
+    padding: var(--space-page-top) 20px var(--space-page-bottom);
     max-width: 100%;
   }
 
@@ -789,7 +1045,7 @@ body {
   }
 
   .contact-section {
-    padding: 32px 20px;
+    padding: var(--space-section) 20px;
   }
 
   .contact-page .hero {
@@ -801,11 +1057,11 @@ body {
   }
 
   .story {
-    padding: 40px 20px 60px;
+    padding: var(--space-section) 20px;
   }
 
   .featured {
-    padding: 60px 20px;
+    padding: var(--space-section) 20px;
   }
 
   .featured__grid {
@@ -813,6 +1069,13 @@ body {
   }
 
   .home-cta {
-    padding: 60px 20px;
+    padding: var(--space-section) 20px;
+  }
+}
+
+/* Very narrow screens, including 400% zoom on a 1280px wide window (320px) */
+@media (max-width: 359px) {
+  .nav__links {
+    gap: 12px;
   }
 }

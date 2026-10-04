@@ -7,7 +7,7 @@
 .content {
   max-width: 600px;
   margin: 0 auto;
-  padding: 100px 24px 80px;
+  padding: var(--space-page-top) 24px var(--space-page-bottom);
 }
 
 .eyebrow {
@@ -60,6 +60,8 @@
   border: 1px solid var(--personal-border);
   border-radius: var(--personal-radius);
   padding: 24px;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-card);
   text-decoration: none;
   transition: border-color 0.15s ease;
 }
@@ -122,7 +124,7 @@
 
 @media (max-width: 768px) {
   .content {
-    padding: 60px 20px 60px;
+    padding: var(--space-page-top) 20px var(--space-page-bottom);
   }
 
   .title {

@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import { Applications } from '../pages/apps'
 import ContactPage from '../pages/ContactPage'
+import CvPage from '../pages/CvPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import { personalRoutes } from './personalRoutes'
 import { portfolioRoutes } from './portfolioRoutes'
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <HomePage />, handle: pageMeta.home },
       { path: '/contact', element: <ContactPage />, handle: pageMeta.contact },
+      { path: '/cv', element: <CvPage />, handle: pageMeta.cv },
       ...portfolioRoutes,
       { path: '/apps', element: <Applications />, handle: pageMeta.apps },
       ...personalRoutes,

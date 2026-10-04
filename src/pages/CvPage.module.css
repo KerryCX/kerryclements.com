@@ -1,0 +1,61 @@
+/* CV page layout. Typography and spacing come from the shared .case-study styles in site.css. */
+
+/* Scoped under .case-study to outrank its default ul padding */
+:global(.case-study) .contactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+:global(.case-study) .contactList li {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+}
+
+.actions {
+  margin: 0 0 16px;
+}
+
+.skills {
+  margin: 0;
+}
+
+.skills dt {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+  color: var(--accent-sage);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 24px 0 8px;
+}
+
+.skills dt:first-child {
+  margin-top: 0;
+}
+
+.skills dd {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.entry {
+  margin: 0 0 32px;
+}
+
+.entryTitle {
+  font-size: var(--font-size-subheading);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.entryMeta {
+  font-size: var(--font-size-label);
+  color: var(--text-tertiary);
+  margin: 0 0 12px;
+}

@@ -1,33 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
 
+/* Personal pages use exactly the main site's light and dark colours.
+   The personal tokens are aliases, so the page modules don't need to change.
+   The only personal touch left is the Fraunces display font for headings. */
 .personal-scope {
-  --personal-bg: #fff6ed;
-  --personal-text: #241433;
-  --personal-text-muted: #6b5470;
-  --personal-border: #ecdbc7;
-  --accent-magenta: #e0218a;
-  --accent-magenta-dark: #9c1568;
+  --personal-bg: var(--bg-primary);
+  --personal-text: var(--text-primary);
+  --personal-text-muted: var(--text-secondary);
+  --personal-border: var(--border-default);
+  --accent-magenta: var(--accent-rose);
+  --accent-magenta-dark: var(--accent-rose);
   --personal-radius: 8px;
   --font-family-display: 'Fraunces', serif;
 }
 
+/* The personal pages don't sit inside .site, so give the nav the site font to match exactly */
 .personal-scope .nav {
-  background: var(--personal-bg);
-  border-bottom: 1px solid var(--personal-border);
-}
-
-.personal-scope .nav__name {
-  color: var(--personal-text);
-  font-size: 15px;
-}
-
-.personal-scope .nav__links a {
-  color: var(--personal-text);
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.personal-scope .nav__links a:hover {
-  color: var(--accent-magenta-dark);
-  text-decoration: underline;
+  font-family: var(--font-family);
 }

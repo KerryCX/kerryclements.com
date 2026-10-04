@@ -22,6 +22,8 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: 'Portfolio' })).toHaveAttribute('href', '/portfolio')
     expect(screen.getByRole('link', { name: 'Apps' })).toHaveAttribute('href', '/apps')
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '/contact')
+    // Personal pages stay live at their URLs but aren't linked from the portfolio nav
+    expect(screen.queryByRole('link', { name: 'Personal' })).not.toBeInTheDocument()
   })
 
   it('renders custom links when provided', () => {
@@ -32,6 +34,15 @@ describe('Nav', () => {
     )
     expect(screen.getByRole('link', { name: 'Custom' })).toHaveAttribute('href', '/custom')
     expect(screen.queryByRole('link', { name: 'Portfolio' })).not.toBeInTheDocument()
+  })
+
+  it('renders the theme switcher', () => {
+    render(
+      <MemoryRouter>
+        <Nav />
+      </MemoryRouter>
+    )
+    expect(screen.getByRole('group', { name: 'Theme' })).toBeInTheDocument()
   })
 
   it('has an accessible button for viewing the larger photo', () => {
