@@ -31,7 +31,7 @@ export const pageMeta = {
   cv: {
     title: 'CV - Kerry Clements',
     description:
-      'CV for Kerry Clements, a software engineer with over 6 years of commercial experience, most recently in React and TypeScript, with a focus on accessibility.',
+      'CV for Kerry Clements, a software engineer with over 7 years of commercial experience, most recently in React and TypeScript, with a focus on accessibility.',
   },
   notFound: {
     title: 'Page not found - Kerry Clements',
