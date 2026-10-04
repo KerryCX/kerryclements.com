@@ -197,6 +197,13 @@
   outline-offset: 2px;
 }
 
+/* The log and panel only receive focus from code (so a touch keyboard can close); they're
+   not in the tab order, so they don't need a focus ring */
+.log:focus,
+.panel:focus {
+  outline: none;
+}
+
 .note {
   margin: 0;
   padding: 0 20px 14px;
