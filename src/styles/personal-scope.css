@@ -18,11 +18,3 @@
 .personal-scope .nav {
   font-family: var(--font-family);
 }
-
-/* Same rose wash as the main pages' hero (light theme only, as --hero-wash is none in dark).
-   Personal pages have no .hero, so it sits at the top of the page wrapper instead. */
-.personal-scope {
-  background-image: var(--hero-wash);
-  background-repeat: no-repeat;
-  background-size: 100% 420px;
-}

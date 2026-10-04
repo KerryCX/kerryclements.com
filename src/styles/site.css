@@ -61,6 +61,16 @@
   min-height: 100vh;
 }
 
+/* Rose wash at the top of every page (light theme only; --hero-wash is none in dark).
+   On the wrapper rather than the hero, so pages without a hero (case studies, CV,
+   personal) start the same way. */
+.site,
+.personal-scope {
+  background-image: var(--hero-wash);
+  background-repeat: no-repeat;
+  background-size: 100% 420px;
+}
+
 /* Keeps focused or linked-to content clear of the 64px sticky nav (WCAG 2.4.11) */
 html {
   scroll-padding-top: 80px;
@@ -315,7 +325,6 @@ body {
 /* Hero */
 .hero {
   padding: 100px 120px 80px;
-  background-image: var(--hero-wash);
 }
 
 .hero__name {
