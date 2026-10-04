@@ -21,9 +21,13 @@ const KEYWORD_WEIGHT = 1
 const QUESTION_WEIGHT = 0.9
 const NEAR_MATCH_WEIGHT = 0.75
 
-// Light stemming so "tests" matches "test" and "apis" matches "api" (but "access" stays whole)
-const stem = (word: string): string =>
-  word.length > 3 && word.endsWith('s') && !word.endsWith('ss') ? word.slice(0, -1) : word
+// Light stemming so "tests" matches "test", "apis" matches "api" (but "access" stays whole),
+// and "remotely" matches "remote"
+const stem = (word: string): string => {
+  if (word.length > 5 && word.endsWith('ly')) return word.slice(0, -2)
+  if (word.length > 3 && word.endsWith('s') && !word.endsWith('ss')) return word.slice(0, -1)
+  return word
+}
 
 export const toWords = (text: string): string[] =>
   text

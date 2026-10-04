@@ -13,6 +13,10 @@ describe('toWords', () => {
   it('stems simple plurals', () => {
     expect(toWords('tests apis roles')).toEqual(['test', 'api', 'role'])
   })
+
+  it('stems -ly endings on longer words', () => {
+    expect(toWords('remotely currently')).toEqual(['remote', 'current'])
+  })
 })
 
 describe('matchQuestion', () => {
@@ -24,6 +28,7 @@ describe('matchQuestion', () => {
 
   it('matches questions worded differently using keywords', () => {
     expect(matchId('Are you open to remote work?')).toBe('roles')
+    expect(matchId('Do you work remotely?')).toBe('roles')
     expect(matchId('what about wcag')).toBe('accessibility')
     expect(matchId('ever used scrum?')).toBe('agile')
   })
