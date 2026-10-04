@@ -1,0 +1,47 @@
+import { describe, expect, it } from 'vitest'
+import { matchQuestion, toWords } from './matchQuestion'
+import { askKerryEntries } from '../content/askKerry'
+
+const matchId = (question: string): string | null =>
+  matchQuestion(question, askKerryEntries)?.id ?? null
+
+describe('toWords', () => {
+  it('lowercases, strips punctuation and drops filler words', () => {
+    expect(toWords("What's YOUR tech stack?")).toEqual(['tech', 'stack'])
+  })
+
+  it('stems simple plurals', () => {
+    expect(toWords('tests apis roles')).toEqual(['test', 'api', 'role'])
+  })
+})
+
+describe('matchQuestion', () => {
+  it('matches every written question to its own answer', () => {
+    askKerryEntries.forEach((entry) => {
+      expect(matchId(entry.question)).toBe(entry.id)
+    })
+  })
+
+  it('matches questions worded differently using keywords', () => {
+    expect(matchId('Are you open to remote work?')).toBe('roles')
+    expect(matchId('what about wcag')).toBe('accessibility')
+    expect(matchId('ever used scrum?')).toBe('agile')
+  })
+
+  it('copes with a one-letter typo in a longer word', () => {
+    expect(matchId('how much expereince')).toBe('experience')
+  })
+
+  it('matches the start of a longer word', () => {
+    expect(matchId('access')).toBe('accessibility')
+  })
+
+  it('returns null when nothing matches', () => {
+    expect(matchId("what's your favourite colour?")).toBeNull()
+  })
+
+  it('returns null for empty or filler-only input', () => {
+    expect(matchId('')).toBeNull()
+    expect(matchId('what is the')).toBeNull()
+  })
+})
