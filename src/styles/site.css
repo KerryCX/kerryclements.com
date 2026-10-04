@@ -53,6 +53,21 @@
   --font-size-caption: 12px; /* Metadata, timestamps, fine print */
 }
 
+/* Vertical spacing. One scale for every page, so the rhythm is consistent and easy to tune. */
+:root {
+  --space-page-top: 64px; /* Above the first section on a page */
+  --space-section: 40px; /* Top and bottom padding of each section */
+  --space-page-bottom: 64px; /* Below the last content before the footer */
+}
+
+@media (max-width: 599px) {
+  :root {
+    --space-page-top: 40px;
+    --space-section: 32px;
+    --space-page-bottom: 48px;
+  }
+}
+
 /* Base */
 .site {
   background-color: var(--bg-primary);
@@ -324,7 +339,7 @@ body {
 
 /* Hero */
 .hero {
-  padding: 100px 120px 80px;
+  padding: var(--space-page-top) 120px var(--space-section);
 }
 
 .hero__name {
@@ -390,6 +405,11 @@ body {
   margin-top: 0; /* resets default h2 margin when used as a heading */
   margin-bottom: 24px;
   grid-column: 1 / -1; /* spans all columns so it sits above the grid */
+}
+
+/* In the cards grid the row gap already adds 24px, so the label needs less of its own */
+.cards .section-label {
+  margin-bottom: 8px;
 }
 
 .card {
@@ -475,7 +495,7 @@ body {
 
 /* Skills */
 .skills {
-  padding: 80px 120px 40px;
+  padding: var(--space-section) 120px;
 }
 
 .skills__grid {
@@ -510,7 +530,7 @@ body {
 
 /* Footer */
 .footer {
-  padding: 40px 120px 60px;
+  padding: var(--space-section) 120px 48px;
   border-top: 1px solid var(--border-default);
   margin-top: 0;
 }
@@ -612,7 +632,7 @@ body {
 /* Case Study */
 .case-study {
   max-width: 720px;
-  padding: 80px 120px;
+  padding: var(--space-page-top) 120px var(--space-page-bottom);
 }
 
 .case-study__title {
@@ -627,14 +647,14 @@ body {
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 48px;
+  margin: 0 0 32px;
 }
 
 .case-study h2 {
   font-size: var(--font-size-heading);
   font-weight: 600;
   color: var(--text-primary);
-  margin: 48px 0 16px;
+  margin: 40px 0 16px;
 }
 
 .case-study p {
@@ -688,7 +708,7 @@ body {
 
 /* Contact page */
 .contact-section {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -784,7 +804,7 @@ body {
 
 /* Story section */
 .story {
-  padding: 40px 120px 60px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -815,7 +835,7 @@ body {
 
 /* Featured work section */
 .featured {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -903,7 +923,7 @@ body {
 
 /* Home closing CTA */
 .home-cta {
-  padding: 40px 120px;
+  padding: var(--space-section) 120px;
   border-top: 1px solid var(--border-default);
 }
 
@@ -968,7 +988,7 @@ body {
   }
 
   .hero {
-    padding: 40px 20px 40px;
+    padding: var(--space-page-top) 20px var(--space-section);
   }
 
   .hero__name {
@@ -998,7 +1018,7 @@ body {
   }
 
   .skills {
-    padding: 40px 20px 40px;
+    padding: var(--space-section) 20px;
   }
 
   .skills__grid {
@@ -1007,7 +1027,7 @@ body {
   }
 
   .footer {
-    padding: 32px 20px 40px;
+    padding: var(--space-section) 20px 40px;
   }
 
   .footer__top {
@@ -1016,7 +1036,7 @@ body {
   }
 
   .case-study {
-    padding: 60px 20px;
+    padding: var(--space-page-top) 20px var(--space-page-bottom);
     max-width: 100%;
   }
 
@@ -1025,7 +1045,7 @@ body {
   }
 
   .contact-section {
-    padding: 32px 20px;
+    padding: var(--space-section) 20px;
   }
 
   .contact-page .hero {
@@ -1037,11 +1057,11 @@ body {
   }
 
   .story {
-    padding: 40px 20px 60px;
+    padding: var(--space-section) 20px;
   }
 
   .featured {
-    padding: 60px 20px;
+    padding: var(--space-section) 20px;
   }
 
   .featured__grid {
@@ -1049,7 +1069,7 @@ body {
   }
 
   .home-cta {
-    padding: 60px 20px;
+    padding: var(--space-section) 20px;
   }
 }
 

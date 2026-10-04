@@ -7,7 +7,7 @@
 .content {
   max-width: 680px;
   margin: 0 auto;
-  padding: 60px 24px 100px;
+  padding: var(--space-page-top) 24px var(--space-page-bottom);
 }
 
 .backLink {
@@ -127,7 +127,7 @@
 
 @media (max-width: 768px) {
   .content {
-    padding: 40px 20px 60px;
+    padding: var(--space-page-top) 20px var(--space-page-bottom);
   }
 
   .title {
