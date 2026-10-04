@@ -60,6 +60,8 @@
   border: 1px solid var(--personal-border);
   border-radius: var(--personal-radius);
   padding: 24px;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-card);
   text-decoration: none;
   transition: border-color 0.15s ease;
 }

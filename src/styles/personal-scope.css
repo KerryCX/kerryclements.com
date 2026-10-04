@@ -1,26 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap');
 
+/* Personal pages share the main site's colours, so moving between them feels like one site.
+   Differences: in light mode the page is a very warm "paper" white, and the magenta accents
+   and Fraunces headings stay as the personal touch. */
 .personal-scope {
-  --personal-bg: #fff6ed;
-  --personal-text: #241433;
-  --personal-text-muted: #6b5470;
-  --personal-border: #ecdbc7;
-  --accent-magenta: #e0218a;
-  --accent-magenta-dark: #9c1568;
+  --personal-bg: var(--bg-primary);
+  --personal-text: var(--text-primary);
+  --personal-text-muted: var(--text-secondary);
+  --personal-border: var(--border-default);
+  --accent-magenta: #ff4fa8;
+  --accent-magenta-dark: #f590c4; /* the stronger-contrast accent, so lighter on dark */
   --personal-radius: 8px;
   --font-family-display: 'Fraunces', serif;
 }
 
-/* Dark theme for the personal pages. PLACEHOLDER values, to be finalised.
-   A warm plum rather than the portfolio's neutral black, so these pages keep their own feel.
-   All text pairs pass WCAG AA. */
-:root[data-theme='dark'] .personal-scope {
-  --personal-bg: #1d1424;
-  --personal-text: #f6ece1;
-  --personal-text-muted: #c9b5cc;
-  --personal-border: #3d2c47;
-  --accent-magenta: #ff4fa8;
-  --accent-magenta-dark: #f590c4; /* "dark" is the stronger-contrast accent; lighter on a dark background */
+:root[data-theme='light'] .personal-scope {
+  --personal-bg: #fff6ed; /* paper */
+  --accent-magenta: #e0218a;
+  --accent-magenta-dark: #9c1568;
 }
 
 .personal-scope .nav {
