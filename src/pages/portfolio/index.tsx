@@ -1,7 +1,6 @@
-import { emailAddress, gitHubLink, linkedInLink, skills, workCards } from './constants'
+import { cvPath, emailAddress, gitHubLink, linkedInLink, skills, workCards } from './constants'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
-import { downloadCV } from '../../utils'
 
 export const Portfolio = () => {
   return (
@@ -19,9 +18,9 @@ export const Portfolio = () => {
               accessibility.
             </p>
             <div className="hero__links">
-              <button type="button" className="footer__cv-button" onClick={downloadCV}>
+              <a href={cvPath} download className="hero__link">
                 Download CV
-              </button>
+              </a>
               <a href={`mailto:${emailAddress}`} className="hero__link">
                 {emailAddress}
               </a>

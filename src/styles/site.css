@@ -563,27 +563,6 @@ body {
   text-decoration: underline;
 }
 
-.footer__cv-button {
-  font-size: var(--font-size-label);
-  font-weight: 500;
-  color: var(--accent-rose);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
-  text-decoration: none;
-}
-
-.footer__cv-button:hover {
-  text-decoration: underline;
-}
-
-.footer__cv-button:focus-visible {
-  outline: 2px solid var(--accent-rose);
-  outline-offset: 3px;
-}
-
 .footer__copyright {
   font-size: var(--font-size-caption);
   color: var(--text-tertiary);
@@ -742,19 +721,6 @@ body {
 
 .connect-link:hover {
   text-decoration: underline;
-}
-
-.connect-link--button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  padding: 0;
-}
-
-.connect-link--button:focus-visible {
-  outline: 2px solid var(--accent-rose);
-  outline-offset: 3px;
 }
 
 .connect-caption {
