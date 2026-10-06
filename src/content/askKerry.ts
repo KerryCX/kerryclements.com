@@ -189,7 +189,7 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: 'I took time out to raise my family, then came back to tech through a web development bootcamp at Bath Spa University before joining Scalable. Having that time for family was great, but now my children are older, I can focus on work without school runs.',
     },
-    followUps: ['since2025', 'experience', 'degree'],
+    followUps: ['bootcamp', 'degree', 'since2025', 'experience'],
   },
   {
     id: 'degree',
@@ -211,7 +211,31 @@ export const askKerryEntries: AskKerryEntry[] = [
         'It led to my move into IT. My final module, Software Systems and their Development, was a Distinction, and that got me the 2:1.',
       ],
     },
-    followUps: ['programmer', 'gap', 'since2025'],
+    followUps: ['courses', 'programmer', 'gap'],
+  },
+  {
+    id: 'courses',
+    question: 'Which courses did you study?',
+    keywords: ['courses', 'modules', 'module', 'databases', 'oop', 'planetary'],
+    answer: {
+      text: [
+        'The core was computing: object-oriented programming, relational databases, putting computer systems to work, and software systems and their development, which was my Distinction.',
+        'I also studied microprocessor-based computers, artificial intelligence, and information and communication technologies, which looked at how people interact with technology. And for something completely different, planetary science and the search for life.',
+      ],
+    },
+    followUps: ['degree', 'programmer', 'accessibility'],
+  },
+  {
+    id: 'bootcamp',
+    question: 'Tell me about the bootcamp',
+    keywords: ['bootcamp', 'bath', 'spa', 'retrain', 'retraining'],
+    answer: {
+      text: [
+        'I did a web development bootcamp at Bath Spa University from October 2021 to January 2022. It was a practical course covering React, HTML, CSS, JavaScript, Git and working with APIs.',
+        'It was my route back into tech after my career break, and three months after finishing I joined Scalable as a software engineer.',
+      ],
+    },
+    followUps: ['scalable', 'degree', 'gap'],
   },
   {
     id: 'since2025',
