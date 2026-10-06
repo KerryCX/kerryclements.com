@@ -52,7 +52,20 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'who',
     question: 'Who are you?',
-    keywords: ['kerry', 'introduce', 'introduction', 'yourself', 'background'],
+    keywords: [
+      'kerry',
+      'introduce',
+      'introduction',
+      'yourself',
+      'background',
+      'hello',
+      'hi',
+      'hey',
+      'pets',
+      'dog',
+      'cat',
+      'leicester',
+    ],
     answer: {
       text: [
         "I'm Kerry, a Bristol-based software engineer. I moved here from Leicester, and I live with my family, Ben our golden retriever and Precious, our naughty tortie.",
@@ -77,16 +90,30 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'stack',
     question: "What's your tech stack?",
-    keywords: ['tech', 'technologies', 'languages', 'tools', 'react', 'typescript'],
+    keywords: [
+      'tech',
+      'technologies',
+      'languages',
+      'tools',
+      'react',
+      'typescript',
+      'javascript',
+      'css',
+      'html',
+      'sass',
+      'git',
+      'java',
+      'tailwind',
+    ],
     answer: {
-      text: 'React, TypeScript and JavaScript on the front end; Node.js, Express, Python and FastAPI on the back end. For testing I use Jest, Vitest, Cypress and pytest, plus Git and GitHub Actions for CI.',
+      text: 'React, TypeScript, JavaScript, Tailwind and Kendo UI on the front end; Node.js, Express, Python and FastAPI on the back end. For testing I use Jest, Vitest, Cypress and pytest, plus Git and GitHub Actions for CI.',
     },
     followUps: ['fullstack', 'testing', 'accessibility'],
   },
   {
     id: 'skills',
     question: 'What are your strongest skills?',
-    keywords: ['skills', 'strengths', 'strongest', 'good', 'best'],
+    keywords: ['skills', 'strengths', 'strongest', 'good', 'best', 'design', 'ux', 'ui', 'hire'],
     answer: {
       text: [
         'Building React and TypeScript front ends that are tested, accessible and easy to use. I build to WCAG 2.2 AA and write tests alongside every feature.',
@@ -107,9 +134,21 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'scalable',
     question: 'What did you do at Scalable?',
-    keywords: ['acumen', 'last', 'previous', 'job', 'analytics', 'recent'],
+    keywords: [
+      'acumen',
+      'last',
+      'previous',
+      'job',
+      'analytics',
+      'recent',
+      'kendo',
+      'charts',
+      'dashboard',
+      'visualisation',
+      'visualization',
+    ],
     answer: {
-      text: 'I built front-end features for Acumen, a workplace analytics platform, in a small cross-functional team. That included data-dense charts and tables, REST API integrations, and Jest and Cypress tests alongside every feature.',
+      text: 'I built front-end features for Acumen, a workplace analytics platform, using React, TypeScript and Kendo UI in a small cross-functional team. That included data-dense charts and tables, REST API integrations, and Jest and Cypress tests alongside every feature.',
       link: { label: "Acumen's new home", href: 'https://www.vector-networks.com/scalable/' },
     },
     followUps: ['work', 'agile', 'stakeholders', 'redundancy'],
@@ -117,7 +156,18 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'redundancy',
     question: 'Why did you leave Scalable?',
-    keywords: ['leave', 'last', 'previous', 'job', 'redundancy', 'redundant'],
+    keywords: [
+      'leave',
+      'last',
+      'previous',
+      'job',
+      'redundancy',
+      'redundant',
+      'aws',
+      'cloud',
+      'fired',
+      'looking',
+    ],
     answer: {
       text: [
         'Unfortunately we had lost our main customer for Acumen. The funding was withdrawn, and I was made redundant.',
@@ -129,7 +179,18 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'agile',
     question: 'Have you worked in Agile teams?',
-    keywords: ['scrum', 'master', 'sprint', 'standup', 'retro', 'kanban', 'team'],
+    keywords: [
+      'scrum',
+      'master',
+      'sprint',
+      'standup',
+      'retro',
+      'kanban',
+      'team',
+      'jira',
+      'confluence',
+      'leadership',
+    ],
     answer: {
       text: 'Yes. I worked in Scrum throughout my time at Scalable, and for a few months I was also Scrum Master, running stand-ups, sprint planning and retros. I hold the BCS EXIN Foundation Certificate in Agile Scrum.',
     },
@@ -138,7 +199,15 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'stakeholders',
     question: 'Do you work with product and stakeholders?',
-    keywords: ['requirements', 'stories', 'communication', 'business', 'collaborate'],
+    keywords: [
+      'requirements',
+      'stories',
+      'communication',
+      'business',
+      'collaborate',
+      'product',
+      'pm',
+    ],
     answer: {
       text: [
         'Yes. We were a close-knit team at Scalable, and I was in daily contact with the product manager, UX designer, testers, CEO and Head of Engineering.',
@@ -199,7 +268,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'gap',
     question: 'What about the gap in your CV?',
-    keywords: ['break', 'family', 'time', 'out', 'returner'],
+    keywords: ['break', 'family', 'time', 'out', 'returner', 'kids', 'children', 'change'],
     answer: {
       text: 'I took time out to raise my family, then came back to tech through a web development bootcamp at Bath Spa University before joining Scalable. Having that time for family was great, but now my children are older, I can focus on work without school runs.',
     },
@@ -245,7 +314,7 @@ export const askKerryEntries: AskKerryEntry[] = [
     keywords: ['bootcamp', 'bath', 'spa', 'retrain', 'retraining'],
     answer: {
       text: [
-        'I did a web development bootcamp at Bath Spa University from October 2021 to January 2022. It was a practical course covering React, HTML, CSS, JavaScript, Git and working with APIs.',
+        'I did a web development bootcamp at Bath Spa University from October 2021 to January 2022. It was a practical course covering React, HTML, CSS, Tailwind, JavaScript, Git and working with APIs.',
         'It was my route back into tech after my career break, and three months after finishing I joined Scalable as a software engineer.',
       ],
     },
@@ -254,7 +323,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'since2025',
     question: 'What have you been doing since August 2025?',
-    keywords: ['since', 'currently', 'recently', 'now', 'learning', 'certificate'],
+    keywords: ['since', 'currently', 'recently', 'now', 'learning', 'certificate', 'google'],
     answer: {
       text: [
         'Building portfolio projects, earning a Scrum certification and an art and design qualification, and working towards the Google UX Design Certificate.',
@@ -289,7 +358,18 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'accessibility',
     question: 'How do you approach accessibility?',
-    keywords: ['a11y', 'wcag', 'screen', 'reader', 'keyboard', 'inclusive'],
+    keywords: [
+      'a11y',
+      'wcag',
+      'screen',
+      'reader',
+      'keyboard',
+      'inclusive',
+      'contrast',
+      'alt',
+      'aria',
+      'stark',
+    ],
     answer: {
       text: "I treat it as part of the job rather than an extra. I build to WCAG 2.2 AA, test with keyboards and Stark, and I've run full accessibility audits on my own projects.",
     },
@@ -298,7 +378,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'testing',
     question: 'How do you approach testing?',
-    keywords: ['tests', 'quality'],
+    keywords: ['tests', 'quality', 'ci', 'actions', 'pipeline'],
     answer: {
       text: 'Tests go alongside the feature, not after it. I use Jest or Vitest with React Testing Library for components, Cypress for end-to-end, and GitHub Actions so nothing merges without passing.',
     },
@@ -307,7 +387,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'unit',
     question: "What's your experience with unit testing?",
-    keywords: ['unit', 'jest', 'vitest', 'component', 'rtl', 'coverage'],
+    keywords: ['unit', 'jest', 'vitest', 'component', 'rtl', 'coverage', 'library'],
     answer: {
       text: [
         "I write unit and component tests as standard. At Scalable I used Jest alongside every feature, and on my own projects I use Vitest with React Testing Library. That means testing what the user sees and does, not the component's internals.",
@@ -331,7 +411,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'e2e',
     question: "What's your experience with end-to-end testing?",
-    keywords: ['e2e', 'cypress', 'browser', 'journey', 'journeys'],
+    keywords: ['e2e', 'cypress', 'browser', 'journey', 'journeys', 'mock', 'mocks', 'stub'],
     answer: {
       text: [
         'At Scalable I wrote Cypress tests alongside feature work, to check whole user journeys in the browser. I used them on the wizard I built, to check what happened at each step when a user clicked certain things, and that the validation stopped them moving on until a step was complete.',
@@ -368,7 +448,19 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'proud',
     question: 'Which project are you proudest of?',
-    keywords: ['project', 'projects', 'best', 'crypto', 'portfolio'],
+    keywords: [
+      'project',
+      'projects',
+      'best',
+      'periodic',
+      'table',
+      'elements',
+      'chemistry',
+      'flashcard',
+      'quiz',
+      'pwa',
+      'mobile',
+    ],
     answer: {
       text: [
         "It's a mobile-first app for learning the periodic table, with flashcard and multiple-choice quiz modes, built with React and TypeScript.",
@@ -382,7 +474,25 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'list',
     question: 'Have you got any personal projects?',
-    keywords: ['personal', 'side', 'other', 'apps', 'hobby', 'more'],
+    keywords: [
+      'personal',
+      'side',
+      'other',
+      'apps',
+      'hobby',
+      'more',
+      'portfolio',
+      'crypto',
+      'tracker',
+      'measure',
+      'bmi',
+      'jewish',
+      'journey',
+      'hebrew',
+      'chores',
+      'household',
+      'done',
+    ],
     answer: {
       text: [
         'Yes, quite a few. Measure for Measure is a BMI calculator that lets you mix units, like feet and inches with kilograms. Jewish Journey helps me learn Hebrew blessings, prayers and word roots.',
@@ -438,6 +548,8 @@ export const askKerryEntries: AskKerryEntry[] = [
       'sybase',
       'tuxedo',
       'unix',
+      'ticket',
+      'cupboard',
     ],
     answer: {
       text: [
@@ -460,9 +572,38 @@ export const askKerryEntries: AskKerryEntry[] = [
     followUps: ['accessibility', 'testing'],
   },
   {
+    id: 'chatbot',
+    question: 'How does this chat work?',
+    keywords: ['chatbot', 'chat', 'bot', 'scripted', 'matching'],
+    answer: {
+      text: [
+        "There's no AI behind it. I wrote every answer myself, and when you type a question it compares your words with each answer's keywords, allowing for small typos, then shows the closest match.",
+        'I built it this way so the answers are always my own and always accurate, with no paid AI service.',
+      ],
+    },
+    followUps: ['site', 'ai', 'accessibility'],
+  },
+  {
     id: 'roles',
     question: 'What roles are you looking for?',
-    keywords: ['job', 'role', 'position', 'hiring', 'remote', 'hybrid', 'bristol', 'location'],
+    keywords: [
+      'job',
+      'role',
+      'position',
+      'hiring',
+      'remote',
+      'hybrid',
+      'bristol',
+      'location',
+      'based',
+      'live',
+      'city',
+      'home',
+      'wfh',
+      'permanent',
+      'contract',
+      'freelance',
+    ],
     answer: {
       text: "Frontend, full stack or product engineering roles where user experience is taken seriously. I'm looking in Greater Bristol (on-site, hybrid or remote) or remote across the UK, and I'm happy to travel to an office, such as London, once or twice a month.",
     },
@@ -489,7 +630,23 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'contact',
     question: 'Where can I find you online?',
-    keywords: ['contact', 'email', 'linkedin', 'github', 'cv', 'reach', 'links', 'online'],
+    keywords: [
+      'contact',
+      'email',
+      'linkedin',
+      'github',
+      'cv',
+      'reach',
+      'links',
+      'online',
+      'touch',
+      'phone',
+      'call',
+      'resume',
+      'message',
+      'thanks',
+      'thank',
+    ],
     answer: {
       text: "Here's where to find me. Email is the best way to get in touch.",
       links: [
@@ -505,7 +662,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'start',
     question: 'When can you start?',
-    keywords: ['available', 'availability', 'notice', 'when'],
+    keywords: ['available', 'availability', 'notice', 'when', 'immediately', 'asap', 'now'],
     answer: {
       text: "I'm available to start soon. Email me and we can talk about timings:",
       link: { label: 'hello@kerryclements.com', href: 'mailto:hello@kerryclements.com' },
