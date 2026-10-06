@@ -452,7 +452,25 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: "Frontend, full stack or product engineering roles where user experience is taken seriously. I'm looking in Greater Bristol (on-site, hybrid or remote) or remote across the UK, and I'm happy to travel to an office, such as London, once or twice a month.",
     },
-    followUps: ['start', 'experience'],
+    followUps: ['onsite', 'start', 'experience'],
+  },
+  {
+    id: 'onsite',
+    question: 'Would you work on-site?',
+    keywords: [
+      'onsite',
+      'site',
+      'office',
+      'commute',
+      'travel',
+      'london',
+      'gloucester',
+      'cheltenham',
+    ],
+    answer: {
+      text: "Yes. I'm happy to work on-site, hybrid or remote in and around Bristol, including Bath, Gloucester and Cheltenham. Further afield, I'd look at remote roles, and I'm happy to travel to an office, such as London, once or twice a month.",
+    },
+    followUps: ['roles', 'start'],
   },
   {
     id: 'start',
@@ -462,7 +480,7 @@ export const askKerryEntries: AskKerryEntry[] = [
       text: "I'm available to start soon. Email me and we can talk about timings:",
       link: { label: 'hello@kerryclements.com', href: 'mailto:hello@kerryclements.com' },
     },
-    followUps: ['roles', 'who', 'work'],
+    followUps: ['roles', 'onsite', 'work'],
   },
   {
     id: 'colour',
