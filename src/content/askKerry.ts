@@ -98,7 +98,19 @@ export const askKerryEntries: AskKerryEntry[] = [
       text: 'I built front-end features for Acumen, a workplace analytics platform, in a small cross-functional team. That included data-dense charts and tables, REST API integrations, and Jest and Cypress tests alongside every feature.',
       link: { label: "Acumen's new home", href: 'https://www.vector-networks.com/scalable/' },
     },
-    followUps: ['work', 'agile', 'stakeholders'],
+    followUps: ['work', 'agile', 'stakeholders', 'redundancy'],
+  },
+  {
+    id: 'redundancy',
+    question: 'Why did you leave Scalable?',
+    keywords: ['leave', 'last', 'previous', 'job', 'redundancy', 'redundant'],
+    answer: {
+      text: [
+        'Unfortunately we had lost our main customer for Acumen. The funding was withdrawn, and I was made redundant.',
+        'I was Scrum Master for the team responsible for moving our service onto AWS, and I was really excited about it, so it was a shame to leave.',
+      ],
+    },
+    followUps: ['work', 'agile', 'since2025'],
   },
   {
     id: 'agile',
@@ -124,15 +136,51 @@ export const askKerryEntries: AskKerryEntry[] = [
   },
   {
     id: 'europcar',
-    question: 'What did you do before Scalable?',
+    question: 'What did you do at Europcar?',
     keywords: ['europcar', 'earlier', 'analyst', 'programmer'],
     answer: {
       text: [
-        'I joined Europcar as a credit controller, moved into management information, and then into IT as an analyst programmer from 2005 to 2008, working on their branch network system in C, XML and SQL.',
+        'I joined Europcar as a credit controller, moved into management information, and then into IT as an analyst programmer from 2005 to 2008, working on their branch network system in Prolifics, C, SQL and XML.',
         'My earlier roles were customer-facing, visiting customers at their offices and speaking to them on the phone.',
       ],
     },
-    followUps: ['gap', 'since2025'],
+    followUps: ['programmer', 'since2025', 'creditcontroller'],
+  },
+  {
+    id: 'programmer',
+    question: 'Tell me more about Europcar',
+    keywords: ['europcar', 'analyst', 'programmer', 'prolifics', 'screens', 'fullstack'],
+    answer: {
+      text: [
+        "In IT, I worked on both sides of the system that ran Europcar's rental branches. I built and changed the branch screens in Prolifics, and wrote the C services, embedded SQL and batch jobs behind them. Today we'd call that full stack.",
+        "I tested my own code and the team's, did code reviews and wrote documentation. Having worked in credit control and management information first, I already knew how the business used its data, which helped when working with the branches.",
+      ],
+    },
+    followUps: ['backend', 'creditcontroller', 'mi'],
+  },
+  {
+    id: 'creditcontroller',
+    question: 'Tell me more about your time as a credit controller',
+    keywords: ['credit', 'controller', 'europcar'],
+    answer: {
+      text: [
+        'This was my first role at Europcar (then called Eurodollar). I had my own ledger of accounts, chasing payments, dealing with customer queries and applying payments to accounts.',
+        'I was promoted to National Accounts Controller, where I was responsible for medium and large businesses. I would often visit them to go through their queries.',
+      ],
+    },
+    followUps: ['mi', 'scalable', 'gap'],
+  },
+  {
+    id: 'mi',
+    question: 'Tell me more about your time as a Management Information Analyst',
+    keywords: ['management', 'europcar', 'information'],
+    answer: {
+      text: [
+        'This was part of my move into tech. I was responsible for producing reports for our customers, on their car rental fleet.',
+        'As well as ad hoc reports, we had monthly reports that we would send out. We automated these reports using Visual Basic and Access.',
+      ],
+    },
+    followUps: ['programmer', 'scalable', 'gap'],
   },
   {
     id: 'gap',
@@ -141,7 +189,29 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: 'I took time out to raise my family, then came back to tech through a web development bootcamp at Bath Spa University before joining Scalable. Having that time for family was great, but now my children are older, I can focus on work without school runs.',
     },
-    followUps: ['since2025', 'experience'],
+    followUps: ['since2025', 'experience', 'degree'],
+  },
+  {
+    id: 'degree',
+    question: 'Do you have a degree?',
+    keywords: [
+      'degree',
+      'university',
+      'ou',
+      'bsc',
+      'study',
+      'studied',
+      'education',
+      'qualification',
+      'diploma',
+    ],
+    answer: {
+      text: [
+        'Yes, a BSc (Hons) Open degree from the Open University, with a 2:1. I studied part-time from 2001 to 2006 while working full time at Europcar, mainly IT and Computing, and gained a Diploma in Computing along the way.',
+        'It led to my move into IT. My final module, Software Systems and their Development, was a Distinction, and that got me the 2:1.',
+      ],
+    },
+    followUps: ['programmer', 'gap', 'since2025'],
   },
   {
     id: 'since2025',
@@ -168,11 +238,47 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'testing',
     question: 'How do you approach testing?',
-    keywords: ['tests', 'jest', 'vitest', 'cypress', 'tdd', 'quality'],
+    keywords: ['tests', 'quality'],
     answer: {
       text: 'Tests go alongside the feature, not after it. I use Jest or Vitest with React Testing Library for components, Cypress for end-to-end, and GitHub Actions so nothing merges without passing.',
     },
-    followUps: ['ai', 'accessibility'],
+    followUps: ['unit', 'e2e', 'tdd'],
+  },
+  {
+    id: 'unit',
+    question: "What's your experience with unit testing?",
+    keywords: ['unit', 'jest', 'vitest', 'component', 'rtl', 'coverage', 'pytest'],
+    answer: {
+      text: [
+        "I write unit and component tests as standard. At Scalable I used Jest alongside every feature, and on my own projects I use Vitest with React Testing Library. That means testing what the user sees and does, not the component's internals.",
+        'On the back end, ticket-zero has around 95 to 100% Jest coverage, and cupboard-api is tested with pytest. GitHub Actions runs the tests on every pull request, so nothing merges without passing.',
+      ],
+    },
+    followUps: ['e2e', 'tdd', 'backend'],
+  },
+  {
+    id: 'e2e',
+    question: "What's your experience with end-to-end testing?",
+    keywords: ['e2e', 'cypress', 'browser', 'journey', 'journeys'],
+    answer: {
+      text: [
+        'At Scalable I wrote Cypress tests alongside feature work, to check whole user journeys in the browser. I used them on the wizard I built, to check what happened at each step when a user clicked certain things, and that the validation stopped them moving on until a step was complete.',
+        'Unit tests tell you each piece works. End-to-end tests tell you they work together, the way a user would use them.',
+      ],
+    },
+    followUps: ['wizard', 'unit', 'tdd'],
+  },
+  {
+    id: 'tdd',
+    question: 'What do you think of Test-Driven Development (TDD)?',
+    keywords: ['tests', 'tdd'],
+    answer: {
+      text: [
+        "It has its place. At Scalable, we didn't always have a dev environment with a realistic dataset. Before any dummy data was set up, writing the tests first gave me a way to check the code I was writing, and it helped keep the code concise.",
+        "I'd skip it for visual layout and styling, where you need to see the result in the browser, and for early prototypes when I'm still working out what to build. There I'd write the tests alongside the feature once the shape is clear.",
+      ],
+    },
+    followUps: ['testing', 'accessibility', 'ai'],
   },
   {
     id: 'ai',
@@ -229,16 +335,43 @@ export const askKerryEntries: AskKerryEntry[] = [
       ],
       link: { label: "Acumen's new home", href: 'https://www.vector-networks.com/scalable/' },
     },
-    followUps: ['proud', 'backend', 'site'],
+    followUps: ['proud', 'backend', 'site', 'wizard'],
+  },
+  {
+    id: 'wizard',
+    question: 'Tell me more about the wizard',
+    keywords: ['wizard', 'validation'],
+    answer: {
+      text: [
+        "I used Kendo UI's Stepper component to build a wizard that took the user through each step.",
+        "It fetched the user's settings from the back end through an API call, and those decided which options they saw.",
+        "It also needed a lot of validation, so users couldn't move on until the current step was valid.",
+      ],
+    },
+    followUps: ['e2e', 'testing', 'fullstack'],
   },
   {
     id: 'backend',
     question: 'Have you built any back end?',
-    keywords: ['backend', 'api', 'rest', 'express', 'fastapi', 'database', 'node'],
+    keywords: [
+      'backend',
+      'api',
+      'rest',
+      'express',
+      'fastapi',
+      'database',
+      'node',
+      'sql',
+      'sybase',
+      'tuxedo',
+      'unix',
+    ],
     answer: {
       text: [
-        'Yes. ticket-zero is a Node.js, Express and TypeScript REST API with around 95 to 100% Jest coverage, and cupboard-api is a FastAPI project with Pydantic validation and a pytest suite.',
-        "Watch this space: I've got plenty more ideas, and I'm building on my back end skills all the time.",
+        'Yes. As an analyst programmer at Europcar, most of my work was server-side, on a 2000s enterprise stack.',
+        'I wrote C services on BEA Tuxedo that the branch systems called to fetch rates and save rentals and reservations, much like API endpoints today, with embedded SQL against Sybase behind them.',
+        'I also designed tables and schema changes for an integration that exchanged XML messages through queues, maintained Unix batch jobs, and investigated live issues on the servers.',
+        'More recently, ticket-zero is a Node.js, Express and TypeScript REST API with around 95 to 100% Jest coverage, and cupboard-api is a FastAPI project with Pydantic validation and a pytest suite.',
       ],
     },
     followUps: ['testing', 'fullstack'],
@@ -270,7 +403,7 @@ export const askKerryEntries: AskKerryEntry[] = [
       text: "I'm available to start soon. Email me and we can talk about timings:",
       link: { label: 'hello@kerryclements.com', href: 'mailto:hello@kerryclements.com' },
     },
-    followUps: ['roles', 'who'],
+    followUps: ['roles', 'who', 'work'],
   },
   {
     id: 'colour',
