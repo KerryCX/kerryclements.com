@@ -224,7 +224,29 @@ export const askKerryEntries: AskKerryEntry[] = [
       ],
       link: { label: 'BWPJC Instagram', href: 'https://www.instagram.com/bwpjc' },
     },
-    followUps: ['proud', 'roles', 'list'],
+    followUps: ['proud', 'roles', 'list', 'social'],
+  },
+  {
+    id: 'social',
+    question: 'Tell me about your social media work',
+    keywords: [
+      'social',
+      'media',
+      'instagram',
+      'facebook',
+      'canva',
+      'graphics',
+      'posts',
+      'synagogue',
+    ],
+    answer: {
+      text: [
+        "I'm social media lead for Bristol & West Progressive Jewish Congregation. I design the posts and event graphics in Canva and share them on Instagram and Facebook.",
+        "It's not tech, but it uses the same skills: thinking about who the audience is, keeping the look consistent, and making the key information easy to take in at a glance.",
+      ],
+      link: { label: 'BWPJC Instagram', href: 'https://www.instagram.com/bwpjc' },
+    },
+    followUps: ['since2025', 'accessibility', 'roles'],
   },
   {
     id: 'accessibility',
