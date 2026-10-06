@@ -81,7 +81,9 @@ export default function HomePage() {
           <p className="home-cta__heading">
             Open to frontend, full stack and product engineering roles
           </p>
-          <p className="home-cta__sub">Let's talk about what you're building.</p>
+          <p className="home-cta__sub">
+            Based in Bristol, open to hybrid in Greater Bristol or remote across the UK.
+          </p>
           <Link to="/contact" className="btn btn--primary">
             Let's talk
           </Link>

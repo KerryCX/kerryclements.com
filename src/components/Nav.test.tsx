@@ -21,6 +21,7 @@ describe('Nav', () => {
     )
     expect(screen.getByRole('link', { name: 'Portfolio' })).toHaveAttribute('href', '/portfolio')
     expect(screen.getByRole('link', { name: 'Apps' })).toHaveAttribute('href', '/apps')
+    expect(screen.getByRole('link', { name: 'CV' })).toHaveAttribute('href', '/cv')
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '/contact')
     // Personal pages stay live at their URLs but aren't linked from the portfolio nav
     expect(screen.queryByRole('link', { name: 'Personal' })).not.toBeInTheDocument()
