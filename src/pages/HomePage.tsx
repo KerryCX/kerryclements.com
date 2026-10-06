@@ -25,9 +25,6 @@ export default function HomePage() {
               <Link to="/contact" className="btn btn--outline">
                 Let's talk
               </Link>
-              <Link to="/cv" className="btn btn--outline">
-                View CV
-              </Link>
             </div>
           </div>
         </section>
