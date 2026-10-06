@@ -275,6 +275,7 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: [
         'At Scalable I wrote Cypress tests alongside feature work, to check whole user journeys in the browser. I used them on the wizard I built, to check what happened at each step when a user clicked certain things, and that the validation stopped them moving on until a step was complete.',
+        'We used mock data for the API responses, so the tests were fast and repeatable, and we could easily test different user settings and error cases.',
         'Unit tests tell you each piece works. End-to-end tests tell you they work together, the way a user would use them.',
       ],
     },
