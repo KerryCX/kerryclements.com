@@ -66,7 +66,7 @@ export const askKerryEntries: AskKerryEntry[] = [
     keywords: ['years', 'long', 'commercial', 'senior', 'level', 'career'],
     answer: {
       text: [
-        "Over 7 years of commercial software development. Most recently that's 3+ years building production React and TypeScript applications at Scalable Software, and before that I was an analyst programmer at Europcar.",
+        "7 years of commercial software development. Most recently that's 3+ years building production React and TypeScript applications at Scalable Software, and before that I was an analyst programmer at Europcar.",
         "I've worked with people at every level, from the CEO to testers, and with customers when I was at Europcar.",
       ],
     },
@@ -125,10 +125,10 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'europcar',
     question: 'What did you do before Scalable?',
-    keywords: ['europcar', 'earlier', 'analyst', 'programmer', 'java'],
+    keywords: ['europcar', 'earlier', 'analyst', 'programmer'],
     answer: {
       text: [
-        'I joined Europcar as a credit controller, moved into management information, and then into IT as an analyst programmer from 2004 to 2008, working on their branch network system in C, Java, XML and SQL.',
+        'I joined Europcar as a credit controller, moved into management information, and then into IT as an analyst programmer from 2005 to 2008, working on their branch network system in C, XML and SQL.',
         'My earlier roles were customer-facing, visiting customers at their offices and speaking to them on the phone.',
       ],
     },
