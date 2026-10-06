@@ -73,7 +73,7 @@ export const askKerryEntries: AskKerryEntry[] = [
         'I like to think about accessibility and the user experience when I code, getting the best of both worlds.',
       ],
     },
-    followUps: ['experience', 'skills', 'stack', 'roles'],
+    followUps: ['experience', 'skills', 'hobbies', 'roles'],
   },
   {
     id: 'experience',
@@ -102,13 +102,51 @@ export const askKerryEntries: AskKerryEntry[] = [
       'html',
       'sass',
       'git',
+      'use',
       'java',
       'tailwind',
     ],
     answer: {
       text: 'React, TypeScript, JavaScript, Tailwind and Kendo UI on the front end; Node.js, Express, Python and FastAPI on the back end. For testing I use Jest, Vitest, Cypress and pytest, plus Git and GitHub Actions for CI.',
     },
-    followUps: ['fullstack', 'testing', 'accessibility'],
+    followUps: ['fullstack', 'testing', 'newtech'],
+  },
+  {
+    id: 'whytech',
+    question: 'Why did you choose tech?',
+    keywords: [
+      'motivation',
+      'motivates',
+      'passion',
+      'chose',
+      'choose',
+      'creative',
+      'change',
+      'career',
+    ],
+    answer: {
+      text: "I'm a creative but also logical person, and tech lets me be both. I love that it gives me the chance to create things that are genuinely useful to people.",
+    },
+    followUps: ['who', 'gap', 'skills'],
+  },
+  {
+    id: 'newtech',
+    question: "What about tech you haven't used yet?",
+    keywords: [
+      'angular',
+      'vue',
+      'docker',
+      'playwright',
+      'svelte',
+      'kubernetes',
+      'csharp',
+      'new',
+      'learn',
+    ],
+    answer: {
+      text: "Not yet, but if I get the chance, I'd love to. I love learning new tech, and I've picked up plenty on my own projects, from FastAPI to Vitest.",
+    },
+    followUps: ['stack', 'since2025', 'list'],
   },
   {
     id: 'skills',
@@ -120,7 +158,16 @@ export const askKerryEntries: AskKerryEntry[] = [
         "Beyond code, I'm good at turning half-formed requests into clear requirements. I've written user stories, worked daily with product, UX and the CEO, and been Scrum Master. I'm also studying UX, so I can work on the design side as well as build it.",
       ],
     },
-    followUps: ['stack', 'accessibility', 'stakeholders'],
+    followUps: ['stack', 'weakness', 'stakeholders'],
+  },
+  {
+    id: 'weakness',
+    question: "What's your biggest weakness?",
+    keywords: ['weakness', 'weaknesses', 'weak', 'worst', 'bad', 'improve'],
+    answer: {
+      text: "I can get really absorbed in a problem, wanting to get it just right and trying to work it out myself. I'm learning to ask for help sooner, so I don't stay stuck longer than I need to.",
+    },
+    followUps: ['skills', 'agile', 'stakeholders'],
   },
   {
     id: 'fullstack',
@@ -268,7 +315,7 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'gap',
     question: 'What about the gap in your CV?',
-    keywords: ['break', 'family', 'time', 'out', 'returner', 'kids', 'children', 'change'],
+    keywords: ['break', 'family', 'time', 'out', 'returner', 'kids', 'children'],
     answer: {
       text: 'I took time out to raise my family, then came back to tech through a web development bootcamp at Bath Spa University before joining Scalable. Having that time for family was great, but now my children are older, I can focus on work without school runs.',
     },
@@ -354,6 +401,31 @@ export const askKerryEntries: AskKerryEntry[] = [
       link: { label: 'BWPJC Instagram', href: 'https://www.instagram.com/bwpjc' },
     },
     followUps: ['since2025', 'accessibility', 'roles'],
+  },
+  {
+    id: 'hobbies',
+    question: 'What do you do outside work?',
+    keywords: [
+      'hobbies',
+      'hobby',
+      'fun',
+      'free',
+      'outside',
+      'weekend',
+      'interests',
+      'yoga',
+      'walking',
+      'writing',
+      'spare',
+      'coding',
+    ],
+    answer: {
+      text: [
+        "At the moment I'm enjoying writing, learning Hebrew, walking my dog, yoga, and shopping trips with my daughters.",
+        'I also build my own apps in my spare time. They show my skills, but really I make them because I love coding and making things.',
+      ],
+    },
+    followUps: ['list', 'who', 'whytech'],
   },
   {
     id: 'accessibility',
@@ -600,14 +672,38 @@ export const askKerryEntries: AskKerryEntry[] = [
       'city',
       'home',
       'wfh',
-      'permanent',
-      'contract',
-      'freelance',
     ],
     answer: {
       text: "Frontend, full stack or product engineering roles where user experience is taken seriously. I'm looking in Greater Bristol (on-site, hybrid or remote) or remote across the UK, and I'm happy to travel to an office, such as London, once or twice a month.",
     },
-    followUps: ['onsite', 'start', 'experience'],
+    followUps: ['onsite', 'contract', 'salary', 'start'],
+  },
+  {
+    id: 'contract',
+    question: 'Would you consider contract or part-time work?',
+    keywords: [
+      'contract',
+      'contractor',
+      'freelance',
+      'freelancer',
+      'part',
+      'temporary',
+      'permanent',
+    ],
+    answer: {
+      text: "Yes. I'm open to permanent, contract, freelance and part-time roles, as long as the work is a good fit.",
+    },
+    followUps: ['salary', 'roles', 'start'],
+  },
+  {
+    id: 'salary',
+    question: 'What salary are you looking for?',
+    keywords: ['salary', 'pay', 'rate', 'money', 'compensation', 'package', 'expectations'],
+    answer: {
+      text: "It depends on the role, the location and the whole package, so I'd rather talk it through. Email me and we can discuss it:",
+      link: { label: emailAddress, href: `mailto:${emailAddress}` },
+    },
+    followUps: ['roles', 'contract', 'start'],
   },
   {
     id: 'onsite',
