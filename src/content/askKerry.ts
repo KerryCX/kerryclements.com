@@ -60,7 +60,7 @@ export const askKerryEntries: AskKerryEntry[] = [
         'I like to think about accessibility and the user experience when I code, getting the best of both worlds.',
       ],
     },
-    followUps: ['experience', 'stack', 'roles'],
+    followUps: ['experience', 'skills', 'stack', 'roles'],
   },
   {
     id: 'experience',
@@ -77,11 +77,23 @@ export const askKerryEntries: AskKerryEntry[] = [
   {
     id: 'stack',
     question: "What's your tech stack?",
-    keywords: ['tech', 'technologies', 'languages', 'tools', 'skills', 'react', 'typescript'],
+    keywords: ['tech', 'technologies', 'languages', 'tools', 'react', 'typescript'],
     answer: {
       text: 'React, TypeScript and JavaScript on the front end; Node.js, Express, Python and FastAPI on the back end. For testing I use Jest, Vitest, Cypress and pytest, plus Git and GitHub Actions for CI.',
     },
     followUps: ['fullstack', 'testing', 'accessibility'],
+  },
+  {
+    id: 'skills',
+    question: 'What are your strongest skills?',
+    keywords: ['skills', 'strengths', 'strongest', 'good', 'best'],
+    answer: {
+      text: [
+        'Building React and TypeScript front ends that are tested, accessible and easy to use. I build to WCAG 2.2 AA and write tests alongside every feature.',
+        "Beyond code, I'm good at turning half-formed requests into clear requirements. I've written user stories, worked daily with product, UX and the CEO, and been Scrum Master. I'm also studying UX, so I can work on the design side as well as build it.",
+      ],
+    },
+    followUps: ['stack', 'accessibility', 'stakeholders'],
   },
   {
     id: 'fullstack',
