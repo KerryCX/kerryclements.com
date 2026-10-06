@@ -242,19 +242,31 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: 'Tests go alongside the feature, not after it. I use Jest or Vitest with React Testing Library for components, Cypress for end-to-end, and GitHub Actions so nothing merges without passing.',
     },
-    followUps: ['unit', 'e2e', 'tdd'],
+    followUps: ['unit', 'integration', 'e2e', 'tdd'],
   },
   {
     id: 'unit',
     question: "What's your experience with unit testing?",
-    keywords: ['unit', 'jest', 'vitest', 'component', 'rtl', 'coverage', 'pytest'],
+    keywords: ['unit', 'jest', 'vitest', 'component', 'rtl', 'coverage'],
     answer: {
       text: [
         "I write unit and component tests as standard. At Scalable I used Jest alongside every feature, and on my own projects I use Vitest with React Testing Library. That means testing what the user sees and does, not the component's internals.",
-        'On the back end, ticket-zero has around 95 to 100% Jest coverage, and cupboard-api is tested with pytest. GitHub Actions runs the tests on every pull request, so nothing merges without passing.',
+        'GitHub Actions runs the tests on every pull request, so nothing merges without passing.',
       ],
     },
-    followUps: ['e2e', 'tdd', 'backend'],
+    followUps: ['integration', 'e2e', 'tdd'],
+  },
+  {
+    id: 'integration',
+    question: "What's your experience with integration testing?",
+    keywords: ['integration', 'supertest', 'testclient', 'pytest', 'endpoint', 'endpoints'],
+    answer: {
+      text: [
+        "My back end projects are tested this way. In ticket-zero, Jest and Supertest send real HTTP requests through the whole Express app, so each test checks the route, validation and data together. cupboard-api does the same in Python with FastAPI's TestClient and pytest.",
+        "I reset the data before every test so they can't affect each other. They sit between unit tests, which check each piece on its own, and end-to-end tests, which check the whole journey in the browser.",
+      ],
+    },
+    followUps: ['unit', 'e2e', 'backend'],
   },
   {
     id: 'e2e',
@@ -266,7 +278,7 @@ export const askKerryEntries: AskKerryEntry[] = [
         'Unit tests tell you each piece works. End-to-end tests tell you they work together, the way a user would use them.',
       ],
     },
-    followUps: ['wizard', 'unit', 'tdd'],
+    followUps: ['wizard', 'unit', 'integration'],
   },
   {
     id: 'tdd',
