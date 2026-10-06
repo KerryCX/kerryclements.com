@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { Footer } from './Footer'
-import { emailAddress, linkedInLink, gitHubLink } from '../pages/portfolio/constants'
+import { cvPath, emailAddress, linkedInLink, gitHubLink } from '../pages/portfolio/constants'
 
 describe('Footer', () => {
   it('renders the brand name linking home', () => {
@@ -19,9 +19,11 @@ describe('Footer', () => {
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', gitHubLink)
   })
 
-  it('renders a download CV button', () => {
+  it('renders a download CV link', () => {
     render(<Footer />)
-    expect(screen.getByRole('button', { name: 'Download CV' })).toBeInTheDocument()
+    const link = screen.getByRole('link', { name: 'Download CV' })
+    expect(link).toHaveAttribute('href', cvPath)
+    expect(link).toHaveAttribute('download')
   })
 
   it('renders the copyright notice', () => {

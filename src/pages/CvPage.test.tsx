@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect } from 'vitest'
 import CvPage from './CvPage'
 import { cv } from '../content/cv'
+import { cvPath } from './portfolio/constants'
 
 const renderCvPage = (): void => {
   render(
@@ -36,9 +37,11 @@ describe('CvPage', () => {
     ])
   })
 
-  it('renders a button to download the PDF version', () => {
+  it('renders a link to download the PDF version', () => {
     renderCvPage()
-    expect(screen.getByRole('button', { name: 'Download CV (PDF)' })).toBeInTheDocument()
+    const link = screen.getByRole('link', { name: 'Download CV (PDF)' })
+    expect(link).toHaveAttribute('href', cvPath)
+    expect(link).toHaveAttribute('download')
   })
 
   it('renders each role with its organisation and dates', () => {

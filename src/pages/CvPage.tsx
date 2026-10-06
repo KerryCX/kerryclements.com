@@ -1,9 +1,8 @@
 import type { ReactElement } from 'react'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
-import { downloadCV } from '../utils'
 import { cv, type CvRole } from '../content/cv'
-import { emailAddress, gitHubLink, linkedInLink } from './portfolio/constants'
+import { cvPath, emailAddress, gitHubLink, linkedInLink } from './portfolio/constants'
 import styles from './CvPage.module.css'
 
 type RoleEntryProps = {
@@ -52,9 +51,9 @@ const CvPage = (): ReactElement => {
           </ul>
 
           <p className={styles.actions}>
-            <button type="button" className="btn btn--primary" onClick={downloadCV}>
+            <a href={cvPath} download className="btn btn--primary">
               Download CV (PDF)
-            </button>
+            </a>
           </p>
 
           <h2>Profile</h2>

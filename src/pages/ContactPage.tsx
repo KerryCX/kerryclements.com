@@ -1,7 +1,6 @@
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
-import { downloadCV } from '../utils'
-import { emailAddress, gitHubLink, linkedInLink } from './portfolio/constants'
+import { cvPath, emailAddress, gitHubLink, linkedInLink } from './portfolio/constants'
 
 const ContactPage = () => {
   return (
@@ -46,13 +45,9 @@ const ContactPage = () => {
               <p className="connect-caption">Read my CV online</p>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={downloadCV}
-                className="connect-link connect-link--button"
-              >
+              <a href={cvPath} download className="connect-link">
                 Download CV
-              </button>
+              </a>
               <p className="connect-caption">Tech experience and skills</p>
             </li>
           </ul>
