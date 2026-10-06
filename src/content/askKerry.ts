@@ -8,6 +8,8 @@
 // links: several links, shown together under the answer, e.g.
 //   links: [{ label: 'See all my projects', href: '/portfolio' }, { label: 'GitHub', href: '...' }],
 
+import { cvPath, emailAddress, gitHubLink, linkedInLink } from '../pages/portfolio/constants'
+
 export type AskKerryLink = {
   label: string
   href: string
@@ -470,7 +472,23 @@ export const askKerryEntries: AskKerryEntry[] = [
     answer: {
       text: "Yes. I'm happy to work on-site, hybrid or remote in and around Bristol, including Bath, Gloucester and Cheltenham. Further afield, I'd look at remote roles, and I'm happy to travel to an office, such as London, once or twice a month.",
     },
-    followUps: ['roles', 'start'],
+    followUps: ['roles', 'start', 'contact'],
+  },
+  {
+    id: 'contact',
+    question: 'Where can I find you online?',
+    keywords: ['contact', 'email', 'linkedin', 'github', 'cv', 'reach', 'links', 'online'],
+    answer: {
+      text: "Here's where to find me. Email is the best way to get in touch.",
+      links: [
+        { label: emailAddress, href: `mailto:${emailAddress}` },
+        { label: 'LinkedIn', href: linkedInLink },
+        { label: 'GitHub', href: gitHubLink },
+        { label: 'My CV online', href: '/cv' },
+        { label: 'My CV as a PDF', href: cvPath },
+      ],
+    },
+    followUps: ['roles', 'start', 'list'],
   },
   {
     id: 'start',
