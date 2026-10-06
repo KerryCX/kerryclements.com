@@ -23,17 +23,18 @@
   margin: 0;
 }
 
+/* Each dt/dd pair sits in its own div, so the gap goes between the divs */
+.skills > div + div {
+  margin-top: 24px;
+}
+
 .skills dt {
   font-size: var(--font-size-label);
   font-weight: 500;
   color: var(--accent-sage);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 24px 0 8px;
-}
-
-.skills dt:first-child {
-  margin-top: 0;
+  margin: 0 0 8px;
 }
 
 .skills dd {
