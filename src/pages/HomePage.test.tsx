@@ -13,7 +13,7 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { name: "Hi, I'm Kerry" })).toBeInTheDocument()
   })
 
-  it('renders primary CTAs linking to portfolio and contact', () => {
+  it('renders primary CTAs linking to portfolio, contact and CV', () => {
     render(
       <MemoryRouter>
         <HomePage />
@@ -24,6 +24,7 @@ describe('HomePage', () => {
       'href',
       '/contact'
     )
+    expect(screen.getByRole('link', { name: 'View CV' })).toHaveAttribute('href', '/cv')
   })
 
   it('renders Nav and Footer', () => {
