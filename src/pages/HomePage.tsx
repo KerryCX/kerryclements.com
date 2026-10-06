@@ -31,7 +31,7 @@ export default function HomePage() {
 
         <section className="story" aria-label="About">
           <p className="story__text">
-            Over 7 years of commercial software development, most recently 3+ years building
+            7 years of commercial software development, most recently 3+ years building
             production React and TypeScript applications, from data-dense analytics features to REST
             API integrations. On my own projects I've built APIs in Node.js and Python, set up CI
             with GitHub Actions, and run full WCAG 2.2 AA accessibility audits.

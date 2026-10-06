@@ -47,7 +47,7 @@ export const cv: Cv = {
   name: 'Kerry Clements',
   location: 'Bristol, UK',
   profile:
-    'Software engineer with over 7 years of commercial software development, most recently 3+ years building production React and TypeScript applications, including data-dense features for a workplace analytics product in a small cross-functional team. Comfortable owning work end to end: taking partly-formed requirements, working them through with the people who raised them, and shipping tested features with Jest and Cypress. On personal projects has built REST APIs in Node.js/Express and Python/FastAPI, and a serverless API proxy. Strong interest in UI/UX, currently completing the Google UX Design Professional Certificate, with a consistent focus on usability and accessibility (WCAG 2.2 AA). Uses AI tools daily to work faster.',
+    'Software engineer with 7 years of commercial software development, most recently 3+ years building production React and TypeScript applications, including data-dense features for a workplace analytics product in a small cross-functional team. Comfortable owning work end to end: taking partly-formed requirements, working them through with the people who raised them, and shipping tested features with Jest and Cypress. On personal projects has built REST APIs in Node.js/Express and Python/FastAPI, and a serverless API proxy. Strong interest in UI/UX, currently completing the Google UX Design Professional Certificate, with a consistent focus on usability and accessibility (WCAG 2.2 AA). Uses AI tools daily to work faster.',
   skills: [
     {
       heading: 'Technical',
@@ -117,15 +117,15 @@ export const cv: Cv = {
     {
       title: 'Analyst Programmer',
       organisation: 'Europcar Group UK, Leicester',
-      dates: 'Nov 2004 – Aug 2008',
+      dates: 'Mar 2005 – Aug 2008',
       highlights: [
         'Tested own code and that of the team, carried out code reviews, and wrote documentation.',
-        'Coded changes to the UI of the branch network system using C, Java, XML and SQL, with CVS/SCCS for version control.',
+        'Coded changes to the UI of the branch network system using C, XML and SQL, with CVS/SCCS for version control.',
       ],
     },
     {
       title: 'Career break',
-      dates: 'c. 2008 – 2017',
+      dates: '2008 – 2021',
       highlights: [
         'Relocated to Bristol and raised a family, before resuming casual work (retail, freelance usability testing) and retraining into tech through a web development bootcamp.',
       ],
