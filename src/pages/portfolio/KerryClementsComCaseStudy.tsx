@@ -19,7 +19,8 @@ export const KerryClementsComCaseStudy = () => {
           <p>
             A personal portfolio site, built to show engineering craft and care for the people using
             it. Built with React and TypeScript, designed in Figma with a token-based design system,
-            and deployed on Netlify.
+            and deployed on Netlify. It includes Ask about Kerry, a chat that answers recruiters'
+            questions in my own words, and an online CV.
           </p>
 
           <h2>The brief</h2>
@@ -247,6 +248,94 @@ export const KerryClementsComCaseStudy = () => {
             values with three spacing tokens and tightened the vertical rhythm on every page.
           </p>
 
+          <h2>Ask about Kerry</h2>
+          <p>
+            Recruiters skim portfolios, and the questions they want answered are usually the same:
+            how much experience, which stack, what kind of role, when can I start. I wanted them to
+            be able to just ask, and get an answer from me. Ask about Kerry is a chat panel that
+            floats in the bottom right corner of every page.
+          </p>
+          <p>
+            The obvious way to build it would have been to connect an AI model. I chose not to. With
+            so many AI-written applications and automated replies around, I wanted visitors to know
+            they are hearing from a real person. Every answer is written by me, in my own words, so
+            it is always accurate and it sounds like me. There is no paid API and nothing that can
+            make things up. A note under the question box says so: "Not AI. Answers are matched to
+            questions I've written, so it may not know everything."
+          </p>
+          <p>
+            Visitors can tap a suggested question or type their own. Typed questions are matched in
+            plain TypeScript. The question is split into words, filler words like "what" and "your"
+            are dropped, and each answer is scored on the words it shares. Words in an answer's
+            keywords count slightly more than words in its question, and rare words count more than
+            common ones, so "remote" outweighs "work". If a word isn't known anywhere, near matches
+            count instead, which catches typos and the start of longer words, so "access" finds
+            "accessibility".
+          </p>
+          <p>
+            My first version simply counted shared words, and questions about work kept landing on
+            the wrong answer because "work" appeared in several of them. Weighting by keywords and
+            word rarity fixed it. Later, "remotely" didn't match "remote", so I added light
+            stemming.
+          </p>
+          <p>
+            I wanted it to feel like chatting to me rather than searching a FAQ. Answers appear
+            after a short typing pause, so it reads like a conversation. After each answer the chat
+            suggests follow-up questions, and it never suggests one that has already been answered.
+            Some answers have a "tell me more" follow-up for visitors who want more depth, such as
+            my work at Europcar or the wizard I built at Scalable. When someone types a question,
+            the answer shows which question it is answering, so a vague question like "current"
+            still makes sense.
+          </p>
+          <p>
+            The chat has its own colours: a deep rose in the dark theme and a soft pink in the light
+            theme, so it stands out from the page while still feeling part of the site. On the pink,
+            the muted text and rose accent failed WCAG AA, so the chat redefines those tokens with
+            darker shades, inside the chat only.
+          </p>
+          <p>
+            The panel is a labelled dialog. It opens from a button with <code>aria-expanded</code>,
+            closes with Escape and returns focus to the button, and new messages are announced
+            through a polite live region. On phones, focusing the question box popped up the
+            on-screen keyboard and pushed the answer out of view. Now, when the panel is opened or a
+            suggestion is tapped on a touch screen, focus stays out of the text box. Keyboard users
+            still go straight to it.
+          </p>
+          <p>
+            The questions and answers live in one content file, separate from the component, so
+            updating an answer is a text edit. Tests check that every id is unique, that every
+            follow-up points to a question that exists, and that no answer contains an em dash. To
+            find gaps, I ran 120 things a recruiter might type through the matcher. Only 30 landed
+            on a sensible answer at first, so I added keywords and new answers, from salary and
+            contract work to how the chat itself works, until most of them did. It now covers 44
+            questions.
+          </p>
+
+          <h2>Online CV</h2>
+          <p>
+            My CV used to be a PDF download only. I added a <code>/cv</code> page so recruiters can
+            read it in the browser. The page is built from typed content in one file,{' '}
+            <code>cv.ts</code>, so the roles, skills and education all come from the same data.
+          </p>
+          <p>
+            I first added a View CV button to the home page hero, next to View my work and Let's
+            talk. Three buttons competed for attention, and a CV is something people look for from
+            any page, so I moved it into the main nav instead.
+          </p>
+          <p>
+            The download buttons used JavaScript to fetch the PDF and trigger a download. I replaced
+            them with plain links using the <code>download</code> attribute. They work without
+            JavaScript, can be right-clicked to save or copy, and are the right element for fetching
+            a file. It also let me delete a utility function and two CSS rules that only existed to
+            make buttons look like links.
+          </p>
+          <p>
+            The skill groups on the CV page sat right on top of each other. Each heading had a top
+            margin except the first, using <code>:first-child</code>, but each heading and its list
+            sit inside their own <code>{'<div>'}</code>, so every heading was the first child and
+            lost its margin. Moving the gap onto the groups fixed it.
+          </p>
+
           <h2>What's next</h2>
           <ul>
             <li>Additional case studies as projects are completed</li>
@@ -254,6 +343,14 @@ export const KerryClementsComCaseStudy = () => {
             <li>
               Move from the Prerender extension to build-time prerendering with React Router
               framework mode, so every visitor gets real HTML, not just crawlers
+            </li>
+            <li>
+              Turn Ask about Kerry into a reusable package, so I can add it to my other apps, such
+              as Periodic Table and Jewish Journey, with their own questions and colours
+            </li>
+            <li>
+              Voice recordings of my answers in the chat, and a short intro video, so visitors can
+              hear and see the real person behind the site
             </li>
           </ul>
 
