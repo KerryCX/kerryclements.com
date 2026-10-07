@@ -5,7 +5,7 @@ import { PeriodicTableCaseStudy } from '../pages/portfolio/PeriodicTableCaseStud
 import { KerryClementsComCaseStudy } from '../pages/portfolio/KerryClementsComCaseStudy'
 import { JobsDoneCaseStudy } from '../pages/portfolio/JobsDoneCaseStudy'
 import { ShoppingListCaseStudy } from '../pages/portfolio/ShoppingListCaseStudy'
-import { BerakhotCaseStudy } from '../pages/portfolio/BerakhotCaseStudy'
+import { JewishJourneyCaseStudy } from '../pages/portfolio/JewishJourneyCaseStudy'
 import { CryptoTrackerCaseStudy } from '../pages/portfolio/CryptoTrackerCaseStudy'
 import { TicTacToeCaseStudy } from '../pages/portfolio/TicTacToeCaseStudy'
 import { TimeTrackingCaseStudy } from '../pages/portfolio/TimeTrackingCaseStudy'
@@ -17,7 +17,7 @@ export const portfolioRoutes: RouteObject[] = [
   { path: '/portfolio/kerryclements-com', element: <KerryClementsComCaseStudy />, handle: pageMeta.kerryClementsCom },
   { path: '/portfolio/jobs-done', element: <JobsDoneCaseStudy />, handle: pageMeta.jobsDone },
   { path: '/portfolio/shopping-list', element: <ShoppingListCaseStudy />, handle: pageMeta.shoppingList },
-  { path: '/portfolio/berakhot', element: <BerakhotCaseStudy />, handle: pageMeta.berakhot },
+  { path: '/portfolio/jewish-journey', element: <JewishJourneyCaseStudy />, handle: pageMeta.jewishJourney },
   { path: '/portfolio/crypto-tracker', element: <CryptoTrackerCaseStudy />, handle: pageMeta.cryptoTracker },
   { path: '/portfolio/tic-tac-toe', element: <TicTacToeCaseStudy />, handle: pageMeta.ticTacToe },
   { path: '/portfolio/time-tracking-dashboard', element: <TimeTrackingCaseStudy />, handle: pageMeta.timeTracking },

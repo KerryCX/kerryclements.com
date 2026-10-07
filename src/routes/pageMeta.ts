@@ -59,10 +59,10 @@ export const pageMeta = {
     description:
       'A recruitment coding challenge rebuilt with no time limit: a React and TypeScript shopping list with persistence, reordering, and tests.',
   },
-  berakhot: {
-    title: 'Berakhot case study - Kerry Clements',
+  jewishJourney: {
+    title: 'Jewish Journey case study - Kerry Clements',
     description:
-      'A Hebrew blessing lookup tool. Reveal as much as you need: Hebrew with or without nikkud, transliteration, translation, and a pronunciation video.',
+      'A growing set of study tools for Jewish conversion study: blessings, prayers, Hebrew roots and resources, built with React and Tailwind with accessibility as a target from the start.',
   },
   cryptoTracker: {
     title: 'Crypto Tracker case study - Kerry Clements',

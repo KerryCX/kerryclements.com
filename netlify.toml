@@ -3,6 +3,11 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/portfolio/berakhot"
+  to = "/portfolio/jewish-journey"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
