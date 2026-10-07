@@ -58,14 +58,14 @@ export const workCards = [
       'Screenshot of the Shopping List app showing items with checkboxes, reorder buttons, and delete buttons',
   },
   {
-    title: 'Berakhot App',
+    title: 'Jewish Journey',
     description:
-      'A Hebrew blessing lookup tool. Pick a blessing and reveal as much or as little as you need: Hebrew with or without nikkud, transliteration, translation, and a recorded pronunciation video.',
+      'A growing set of study tools built while studying for conversion to Judaism: blessings, prayers, Hebrew roots and resources. Reveal as much or as little as you need, in a PWA built with accessibility in mind.',
     tags: ['React', 'JavaScript', 'Tailwind'],
-    caseStudyLink: '/portfolio/berakhot',
-    image: '/berakhot-app.png',
+    caseStudyLink: '/portfolio/jewish-journey',
+    image: '/jewish-journey-app.png',
     imageAlt:
-      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+      'Screenshot of the Jewish Journey app showing the Berakhot blessing lookup with a dropdown, reveal toggles, and the Hebrew text display',
   },
   {
     title: 'Crypto Tracker',
@@ -150,14 +150,14 @@ export const appCards = [
       'Screenshot of the Jobs Done app showing three logged tasks with timestamps, email and clipboard sharing options',
   },
   {
-    title: 'Berakhot',
+    title: 'Jewish Journey',
     description:
-      'A Hebrew blessing lookup tool. Pick a blessing and reveal as much or as little as you need: Hebrew with or without nikkud, transliteration, translation, and a recorded pronunciation video.',
+      'A growing set of study tools built while studying for conversion to Judaism: blessings, prayers, Hebrew roots and resources. Reveal as much or as little as you need, in a PWA built with accessibility in mind.',
     tags: ['React', 'JavaScript', 'Tailwind'],
     appLink: 'https://jewishjourney.kerryclements.com',
-    image: '/berakhot-app.png',
+    image: '/jewish-journey-app.png',
     imageAlt:
-      'Screenshot of the Berakhot app showing a blessing dropdown, four reveal toggles, and the Hebrew text display',
+      'Screenshot of the Jewish Journey app showing the Berakhot blessing lookup with a dropdown, reveal toggles, and the Hebrew text display',
   },
   {
     title: 'Crypto Tracker',
