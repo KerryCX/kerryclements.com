@@ -689,6 +689,32 @@ body {
   margin: 0;
 }
 
+/* Narrow phone screenshot in a case study, kept at roughly its native size. */
+.case-study__image--narrow {
+  display: block;
+  width: 100%;
+  max-width: 268px;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+/* Mid-sized screenshot in a case study, centred. */
+.case-study__image--medium {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+/* Wide desktop screenshot in a case study, scaled to fit the text column. */
+.case-study__image--wide {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
 /* Contact page */
 .contact-section {
   padding: var(--space-section) 120px;
