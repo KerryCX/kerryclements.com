@@ -2,14 +2,8 @@ import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { AskKerryChat, TYPING_DELAY_MS } from './AskKerryChat'
-import {
-  askKerryEntries,
-  askKerryGreeting,
-  askKerryStarters,
-  linksOf,
-  paragraphsOf,
-  type AskKerryAnswer,
-} from '../../content/askKerry'
+import { askKerryEntries, askKerryGreeting, askKerryStarters } from '../../content/askKerry'
+import { linksOf, paragraphsOf, type AskKerryAnswer } from '../../chatbot/types'
 
 const firstParagraph = (answer: AskKerryAnswer): string => paragraphsOf(answer)[0]
 
