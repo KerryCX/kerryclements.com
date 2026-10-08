@@ -17,13 +17,6 @@ const Personal = () => {
           A few things that are personal to me, presented with the same care I bring to my work.
         </p>
 
-        {/* <figure className={styles.videoWrapper}>
-          <video className={styles.video} controls poster="/images/personal-poster.jpg">
-            <source src="/videos/20201028skindiariesEnhanced.mp4" type="video/mp4" /> */}
-        {/* TODO: add a <track kind="captions"> once captions exist */}
-        {/* </video>
-        </figure> */}
-
         <div className={styles.entries}>
           <a href="/personal/wellness-journey" className={styles.entryCard}>
             <span className={styles.entryLabel}>hot mess to healthy</span>
