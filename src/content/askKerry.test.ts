@@ -1,12 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import {
-  askKerryEntries,
-  askKerryFallback,
-  askKerryGreeting,
-  askKerryStarters,
-  linksOf,
-  paragraphsOf,
-} from './askKerry'
+import { askKerryEntries, askKerryFallback, askKerryGreeting, askKerryStarters } from './askKerry'
+import { linksOf, paragraphsOf } from '../chatbot/types'
 
 const ids = askKerryEntries.map((entry) => entry.id)
 
