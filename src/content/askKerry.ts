@@ -8,16 +8,8 @@
 // links: several links, shown together under the answer, e.g.
 //   links: [{ label: 'See all my projects', href: '/portfolio' }, { label: 'GitHub', href: '...' }],
 
-import type { AskKerryAnswer } from '../chatbot/types'
+import type { AskKerryAnswer, AskKerryEntry } from '../chatbot/types'
 import { cvPath, emailAddress, gitHubLink, linkedInLink } from '../pages/portfolio/constants'
-
-export type AskKerryEntry = {
-  id: string
-  question: string
-  keywords: string[]
-  answer: AskKerryAnswer
-  followUps: string[]
-}
 
 export const askKerryGreeting: AskKerryAnswer = {
   text: "Hi, I'm Kerry. Ask me about my experience, skills, projects or the roles I'm looking for.",

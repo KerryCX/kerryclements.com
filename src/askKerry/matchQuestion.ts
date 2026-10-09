@@ -1,4 +1,4 @@
-import type { AskKerryEntry } from '../content/askKerry'
+import type { AskKerryEntry } from '../chatbot/types'
 
 // Matches a typed question to the closest written answer. No AI: it compares words.
 // 1. Split both sides into lowercase words and drop filler words ("what", "your"...).
