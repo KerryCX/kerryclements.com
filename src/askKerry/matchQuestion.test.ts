@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { matchQuestion, toWords } from './matchQuestion'
-import { askKerryEntries, type AskKerryEntry } from '../content/askKerry'
+import { askKerryEntries } from '../content/askKerry'
+import type { AskKerryEntry } from '../chatbot/types'
 
 const matchId = (question: string): string | null =>
   matchQuestion(question, askKerryEntries)?.id ?? null
