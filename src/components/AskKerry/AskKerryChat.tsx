@@ -12,16 +12,13 @@ import {
   askKerryFallback,
   askKerryGreeting,
   askKerryStarters,
-  linksOf,
-  paragraphsOf,
-  type AskKerryAnswer,
   type AskKerryEntry,
-  type AskKerryLink,
 } from '../../content/askKerry'
 import { matchQuestion } from '../../askKerry/matchQuestion'
 import { pickSuggestions } from '../../askKerry/pickSuggestions'
 import { isTouchTap } from '../../askKerry/touchKeyboard'
 import styles from './AskKerry.module.css'
+import { linksOf, paragraphsOf, type AskKerryLink, type AskKerryAnswer } from '../../chatbot/types'
 
 // A short pause before each answer, so it reads like a conversation
 export const TYPING_DELAY_MS = 500

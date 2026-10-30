@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest'
 
 // jsdom has no matchMedia. Default to "no match" (dark system setting);
 // tests that need a light system setting override window.matchMedia themselves.
