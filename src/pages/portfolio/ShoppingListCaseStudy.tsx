@@ -58,6 +58,17 @@ export const ShoppingListCaseStudy = () => {
             record of incremental delivery.
           </p>
           <p>
+            <strong>
+              <code>crypto.randomUUID()</code> over a uuid library.
+            </strong>{' '}
+            It is built into modern browsers, so item IDs needed no extra dependency.
+          </p>
+          <p>
+            <strong>A generic useLocalStorage hook.</strong> Persistence logic is reusable and kept
+            separate from the component logic, so the list components don't need to know where their
+            data is stored.
+          </p>
+          <p>
             <strong>Up/down buttons instead of drag-and-drop for reordering.</strong> I originally
             planned drag-and-drop, but chose simple up/down buttons instead. They're trivial to
             implement, need no extra dependency, and are naturally accessible via keyboard and
