@@ -1,24 +1,24 @@
 import {
   useEffect,
   useId,
+  useMemo,
   useRef,
   useState,
   type FormEvent,
   type MouseEvent,
   type ReactElement,
 } from 'react'
-import {
-  askKerryEntries,
-  askKerryFallback,
-  askKerryGreeting,
-  askKerryStarters,
-  type AskKerryEntry,
-} from '../../content/askKerry'
 import { matchQuestion } from '../../askKerry/matchQuestion'
 import { pickSuggestions } from '../../askKerry/pickSuggestions'
 import { isTouchTap } from '../../askKerry/touchKeyboard'
 import styles from './AskKerry.module.css'
-import { linksOf, paragraphsOf, type AskKerryLink, type AskKerryAnswer } from '../../chatbot/types'
+import {
+  linksOf,
+  paragraphsOf,
+  type AskKerryAnswer,
+  type AskKerryEntry,
+  type AskKerryLink,
+} from '../../chatbot/types'
 
 // A short pause before each answer, so it reads like a conversation
 export const TYPING_DELAY_MS = 500
@@ -36,23 +36,33 @@ type ChatMessage = {
   answering?: string
 }
 
-const entriesById = new Map(askKerryEntries.map((entry) => [entry.id, entry]))
-const allIds = askKerryEntries.map((entry) => entry.id)
-
 const kerryMessage = (answer: AskKerryAnswer): Omit<ChatMessage, 'id'> => ({
   author: 'kerry',
   paragraphs: paragraphsOf(answer),
   links: linksOf(answer),
 })
 
-const findEntries = (ids: string[]): AskKerryEntry[] =>
-  ids.flatMap((id) => entriesById.get(id) ?? [])
+export type AskKerryChatProps = {
+  entries: AskKerryEntry[]
+  greeting: AskKerryAnswer
+  fallback: AskKerryAnswer
+  // Ids of the questions suggested first, and again when nothing else fits
+  starters: string[]
+}
 
-export const AskKerryChat = (): ReactElement => {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { id: 0, ...kerryMessage(askKerryGreeting) },
-  ])
-  const [suggestionIds, setSuggestionIds] = useState<string[]>(askKerryStarters)
+export const AskKerryChat = ({
+  entries,
+  greeting,
+  fallback,
+  starters,
+}: AskKerryChatProps): ReactElement => {
+  const entriesById = useMemo(() => new Map(entries.map((entry) => [entry.id, entry])), [entries])
+  const allIds = useMemo(() => entries.map((entry) => entry.id), [entries])
+  const findEntries = (ids: string[]): AskKerryEntry[] =>
+    ids.flatMap((id) => entriesById.get(id) ?? [])
+
+  const [messages, setMessages] = useState<ChatMessage[]>([{ id: 0, ...kerryMessage(greeting) }])
+  const [suggestionIds, setSuggestionIds] = useState<string[]>(starters)
   const [isTyping, setIsTyping] = useState(false)
   const [draft, setDraft] = useState('')
 
@@ -95,15 +105,15 @@ export const AskKerryChat = (): ReactElement => {
     setIsTyping(true)
     setSuggestionIds([])
 
-    const entry = knownEntry ?? matchQuestion(question, askKerryEntries)
+    const entry = knownEntry ?? matchQuestion(question, entries)
     if (entry) answeredIds.current.add(entry.id)
-    const preferredIds = entry ? entry.followUps : askKerryStarters
+    const preferredIds = entry ? entry.followUps : starters
     // Suggestions already show the question, so only typed questions need the reminder
     const answering = entry && !knownEntry ? entry.question : undefined
 
     typingTimer.current = window.setTimeout(() => {
-      addMessage({ ...kerryMessage(entry ? entry.answer : askKerryFallback), answering })
-      setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, askKerryStarters, allIds))
+      addMessage({ ...kerryMessage(entry ? entry.answer : fallback), answering })
+      setSuggestionIds(pickSuggestions(preferredIds, answeredIds.current, starters, allIds))
       setIsTyping(false)
     }, TYPING_DELAY_MS)
   }

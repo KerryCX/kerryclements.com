@@ -2,8 +2,13 @@ import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { AskKerryChat, TYPING_DELAY_MS } from './AskKerryChat'
-import { askKerryEntries, askKerryGreeting, askKerryStarters } from '../../content/askKerry'
-import { linksOf, paragraphsOf, type AskKerryAnswer } from '../../chatbot/types'
+import {
+  askKerryEntries,
+  askKerryFallback,
+  askKerryGreeting,
+  askKerryStarters,
+} from '../../content/askKerry'
+import { linksOf, paragraphsOf, type AskKerryAnswer, type AskKerryEntry } from '../../chatbot/types'
 
 const firstParagraph = (answer: AskKerryAnswer): string => paragraphsOf(answer)[0]
 
@@ -15,7 +20,14 @@ const entry = (id: string) => {
 
 const setup = () => {
   const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
-  render(<AskKerryChat />)
+  render(
+    <AskKerryChat
+      entries={askKerryEntries}
+      greeting={askKerryGreeting}
+      fallback={askKerryFallback}
+      starters={askKerryStarters}
+    />
+  )
   return user
 }
 
@@ -223,5 +235,71 @@ describe('AskKerryChat', () => {
     const user = setup()
     await user.click(screen.getByRole('button', { name: entry('stack').question }))
     expect(screen.getByRole('textbox', { name: 'Your question' })).toHaveFocus()
+  })
+})
+describe('AskKerryChat with its own content', () => {
+  const pets: AskKerryEntry = {
+    id: 'pets',
+    question: 'Do you have any pets?',
+    keywords: ['dog', 'cat'],
+    answer: { text: 'Two goldfish.' },
+    followUps: [],
+  }
+  const tea: AskKerryEntry = {
+    id: 'tea',
+    question: 'How do you take your tea?',
+    keywords: ['milk'],
+    answer: { text: 'Strong, with milk.' },
+    followUps: [],
+  }
+
+  const setupWithOwnContent = () => {
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
+    render(
+      <AskKerryChat
+        entries={[pets, tea]}
+        greeting={{ text: 'Hello from a test bot.' }}
+        fallback={{ text: 'No answer for that one.' }}
+        starters={['pets', 'tea']}
+      />
+    )
+    return user
+  }
+
+  beforeEach(() => {
+    vi.useFakeTimers({ shouldAdvanceTime: true })
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('shows the greeting and starter questions it is given, not the site content', () => {
+    setupWithOwnContent()
+    expect(screen.getByText('Hello from a test bot.')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: pets.question })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: tea.question })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: entry('who').question })).not.toBeInTheDocument()
+  })
+
+  it('answers a suggested question from the entries it is given', async () => {
+    const user = setupWithOwnContent()
+    await user.click(screen.getByRole('button', { name: pets.question }))
+    finishTyping()
+    expect(screen.getByText('Two goldfish.')).toBeInTheDocument()
+  })
+
+  it('matches a typed question against the entries it is given', async () => {
+    const user = setupWithOwnContent()
+    await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'milk{Enter}')
+    finishTyping()
+    expect(screen.getByText('Strong, with milk.')).toBeInTheDocument()
+  })
+
+  it('uses the fallback it is given when nothing matches', async () => {
+    const user = setupWithOwnContent()
+    await user.type(screen.getByRole('textbox', { name: 'Your question' }), 'zzzz qqqq{Enter}')
+    finishTyping()
+    expect(screen.getByText('No answer for that one.')).toBeInTheDocument()
   })
 })

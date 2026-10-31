@@ -8,12 +8,12 @@ import {
   type ReactElement,
 } from 'react'
 import { isTouchTap } from '../../askKerry/touchKeyboard'
-import { AskKerryChat } from './AskKerryChat'
+import { AskKerryChat, type AskKerryChatProps } from './AskKerryChat'
 import styles from './AskKerry.module.css'
 
 // Floating "Ask about Kerry" button, shown on every page.
 // The panel stays mounted while closed (just hidden), so the conversation is kept.
-export const AskKerryLauncher = (): ReactElement => {
+export const AskKerryLauncher = (chatProps: AskKerryChatProps): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const launcherRef = useRef<HTMLButtonElement>(null)
@@ -71,7 +71,7 @@ export const AskKerryLauncher = (): ReactElement => {
             </svg>
           </button>
         </div>
-        <AskKerryChat />
+        <AskKerryChat {...chatProps} />
       </div>
 
       <button

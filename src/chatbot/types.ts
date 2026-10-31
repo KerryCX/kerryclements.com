@@ -9,6 +9,14 @@ export type AskKerryAnswer = {
   links?: AskKerryLink[]
 }
 
+export type AskKerryEntry = {
+  id: string
+  question: string
+  keywords: string[]
+  answer: AskKerryAnswer
+  followUps: string[]
+}
+
 export const paragraphsOf = (answer: AskKerryAnswer): string[] =>
   typeof answer.text === 'string' ? [answer.text] : answer.text
 

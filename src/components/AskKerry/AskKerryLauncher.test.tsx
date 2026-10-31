@@ -2,19 +2,36 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it } from 'vitest'
 import { AskKerryLauncher } from './AskKerryLauncher'
+import {
+  askKerryEntries,
+  askKerryFallback,
+  askKerryGreeting,
+  askKerryStarters,
+} from '../../content/askKerry'
+
+const renderLauncher = (): void => {
+  render(
+    <AskKerryLauncher
+      entries={askKerryEntries}
+      greeting={askKerryGreeting}
+      fallback={askKerryFallback}
+      starters={askKerryStarters}
+    />
+  )
+}
 
 const getLauncher = (): HTMLElement => screen.getByRole('button', { name: 'Ask about Kerry' })
 
 describe('AskKerryLauncher', () => {
   it('starts closed', () => {
-    render(<AskKerryLauncher />)
+    renderLauncher()
     expect(getLauncher()).toHaveAttribute('aria-expanded', 'false')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
   it('opens the panel and moves focus to the question box', async () => {
     const user = userEvent.setup()
-    render(<AskKerryLauncher />)
+    renderLauncher()
 
     await user.click(getLauncher())
 
@@ -24,7 +41,7 @@ describe('AskKerryLauncher', () => {
   })
 
   it('points the launcher at the panel it controls', () => {
-    render(<AskKerryLauncher />)
+    renderLauncher()
     const panelId = getLauncher().getAttribute('aria-controls')
     expect(panelId).toBeTruthy()
     expect(document.getElementById(panelId ?? '')).not.toBeNull()
@@ -32,7 +49,7 @@ describe('AskKerryLauncher', () => {
 
   it('closes with the close button and returns focus to the launcher', async () => {
     const user = userEvent.setup()
-    render(<AskKerryLauncher />)
+    renderLauncher()
 
     await user.click(getLauncher())
     await user.click(screen.getByRole('button', { name: 'Close' }))
@@ -43,7 +60,7 @@ describe('AskKerryLauncher', () => {
 
   it('closes on Escape and returns focus to the launcher', async () => {
     const user = userEvent.setup()
-    render(<AskKerryLauncher />)
+    renderLauncher()
 
     await user.click(getLauncher())
     await user.keyboard('{Escape}')
@@ -66,7 +83,7 @@ describe('AskKerryLauncher', () => {
         removeEventListener: () => {},
       })) as unknown as typeof window.matchMedia
       const user = userEvent.setup()
-      render(<AskKerryLauncher />)
+      renderLauncher()
 
       await user.click(getLauncher())
 
