@@ -163,7 +163,7 @@ export const cv: Cv = {
       name: 'Jobs Done',
       link: { label: 'jobsdone.kerryclements.com', href: 'https://jobsdone.kerryclements.com' },
       description:
-        'Personal web application; completed a full WCAG 2.2 AA accessibility audit, now feeding into a Figma-based v2 redesign.',
+        'Personal web application; a WCAG 2.2 AA audit led to colour contrast fixes, now protected by automated accessibility and behaviour tests in CI.',
     },
     {
       name: 'kerryclements.com',
