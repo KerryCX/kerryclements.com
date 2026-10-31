@@ -41,7 +41,7 @@ export const workCards = [
     title: 'Jobs Done',
     description:
       'A task logger for busy parents, built in vanilla HTML, CSS, and JavaScript. In real use from day one.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Figma', 'WCAG 2.2 AA'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Playwright', 'WCAG 2.2 AA'],
     caseStudyLink: '/portfolio/jobs-done',
     image: '/jobs-done-app.png',
     imageAlt:

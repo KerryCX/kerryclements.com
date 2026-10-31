@@ -58,17 +58,57 @@ export const JobsDoneCaseStudy = () => {
             those two, fix nearly everything.
           </p>
           <p>
-            The root cause was in the design system, not scattered across the UI. The fix hasn't
-            shipped yet. It's the first task for v2. The diagnosis is done and the solution is
-            clear.
+            The root cause was in the design system, not scattered across the UI, so the fix was
+            small.
+          </p>
+          <h2>The fix</h2>
+          <p>
+            I changed <code>text/muted</code> from <code>#8a8378</code> to <code>#6f685e</code>,
+            which takes it from 3.6:1 to 5.3:1 against the page background. The gold needed a
+            different answer: at 3.0:1 it was fine as decoration but not as small text. I kept the
+            original gold in the palette and added a darker <code>accent/gold-text</code> (
+            <code>#8a6218</code>, 5.3:1) for the day headings.
+          </p>
+          <p>
+            The app looks almost the same. The tagline, the timestamps and the empty message are a
+            little darker, and the day headings are a deeper gold. It still feels soft, and it now
+            passes.
+          </p>
+          <h2>Keeping it fixed</h2>
+          <p>
+            An audit only tells you where things stood on the day. To stop the same problem coming
+            back, I added tests that open the app in a real browser and an axe accessibility scan
+            against WCAG 2.2 AA, in both the empty and the populated state. They run in GitHub
+            Actions on every pull request, so a colour change that fails contrast can't be merged
+            without me seeing it.
+          </p>
+          <p>
+            Before I made any changes, the scan failed on the same two tokens the Figma audit had
+            pointed to: the muted text (the tagline, the empty message and the timestamps) at 3.6:1,
+            and the day headings at 3.0:1. It measures the code rather than my Figma recreation, so
+            the counts differ, but the cause was the same. That was a useful check on the audit
+            itself.
+          </p>
+          <p>
+            The tests also cover the behaviour: adding, deleting and clearing jobs, grouping by day,
+            the exact text that gets copied for WhatsApp, storage, and the warning before you close
+            the tab. I decided what the tests needed to protect and worked with Claude to write
+            them. The one thing they can't cover is the email button, because a browser test can't
+            observe a <code>mailto:</code> link opening.
+          </p>
+          <h2>A false alarm</h2>
+          <p>
+            Once the colours were fixed, the accessibility scan still failed now and then in CI,
+            even though it passed on my machine. Each new job fades in over a fraction of a second,
+            and the scan sometimes measured text that was only half visible. The app already turns
+            that animation off for people who prefer reduced motion, so I ran the tests with that
+            setting on. It was a flaky test, not a flaky app, but it was a good reminder to check
+            what a failing result is actually measuring before changing the design.
           </p>
           <h2>What's next</h2>
           <ul>
-            <li>
-              Darken <code>text/muted</code> and <code>accent/gold</code> to pass WCAG 2.2 AA
-            </li>
             <li>Split into separate HTML, CSS, and JS files</li>
-            <li>Add localStorage so the list persists between sessions </li>
+            <li>Add localStorage so the list persists between sessions</li>
             <li>
               Typography refresh: replacing the accidental system font stack with a deliberate
               Google Fonts pairing
